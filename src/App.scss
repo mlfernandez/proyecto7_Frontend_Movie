@@ -1,8 +1,30 @@
+@import 'scss/variables.scss';
+@import 'containers/Home/Home';
+@import 'containers/Login/Login';
+@import 'components/Footer/Footer';
+@import 'components/Header/Header';
+@import 'components/LateralMenu/LateralMenu';
+@import 'components/MovieGallery/MovieGallery';
+@import 'components/Slider/Slider';
+
+
+
+
+
+
+
 .App {
   text-align: center;
 }
 
-.App-logo {
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0
+}
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +57,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
