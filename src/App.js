@@ -2,6 +2,8 @@
 import './App.scss';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './components/Header/Header';
+import Home from './containers/Home/Home';
+import Login from './containers/Login/Login';
 
 /* import Footer from './components/Footer/Footer';
 import Login from './containers/Login/Login';
@@ -21,7 +23,7 @@ function App() {
         <Header/>
 
             <Switch>
-              <Route path="/" exact component={}/>
+              <Route path="/" exact component={Home}/>
               <Route path="/login" exact component={Login}/>
 {/*               <Route path="/profile" exact component={Profile}/>
               <Route path="/register" exact component={Register}/>

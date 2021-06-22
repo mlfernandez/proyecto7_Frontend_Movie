@@ -36,15 +36,14 @@ const Login = (props) => {
         }
         
         //Axios      
-        if (document.getElementById("opciones").value === "user") {
-            try {var res = await axios.post('http://localhost:3005/login', body);
+        try {var res = await axios.post('http://localhost:3005/login', body);
                 
-                let perfil = document.getElementById("opciones").value;
+               
                 let data = {
                     token : res.data.token,
-                    user : (res.data.user),
+                    user : res.data.user,
                     idUser: res.data.user._id,
-                    perfil: perfil
+                    
                 }
 
                 //Guardo en RDX
@@ -58,43 +57,12 @@ const Login = (props) => {
                 history.push("/profile");
 
             } catch (err) {
+                    console.log("usuario no encontrado")
+                    notification.warning({message:'Atencion.',description: "Usuario o password incorrecto."});              
                 
-                    notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});              
-                
-            }
-
-        }else if (document.getElementById("opciones").value === "monitor") {
-
-            try {var resMonitor = await axios.post('http://localhost:3005/login/monitor', body);
-         
-                let perfil = document.getElementById("opciones").value;
-                let data = {
-                    token : resMonitor.data.token,
-                    user : resMonitor.data.monitor,
-                    idUser: resMonitor.data.monitor._id,
-                    perfil: perfil
-                }
-
-                //Guardo en RDX
-                props.dispatch({type:LOGIN,payload:data});
-                let description = ("Bienvenido " + resMonitor.data.monitor.name + " " + resMonitor.data.monitor.lastName1 + ".");
-                notification.success({message:'Login correcto.',description: description});
-                
-                //Redireccion           
-                history.push("/profile");
-                
-            } catch (err) {
-                
-               
-                    notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});              
-                
-       
-
-            }
-        }
-
-
+            
     }
+}
 
     return (
 
@@ -110,12 +78,7 @@ const Login = (props) => {
                         <input className="input" type="password" name="password" placeholder="password" onChange={updateCredentials} size="40" lenght='30'></input>
                         
                     </div>
-                    <div className = "cardLogin">
-                        <select id = "opciones" className="input">
-                            <option value="user">Cliente</option>
-                            <option value="monitor">Entrenador</option>
-                        </select>
-                    </div>
+                    
                     <div className = "sendButton" onClick={()=>logeame()}>Login</div>
                     <div>{msgError}</div>
                 </div>
