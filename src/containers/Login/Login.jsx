@@ -1,9 +1,10 @@
 import React , {useState} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
-import {Input, notification} from 'antd';
 import {connect} from 'react-redux';
 import {LOGIN} from '../../redux/types'
+import {notification} from 'antd';
+
 /* import  Footer  from '../../components/Footer/Footer'; */
 
 
@@ -50,7 +51,9 @@ const Login = (props) => {
                 props.dispatch({type:LOGIN,payload:data});
                                
                 //Mensaje de bienvenida
-                let description = ("Bienvenido " + res.data.user.name + " " + res.data.user.lastName1 + ".");
+                let description = ("Bienvenido " + res.data.user.name + " " + res.data.user.last_name1 + ".");
+                
+    
                 notification.success({message:'Login correcto.',description: description});
                 
                 //Redireccion           

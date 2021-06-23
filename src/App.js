@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
+import Register from './containers/Register/Register';
 
 /* import Footer from './components/Footer/Footer';
 import Login from './containers/Login/Login';
@@ -25,8 +26,10 @@ function App() {
             <Switch>
               <Route path="/" exact component={Home}/>
               <Route path="/login" exact component={Login}/>
-{/*               <Route path="/profile" exact component={Profile}/>
               <Route path="/register" exact component={Register}/>
+
+{/*               <Route path="/profile" exact component={Profile}/>
+              
               <Route path="/form" exact component={Demo}/>
                      */}
             </Switch>

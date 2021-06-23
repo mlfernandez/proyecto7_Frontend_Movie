@@ -1,13 +1,14 @@
-.vistaLogin {
+.boxForm {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: unset;
-    height: auto;
-    margin-top: 5em;
-  }
-  
-  .loginCard {
+    justify-content: center;
+    height: fit-content;
+    
+}
+
+
+.formulario {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,16 +16,15 @@
     border-radius: 5px;
     color: white;
     font-size: 14px;
-  }
-  
-  .cardLogin{
-      margin: 0.5em;
-  }
-  
-  .sendButton {
+    margin-bottom: 2em;
+    height: 80vh;
+    margin-top: 5em;
+}
+
+.newUserBoton {
     position: relative;
     margin: 15px 0 5px 0;
-    background: #303036;
+    background: $hovercolorR;
     border-radius: 5px;
     padding: 10px;
     color: white;
@@ -35,22 +35,16 @@
     align-items: center;
     justify-content: center;
   }
-  
-  .sendButton:hover {
-    background: #e15554;
-    transition: 0.2s;
-  }
-  
-  .nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  
-  .input{
+
+.newUserBoton:hover {
+
+    background-color: $hovercolorY;
+    transition: 0.5s;
+    color:black;
+}  
+.inputBase {
     width: 100%;
-    height: 36px;
+    height: 30px;
     border-radius: 4px;
     padding-left: 12px;
     font-size: 14px;
@@ -60,7 +54,28 @@
     transition: border-color 150ms ease-in-out 1s;
     z-index: 1;
     outline: none;
-    color: rgb(33, 49, 60);
+    color: black;
     background-color: rgb(255, 255, 255);
-    padding-right: 12px;
+    padding-right: 12px;      
+    margin:0.2em;
+}
+
+input[type="date"]:not(.has-value):before{
+    color: grey;
+    content: attr(placeholder);
+    font-family: Arial, Helvetica, sans-serif;
   }
+
+
+
+.demo{
+    font-size: 1.5em;
+    color: #e15554;
+}
+
+.tituloFormRegistro {
+    margin-top: 2em;
+    font-weight: bold;
+    font-size: 2.5em;
+
+}
