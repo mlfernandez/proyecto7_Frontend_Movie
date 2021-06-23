@@ -2,7 +2,7 @@ import React , {useState} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {LOGIN} from '../../redux/types'
+import {LOGIN, LOGOUT} from '../../redux/types'
 import {notification} from 'antd';
 
 /* import  Footer  from '../../components/Footer/Footer'; */
@@ -60,11 +60,16 @@ const Login = (props) => {
                 history.push("/profile");
 
             } catch (err) {
+                   if (err.response.data.message.includes("La cuenta no está activa")) {   
+                    notification.warning({message:'Atencion!', description: "La cuenta no está activa. Por favor, revisa tu correo electrónico y activa tu cuenta."});
+                    } else { 
                     console.log("usuario no encontrado")
                     notification.warning({message:'Atencion.',description: "Usuario o password incorrecto."});              
-                
+                    }
             
-    }
+                
+                }
+                    
 }
 
     return (
