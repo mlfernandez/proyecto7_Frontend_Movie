@@ -3,12 +3,11 @@ export const LOGOUT = "logout";
 export const PROFILE = "profile";
 export const GETTOPRATED = "gettoprated";
 export const GETCOMINGSOON = "getcomingsoon";
-
-export const GETPOPULARMOVIE = "getpopularmovie";
-export const GETSEARCH = "getsearch";
-export const SEARCHBYGENDRE = "searchbygendre";
+export const SEARCHBYGENRE = "searchbygenre";
 export const SEARCHBYTITLE = "searchbytitle";
 export const SEARCHBYID = "searchbyid";
+export const GETSEARCH = "getsearch";
+
 export const ORDER = "getorder";
 export const ADMINMOVIE = "adminmovie";
 export const ADMINUSER = "adminuser";

@@ -5,19 +5,9 @@ import { connect } from 'react-redux';
 
 import SearchTopRated from '../../components/SearchTopRated/SearchTopRated';
 import SearchComingSoon from '../../components/SearchComingSoon/SearchComingSoon';
+import SearchBy from '../../components/SearchBy/SearchBy';
 
 
-
-/* import DataProfile from '../../components/DataProfile/DataProfile';
-import DataRoom from '../../components/DataRoom/DataRoom';
-import DataJoin from '../../components/DataJoin/DataJoin';
-import DataRoomMonitor from '../../components/DataRoomMonitor/DataRoomMonitor';
-import DataJoinMonitor from '../../components/DataJoinMonitor/DataJoinMonitor';
-import NewRoom from '../../components/NewRoom/NewRoom';
-import Payment from '../../components/Payment/Payment';
-import Code from '../../components/QrCode/QrCode';
-import NewCoach from '../../components/NewCoach/NewCoach';
-import NewUser from '../../components/NewUser/NewUser'; */
 
 
 const DataContainer = (props) => {
@@ -34,27 +24,12 @@ const DataContainer = (props) => {
 
                 return <SearchComingSoon/>    
            
-/*             case 'joinuser':
-
-                return <DataJoin />
-
-            case 'monitoroom':
-                return <DataRoomMonitor/>
-
-            case 'joinmonitor':
-                return <DataJoinMonitor/>
             
-            case 'newroom':
-                return <NewRoom/>
-            case 'newcoach':
-                return <NewCoach/>
-            case 'newuser':
-                return <NewUser/>
-            case 'payment':
-                    return <Payment/>
-            case 'codeqr':
-                return <Code/>
-            default:
+            case 'getsearch':
+
+                return <SearchBy/>      
+
+/*             default:
 
                 return <DataProfile /> */
         }

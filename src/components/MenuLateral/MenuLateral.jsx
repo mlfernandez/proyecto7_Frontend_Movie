@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./MenuLateral.scss";
 import { connect } from "react-redux";
-import { LOGIN, LOGOUT, PROFILE, GETPOPULARMOVIE, GETCOMINGSOON, ORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, SERCHTOPRATED, SEARCHBYGENDRE, SEARCHBYTITLE, GETTOPRATED, SEARCHBYID, ADMINUSER} from "../../redux/types";
+import { LOGIN, LOGOUT, PROFILE, GETPOPULARMOVIE, GETCOMINGSOON, ORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, SERCHTOPRATED, SEARCHBYGENRE, SEARCHBYTITLE, GETTOPRATED, SEARCHBYID, ADMINUSER} from "../../redux/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCalendarWeek, faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -38,7 +38,7 @@ const Menulateral = (props) => {
         break;
 
       case "getsearchbygendre":
-        props.dispatch({ type: SEARCHBYGENDRE, payload: info });
+        props.dispatch({ type: SEARCHBYGENRE, payload: info });
 
         break;
 

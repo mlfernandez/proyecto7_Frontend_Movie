@@ -25,15 +25,24 @@ const SearchComingSoon = (props) => {
     });
   
     //Guarda la movie en redux y nos lleva a la vista de película.
-    const clickMovie = async (movie) => {
+    const clickMovie = async (dataMovie) => {
       try{
 
-        console.log(movie);
-        props.dispatch({type:GETCOMINGSOON,payload: movie});
+        console.log(dataMovie, "soy movie");
+        props.dispatch({type:GETCOMINGSOON,payload: dataMovie});
+
+
+
+        setmoviesComingSoon(dataMovie)
+  
+/*         let res = await axios.get(`http://localhost:3005/movies/search/${title}`, title);
+        console.log(res.data) */
+  
+      
 
 
     }catch (err){
-         console.log(err);      
+            
          }      
 
     }
@@ -42,7 +51,7 @@ const SearchComingSoon = (props) => {
     try{
       let res = await axios.get('http://localhost:3005/movies/soon');
       setmoviesComingSoon(res.data.results); 
-      console.log(res.data.result)
+      console.log(res.data.results)
   }catch (err){      
 
     console.log(err)
