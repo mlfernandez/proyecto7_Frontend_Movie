@@ -60,15 +60,18 @@ const Menulateral = (props) => {
         
         <div className="lateralMenu">
           
-          
-          <FontAwesomeIcon icon={faStar}/>
-          <FontAwesomeIcon icon={faCalendarWeek}/>
-          <FontAwesomeIcon icon={faSearch}/>
-          <FontAwesomeIcon icon={faStar}/>
-          <div className="botomMenuLateral"onClick={() => cambiaDatos("gettoprated") }>Mejores valoradas</div>
-          <div className="botomMenuLateral"onClick={() => cambiaDatos("getcomingsoon")}>Proximamente</div>
-          <div className="botomMenuLateral"onClick={() => cambiaDatos("getsearch")}>Buscar</div>
-          <div className="botomMenuLateral"onClick={() => cambiaDatos("getorder")}>Pedido</div>
+          <div className="MenuLateral">
+            <FontAwesomeIcon className="iconMenuLateral" icon={faStar}/>
+            <FontAwesomeIcon className="iconMenuLateral" icon={faCalendarWeek}/>
+            <FontAwesomeIcon className="iconMenuLateral" icon={faSearch}/>
+            <FontAwesomeIcon className="iconMenuLateral" icon={faStar}/>
+          </div>
+          <div className="MenuLateral">
+            <div className="botomMenuLateral"onClick={() => cambiaDatos("gettoprated") }>Mejores valoradas</div>
+            <div className="botomMenuLateral"onClick={() => cambiaDatos("getcomingsoon")}>Proximamente</div>
+            <div className="botomMenuLateral"onClick={() => cambiaDatos("getsearch")}>Buscar</div>
+            <div className="botomMenuLateral"onClick={() => cambiaDatos("getorder")}>Pedido</div>
+          </div>
         </div>
       </div>
     );
