@@ -1,12 +1,25 @@
 export const LOGIN = "login";
 export const LOGOUT = "logout";
-export const GETROOMUSER = "getRoomUsers";
 export const PROFILE = "profile";
-export const CLASES = "clases";
+export const GETTOPRATED = "gettoprated";
+export const GETCOMINGSOON = "getcomingsoon";
+
+export const GETPOPULARMOVIE = "getpopularmovie";
+export const GETSEARCH = "getsearch";
+export const SEARCHBYGENDRE = "searchbygendre";
+export const SEARCHBYTITLE = "searchbytitle";
+export const SEARCHBYID = "searchbyid";
+export const ORDER = "getorder";
+export const ADMINMOVIE = "adminmovie";
+export const ADMINUSER = "adminuser";
+export const DELETE = "delete";
+
+
+
 export const JOIN = "join";
 export const LOGOUTROOM = "logoutroom";
 export const LOGOUTTIPODATOS = "logouttipodatos";
-export const GETROOMMONITOR = "getRoomMonitor";
+export const SERCHTOPRATED = "getRoomMonitor";
 export const JOINMONITOR = "joinmonitor";
 export const LOGOUTROOMMONITOR = "LogOutRoomMonitor";
 export const UPDATE = "update";
@@ -16,6 +29,6 @@ export const CODEQR = 'codeqr';
 export const EDITROOM = 'editroom';
 export const NEWUSER = 'newuser';
 export const NEWCOACH = 'newcoach';
-export const DELETE = "delete";
+
 
 

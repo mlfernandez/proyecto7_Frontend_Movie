@@ -291,7 +291,7 @@ const Register = () => {
 
     return (
         <div className= "boxForm">
-            <div className= "tituloFormRegistro"> FORMULARIO DE REGISTRO </div>
+            <div className= "tituloFormRegistro"> Formulario de registro </div>
             <div className="formulario">
                 <input className="inputBase" type="text" name="name" onChange={updateFormulario} onBlur={()=>checkError("name")} placeholder="Nombre" size="34" lenght='30'></input>
                 <div>{errors.eName}</div>

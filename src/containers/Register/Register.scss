@@ -18,7 +18,8 @@
     font-size: 14px;
     margin-bottom: 2em;
     height: 80vh;
-    margin-top: 5em;
+    margin-top: 1.5em;
+    
 }
 
 .newUserBoton {
@@ -58,6 +59,7 @@
     background-color: rgb(255, 255, 255);
     padding-right: 12px;      
     margin:0.2em;
+
 }
 
 input[type="date"]:not(.has-value):before{
@@ -74,8 +76,8 @@ input[type="date"]:not(.has-value):before{
 }
 
 .tituloFormRegistro {
-    margin-top: 2em;
     font-weight: bold;
     font-size: 2.5em;
+    font-family: $font2;
 
 }

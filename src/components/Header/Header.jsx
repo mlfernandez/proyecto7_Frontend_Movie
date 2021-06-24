@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../images/logo.png';
+import Logo from '../../images/logosmall.png';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LOGOUT, LOGOUTROOM, LOGOUTTIPODATOS, PROFILE, DELETE} from '../../redux/types';
@@ -59,7 +59,7 @@ const Header = (props) => {
 
         <div className="NavMenu" >
           <div className="NavLink">
-            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/register">Inscribirse</NavLink>
+            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/register">Registrarse</NavLink>
           </div>
           <div className="NavLink" activeClassName="selected">
           <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/login">Login</NavLink>

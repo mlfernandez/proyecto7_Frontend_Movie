@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+
+.boxLateral{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: black;
+    height: 80vh;
+    position: fixed;
+    width: 20vw;
+}
+
+.lateralMenu{
+    height: 200vh;
+    width: max-content;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    padding: 2em;
+
+}
+
+.card {
+    height: 30vh;
+    width: 11vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+}
+
+.card:hover{
+    background-color: #FAFF00;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.nombre{
+    font-weight: bold;
+}
+
+.boxCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.botomMenuLateral{
+    height: 6.5vh;
+    width: 12vw;
+    margin: 0.2em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1em;
+    transition: 0.3s;
+    background-color: black;
+}
+.botomMenuLateral:hover{
+    background-color: #F0EC57;
+    cursor: pointer;
+    transition: 0.3s;
+    color: black;
+}
+
+.tituloVistaAdmin{
+    color: #E15554;
+    font-weight: bold;
+    font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
+    margin-bottom: 2em;
+    font-size: 1.2em;
+}
