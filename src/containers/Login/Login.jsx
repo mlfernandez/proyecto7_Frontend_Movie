@@ -1,4 +1,5 @@
-import React , {useState} from 'react';
+
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -21,7 +22,19 @@ const Login = (props) => {
         setCredentials ({...credentials, [e.target.name]: e.target.value});
     }
 
-    const logeame = async () => {
+    useEffect(()=>{
+        const listener = event => {
+            if (event.code === "Enter" || event.code === "NumpadEnter") {
+                logueame();
+            }
+        };
+        document.addEventListener("keydown", listener);
+        return () => {
+            document.removeEventListener("keydown", listener);
+        };
+    },[credentials]);
+
+    const logueame = async () => {
 
         //Primero, testeamos los datos
             
@@ -87,7 +100,7 @@ const Login = (props) => {
                         
                     </div>
                     
-                    <div className = "sendButton" onClick={()=>logeame()}>Login</div>
+                    <div className = "sendButton" onClick={()=>logueame()}>Login</div>
                     <div>{msgError}</div>
                 </div>
         

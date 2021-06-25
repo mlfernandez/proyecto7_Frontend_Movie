@@ -24,22 +24,6 @@ const DataProfile = (props) => {
         });        
 
 
-    // const [datosUser, setDatosUser] = useState(
-    //     {
-    //         name : '',
-    //         lastName1: '',
-    //         lastName2: '',
-    //         email: '',
-    //         password: '',
-    //         birthday: '',
-    //         address: '',
-    //         country: '',
-    //         city: '',
-    //         dni: '',
-    //         telephone: '',
-    //         subscription: 'Mensual',
-    // });
-
     const [errors, setErrors] = useState({
         eName : '',
         eLast_name1: '',
@@ -63,6 +47,7 @@ const DataProfile = (props) => {
 
     useEffect(() => {
         setProfile(1);
+       
       }, []);
 
     let user = props.credentials.user;   
@@ -248,29 +233,31 @@ const DataProfile = (props) => {
 
     const saveData = async (info) => {        
         let token = props.credentials.token;
-        let idUser = props.credentials.user._id;
-        let shipping_address = props.credentials.shipping_address;
+        let idUser = props.credentials.user.id;
+        let shipping_address = datosUser.shipping_address;
         let city = datosUser.city;
+        let zipCode = datosUser.zipCode;
         let country = datosUser.country;
-        let phone = datosUser.telephone;
-        console.log(idUser)
+        let phone = datosUser.phone;
+        console.log(idUser, "estoy en saveData")
 
         var body = {
-            member : idUser,
-            id : idUser,
-            shipping_address : shipping_address,
-            country : country,
-            city : city,
-            phone : phone,
+            idUser : idUser,
+            shipping_address: shipping_address,
+            phone: phone,
+            city: city,
+            country: country,
+            zipCode: zipCode
             
         }
 
-        console.log(props.credentials.isAdmin)
-        if (props.credentials.isAdmin === "false"){
-            console.log(body, "Datos de body que pasamos");
+        console.log(body, "estoy en body")
+
+        console.log(props.credentials.user.isAdmin)
+        if (props.credentials.user.isAdmin === "false"){
             let token = props.credentials.token;
 
-            var res = await axios.put('http://localhost:3005/user',body,{headers:{'authorization':'Bearer ' + token}});
+            var res = await axios.put('http://localhost:3005/users',body,{headers:{'authorization':'Bearer ' + token}});
             
 
 
@@ -278,8 +265,7 @@ const DataProfile = (props) => {
             let data = {
                 token: token,
                 user : res.data,
-                idUser: res.data._id,
-                perfil: "user"
+                idUser: res.data.idUser,
             }
                 console.log("Datos qeu devuelve axios : ", data);
 
@@ -289,18 +275,17 @@ const DataProfile = (props) => {
                 setProfile(info);
             
         }else {
-            console.log("Estoy en monitor")
+            console.log("Estoy en admin")
             console.log(body)
 
             let token2 = props.credentials.token;
 
-            let res2 = await axios.post('http://localhost:3005/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
+            let res2 = await axios.put('http://localhost:3005/users',body,{headers:{'authorization':'Bearer ' + token}});
             console.log (res2);
             let data2 = {
                 token: token2,
                 user : res2.data,
-                idUser: res2.data.user._id,
-                perfil: "monitor"
+                idUser: res2.data.idUser,
             }        
             console.log("Datos qeu devuelve axios : ", data2);
 
@@ -308,7 +293,6 @@ const DataProfile = (props) => {
             notification.success({message:'Atencion.',description: "Datos actualizados correctamente."});
 
             setProfile(info);
-
 
             
         }
@@ -359,7 +343,7 @@ const DataProfile = (props) => {
                     </div>
 
                     <div className="infoUser2">
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="address" value={user.address} size="34" lenght='30'></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="shipping_address" value={user.shipping_address} size="34" lenght='30'></input>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="city"  value={user.city} size="34" lenght='30'></input>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="zipCode"  value={user.zipCode} size="34" lenght='30'></input>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="country"  value={user.country} size="34" lenght='30'></input>
@@ -397,8 +381,8 @@ const DataProfile = (props) => {
 
                     <div className="infoUser2">
                         <input className="inputBaseUser" readonly="readonly" type="text" name="name"  placeholder={user.name} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="lastName1"  placeholder={user.lastName1} size="34" lenght='30' ></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="lastName2"  placeholder={user.lastName2} size="34" lenght='30'></input>
+                        <input className="inputBaseUser" readonly="readonly" type="text" name="last_name1"  placeholder={user.last_name1} size="34" lenght='30' ></input>
+                        <input className="inputBaseUser" readonly="readonly" type="text" name="last_name2"  placeholder={user.last_name2} size="34" lenght='30'></input>
                         <input className="inputBaseUser" readonly="readonly" type="text" name="email"  placeholder={user.email} size="34" lenght='30'></input>
                         <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
 
@@ -408,6 +392,7 @@ const DataProfile = (props) => {
 
                         <div className="titulosInfoUser">Dirección:</div>
                         <div className="titulosInfoUser">Ciudad:</div>
+                        <div className="titulosInfoUser">Codigo Postal:</div>
                         <div className="titulosInfoUser">País:</div>
                         <div className="titulosInfoUser">DNI/NIE:</div>
                         <div className="titulosInfoUser">Telefono:</div>
@@ -418,17 +403,17 @@ const DataProfile = (props) => {
 
                     <div className="infoUser3">
 
-                        <input className="inputBaseUser"  type="text" name="address" onChange={updateFormulario} onBlur={()=>checkError("address")} placeholder={props.credentials.user.address} size="34" lenght='30'></input>
-                        <div>{errors.eAddress}</div>
+                        <input className="inputBaseUser"  type="text" name="shipping_address" onChange={updateFormulario} onBlur={()=>checkError("shipping_address")} placeholder={props.credentials.user.shipping_address} size="34" lenght='30'></input>
+                        <div>{errors.eShipping_address}</div>
                         <input className="inputBaseUser"  type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")} placeholder={props.credentials.user.city} size="34" lenght='30'></input>
-                        
                         <div>{errors.eCity}</div>
+                        <input className="inputBaseUser"  type="text" name="zipCode" onChange={updateFormulario} onBlur={()=>checkError("zipCode")} placeholder={props.credentials.user.zipCode} size="34" lenght='30'></input>
+                        <div>{errors.eZipCode}</div>
                         <input className="inputBaseUser" type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")} placeholder={props.credentials.user.country} size="34" lenght='30'></input>
-                        {/* <input className="inputBaseUser" type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")}  placeholder={user.country} size="34" lenght='30'></input> */}
                         <div>{errors.eCountry}</div>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="dni"  placeholder={user.dni} size="34" maxlenght='9' ></input>
-                        <input className="inputBaseUser"  type="text" name="telephone" onChange={updateFormulario} onBlur={()=>checkError("telephone")}   placeholder={props.credentials.user.telephone}size="34" lenght='9'></input>
-                        <div>{errors.eTelephone}</div>
+                        <input className="inputBaseUser" readonly="readonly" type="text" name="dni"  placeholder={props.credentials.user.dni} size="34" maxlenght='9' ></input>
+                        <input className="inputBaseUser"  type="text" name="phone" onChange={updateFormulario} onBlur={()=>checkError("phone")}   placeholder={props.credentials.user.phone}size="34" lenght='9'></input>
+                        <div>{errors.ePhone}</div>
                         <input className="inputBaseUser" readonly="readonly" type="text" name="birthday" placeholder={moment(user.birthday).format('L')} ></input>
 
                     </div>

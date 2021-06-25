@@ -81,6 +81,7 @@ const SearchBy = (props) => {
 
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200"
+
     
     if (moviesSearch[0]?.id) {
       return (
