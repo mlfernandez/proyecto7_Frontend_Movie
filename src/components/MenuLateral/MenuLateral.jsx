@@ -43,6 +43,8 @@ const Menulateral = (props) => {
   //MENU DEL HOME PARA BUSCAR NOVEDADES ETC
  
     return (
+
+      
       <div className="boxLateral">
         
         <div className="lateralMenu">

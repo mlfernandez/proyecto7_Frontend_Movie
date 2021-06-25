@@ -20,6 +20,7 @@ const DataProfile = (props) => {
                 shipping_address: props.credentials.user.shipping_address,
                 country: props.credentials.user.country,
                 city: props.credentials.user.city,
+                zipCode: props.credentials.user.zipCode,
                 phone: props.credentials.user.phone
         });        
 
@@ -231,7 +232,9 @@ const DataProfile = (props) => {
     }
 
 
-    const saveData = async (info) => {        
+    const saveData = async (info) => {   
+        try { 
+
         let token = props.credentials.token;
         let idUser = props.credentials.user.id;
         let shipping_address = datosUser.shipping_address;
@@ -242,6 +245,7 @@ const DataProfile = (props) => {
         console.log(idUser, "estoy en saveData")
 
         var body = {
+            id: idUser,
             idUser : idUser,
             shipping_address: shipping_address,
             phone: phone,
@@ -253,11 +257,8 @@ const DataProfile = (props) => {
 
         console.log(body, "estoy en body")
 
-        console.log(props.credentials.user.isAdmin)
-        if (props.credentials.user.isAdmin === "false"){
-            let token = props.credentials.token;
 
-            var res = await axios.put('http://localhost:3005/users',body,{headers:{'authorization':'Bearer ' + token}});
+        let res = await axios.post('http://localhost:3005/users/modify',body,{headers:{'authorization':'Bearer ' + token}});
             
 
 
@@ -265,38 +266,19 @@ const DataProfile = (props) => {
             let data = {
                 token: token,
                 user : res.data,
-                idUser: res.data.idUser,
+                idUser: idUser,
             }
                 console.log("Datos qeu devuelve axios : ", data);
 
                 props.dispatch({type:UPDATE,payload:data});
+                console.log(props.dispatch)
                 notification.success({message:'Atencion.',description: "Datos actualizados correctamente."});
 
                 setProfile(info);
             
-        }else {
-            console.log("Estoy en admin")
-            console.log(body)
+        } catch (error) {
 
-            let token2 = props.credentials.token;
-
-            let res2 = await axios.put('http://localhost:3005/users',body,{headers:{'authorization':'Bearer ' + token}});
-            console.log (res2);
-            let data2 = {
-                token: token2,
-                user : res2.data,
-                idUser: res2.data.idUser,
-            }        
-            console.log("Datos qeu devuelve axios : ", data2);
-
-            props.dispatch({type:UPDATE,payload:data2});
-            notification.success({message:'Atencion.',description: "Datos actualizados correctamente."});
-
-            setProfile(info);
-
-            
         }
-
 
         
     }
@@ -309,49 +291,26 @@ const DataProfile = (props) => {
 
                     <div className="infoUser1">
                         <div className="fotoUserProfile"><img className="img" src={PhotoProfile} alt="Profile photo" /></div>
-                        <div className="empty"><button onClick={(()=>changeState(2))}>Editar</button></div>
+                        <p>Nombre: <input className="inputBaseUser"  readonly="readonly" type="text" name="name" value={user.name} size="34" lenght='30'></input></p>
+                        <p>Primer apellido: <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName1"  value={user.last_name1} size="34" lenght='30' ></input></p>
+                        <p>Segundo apellido: <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName2"  value={user.last_name2} size="34" lenght='30'></input></p>
+                        <p>Email: <input className="inputBaseUser"  readonly="readonly" type="text" name="email"  value={user.email} size="34" lenght='30'></input></p>
+                        <p>Password: <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input></p>
+                        <p>Fecha de nacimiento: <input className="inputBaseUser"  readonly="readonly" type="text" name="birthday" value={moment(user.birthday).format('L')} ></input></p>   
                     </div>
 
-                    <div className= "infoUser2Titulos">
-                        <div className="titulosInfoUser">Nombre:</div>
-                        <div className="titulosInfoUser">Primer apellido:</div>
-                        <div className="titulosInfoUser">Segundo apellido:</div>
-                        <div className="titulosInfoUser">Email:</div>
-                        <div className="titulosInfoUser">Password:</div>
-                     
-                    </div>
 
                     <div className="infoUser2">
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="name" value={user.name} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName1"  value={user.last_name1} size="34" lenght='30' ></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName2"  value={user.last_name2} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="email"  value={user.email} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input>
-                        
+                    
+                    <div className="botonEdit"><div className="sendButtonEdit" onClick={(()=>changeState(2))}>Editar</div></div>
+                    <p>Dirección: <input className="inputBaseUser"  readonly="readonly" type="text" name="shipping_address" value={user.shipping_address} size="34" lenght='30'></input></p>
+                    <p>Ciudad: <input className="inputBaseUser"  readonly="readonly" type="text" name="city"  value={user.city} size="34" lenght='30'></input></p>
+                    <p>Codigo postal: <input className="inputBaseUser"  readonly="readonly" type="text" name="zipCode"  value={user.zipCode} size="34" lenght='30'></input></p>
+                    <p>País: <input className="inputBaseUser"  readonly="readonly" type="text" name="country"  value={user.country} size="34" lenght='30'></input></p>
+                    <p>DNI: <input className="inputBaseUser"  readonly="readonly" type="text" name="dni"  value={user.dni} size="34" maxlenght='9' ></input></p>
+                    <p>Teléfono: <input className="inputBaseUser"  readonly="readonly" type="text" name="phone"  value={user.phone} size="34" lenght='9'></input></p>
+                    
 
-                    </div>
-
-                    <div className= "infoUser2Titulos">
-                        <div className="titulosInfoUser">Dirección:</div>
-                        <div className="titulosInfoUser">Ciudad:</div>
-                        <div className="titulosInfoUser">Codigo Postal:</div>
-                        <div className="titulosInfoUser">País:</div>
-                        <div className="titulosInfoUser">DNI/NIE:</div>
-                        <div className="titulosInfoUser">Telefono:</div>
-                        <div className="titulosInfoUser">Fecha de nacimiento:</div>
-                     
-                    </div>
-
-                    <div className="infoUser2">
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="shipping_address" value={user.shipping_address} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="city"  value={user.city} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="zipCode"  value={user.zipCode} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="country"  value={user.country} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="dni"  value={user.dni} size="34" maxlenght='9' ></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="phone"  value={user.phone} size="34" lenght='9'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="birthday" value={moment(user.birthday).format('L')} ></input>
-                    </div>
-                    <div>
                     </div>
 
                 </div>
@@ -365,56 +324,30 @@ const DataProfile = (props) => {
                 <div className="boxDataProfileUser">
 
                     <div className="infoUser1">
-                    <div className="fotoUserProfile"><img className="img" src={PhotoProfile} alt="Profile photo" /></div>
-                        <div className="empty"><button onClick={(()=>saveData(1))}>Guardar</button></div>
-
+                        <div className="fotoUserProfile"><img className="img" src={PhotoProfile} alt="Profile photo" /></div>
+                        <p>Nombre: <input className="inputBaseUser"  readonly="readonly" type="text" name="name" value={user.name} size="34" lenght='30'></input></p>
+                        <p>Primer apellido: <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName1"  value={user.last_name1} size="34" lenght='30' ></input></p>
+                        <p>Segundo apellido: <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName2"  value={user.last_name2} size="34" lenght='30'></input></p>
+                        <p>Email: <input className="inputBaseUser"  readonly="readonly" type="text" name="email"  value={user.email} size="34" lenght='30'></input></p>
+                        <p>Password: <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input></p>
+                        <p>Fecha de nacimiento: <input className="inputBaseUser"  readonly="readonly" type="text" name="birthday" value={moment(user.birthday).format('L')} ></input></p>   
                     </div>
+                    
 
-                    <div className= "infoUser2Titulos">
-                        <div className="titulosInfoUser">Nombre:</div>
-                        <div className="titulosInfoUser">Primer apellido:</div>
-                        <div className="titulosInfoUser">Segundo apellido:</div>
-                        <div className="titulosInfoUser">Email:</div>
-                        <div className="titulosInfoUser">Password:</div>
-                     
-                    </div>
 
                     <div className="infoUser2">
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="name"  placeholder={user.name} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="last_name1"  placeholder={user.last_name1} size="34" lenght='30' ></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="last_name2"  placeholder={user.last_name2} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="email"  placeholder={user.email} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
-
-                    </div>
-
-                    <div className= "infoUser2Titulos">
-
-                        <div className="titulosInfoUser">Dirección:</div>
-                        <div className="titulosInfoUser">Ciudad:</div>
-                        <div className="titulosInfoUser">Codigo Postal:</div>
-                        <div className="titulosInfoUser">País:</div>
-                        <div className="titulosInfoUser">DNI/NIE:</div>
-                        <div className="titulosInfoUser">Telefono:</div>
-                        <div className="titulosInfoUser">Fecha de nacimiento:</div>
-
-                     
-                    </div>
-
-                    <div className="infoUser3">
-
-                        <input className="inputBaseUser"  type="text" name="shipping_address" onChange={updateFormulario} onBlur={()=>checkError("shipping_address")} placeholder={props.credentials.user.shipping_address} size="34" lenght='30'></input>
+                        <div className="botonEdit"><div className="sendButtonEdit"  onClick={(()=>saveData(1))}>Guardar</div></div> 
+                        <p>Dirección: <input className="inputBaseUser"  type="text" name="shipping_address" onChange={updateFormulario} onBlur={()=>checkError("shipping_address")} placeholder={props.credentials.user.shipping_address} size="34" lenght='30'></input></p>
                         <div>{errors.eShipping_address}</div>
-                        <input className="inputBaseUser"  type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")} placeholder={props.credentials.user.city} size="34" lenght='30'></input>
+                        <p>Ciudad:: <input className="inputBaseUser"  type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")} placeholder={props.credentials.user.city} size="34" lenght='30'></input></p>
                         <div>{errors.eCity}</div>
-                        <input className="inputBaseUser"  type="text" name="zipCode" onChange={updateFormulario} onBlur={()=>checkError("zipCode")} placeholder={props.credentials.user.zipCode} size="34" lenght='30'></input>
+                        <p>Codigo Postal: <input className="inputBaseUser"  type="text" name="zipCode" onChange={updateFormulario} onBlur={()=>checkError("zipCode")} placeholder={props.credentials.user.zipCode} size="34" lenght='30'></input></p>
                         <div>{errors.eZipCode}</div>
-                        <input className="inputBaseUser" type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")} placeholder={props.credentials.user.country} size="34" lenght='30'></input>
+                        <p>País: <input className="inputBaseUser" type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")} placeholder={props.credentials.user.country} size="34" lenght='30'></input></p>
                         <div>{errors.eCountry}</div>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="dni"  placeholder={props.credentials.user.dni} size="34" maxlenght='9' ></input>
-                        <input className="inputBaseUser"  type="text" name="phone" onChange={updateFormulario} onBlur={()=>checkError("phone")}   placeholder={props.credentials.user.phone}size="34" lenght='9'></input>
+                        <p>DNI: <input className="inputBaseUser" readonly="readonly" type="text" name="dni"  placeholder={props.credentials.user.dni} size="34" maxlenght='9' ></input></p>
+                        <p>Teléfono: <input className="inputBaseUser"  type="text" name="phone" onChange={updateFormulario} onBlur={()=>checkError("phone")}   placeholder={props.credentials.user.phone}size="34" lenght='9'></input></p>
                         <div>{errors.ePhone}</div>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="birthday" placeholder={moment(user.birthday).format('L')} ></input>
 
                     </div>
 
