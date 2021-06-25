@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from '../../images/logosmall.png';
+import PhotoProfile from '../../images/profilelogo.png'
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LOGOUT, LOGOUTROOM, LOGOUTTIPODATOS, PROFILE, DELETE} from '../../redux/types';
@@ -84,7 +85,7 @@ const Header = (props) => {
 
             {/* to="/profile" */}
 
-              <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/profile" ><div className="fotoUser"><img id="fotoNavBar" src={props?.credentials?.user?.photo} onClick={() => cambiaDatos("profile")} alt="Profile photo" /></div>
+              <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/profile" ><div className="fotoUser"><img id="fotoNavBar" src={PhotoProfile} onClick={() => cambiaDatos("profile")} alt="Profile photo" /></div>
               </NavLink>
             </div>
           </div>

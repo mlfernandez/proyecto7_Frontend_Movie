@@ -3,8 +3,6 @@ export const LOGOUT = "logout";
 export const PROFILE = "profile";
 export const GETTOPRATED = "gettoprated";
 export const GETCOMINGSOON = "getcomingsoon";
-export const SEARCHBYGENRE = "searchbygenre";
-export const SEARCHBYTITLE = "searchbytitle";
 export const SEARCHBYID = "searchbyid";
 export const GETSEARCH = "getsearch";
 

@@ -27,6 +27,18 @@
 
 }
 
+.MenuLateral{
+
+overflow: hidden;
+}
+
+.MenuLateral:hover {
+    
+  
+overflow:visible;
+}
+
+
 .card {
     height: 30vh;
     width: 11vw;

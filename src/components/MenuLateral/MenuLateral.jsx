@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./MenuLateral.scss";
 import { connect } from "react-redux";
-import { LOGIN, LOGOUT, PROFILE, GETPOPULARMOVIE, GETCOMINGSOON, ORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, SERCHTOPRATED, SEARCHBYGENRE, SEARCHBYTITLE, GETTOPRATED, SEARCHBYID, ADMINUSER} from "../../redux/types";
+import { LOGIN, LOGOUT, PROFILE, GETCOMINGSOON, ORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, GETTOPRATED, ADMINUSER} from "../../redux/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCalendarWeek, faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -32,20 +32,7 @@ const Menulateral = (props) => {
 
         break;
 
-      case "getsearchbyid":
-        props.dispatch({ type: SEARCHBYID, payload: info });
 
-        break;
-
-      case "getsearchbygendre":
-        props.dispatch({ type: SEARCHBYGENRE, payload: info });
-
-        break;
-
-      case "getsearchbytitle":
-        props.dispatch({ type: SEARCHBYTITLE, payload: info });
-  
-        break;
 
       default:
 
@@ -60,7 +47,7 @@ const Menulateral = (props) => {
         
         <div className="lateralMenu">
           
-          <div className="MenuLateral">
+          <div className="MenuLateralIcons">
             <FontAwesomeIcon className="iconMenuLateral" icon={faStar}/>
             <FontAwesomeIcon className="iconMenuLateral" icon={faCalendarWeek}/>
             <FontAwesomeIcon className="iconMenuLateral" icon={faSearch}/>
@@ -70,7 +57,7 @@ const Menulateral = (props) => {
             <div className="botomMenuLateral"onClick={() => cambiaDatos("gettoprated") }>Mejores valoradas</div>
             <div className="botomMenuLateral"onClick={() => cambiaDatos("getcomingsoon")}>Proximamente</div>
             <div className="botomMenuLateral"onClick={() => cambiaDatos("getsearch")}>Buscar</div>
-            <div className="botomMenuLateral"onClick={() => cambiaDatos("getorder")}>Pedido</div>
+            <div className="botomMenuLateral"onClick={() => cambiaDatos("getorder")}>x</div>
           </div>
         </div>
       </div>

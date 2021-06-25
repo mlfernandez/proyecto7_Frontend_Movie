@@ -6,7 +6,7 @@ import axios from "axios";
 import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
-import { GETSEARCH, SEARCHBYGENRE, SEARCHBYTITLE, SEARCHBYID } from '../../redux/types';
+import { GETSEARCH } from '../../redux/types';
 import {useHistory} from 'react-router-dom';
 
 
@@ -16,9 +16,6 @@ const SearchBy = (props) => {
 
     //hooks
     const [moviesSearch, setMoviesSearch] = useState([]); 
-    const [moviesByGenre, setMoviesByGenre] = useState([]); 
-    const [moviesByTitle, setMoviesByTitle] = useState([]); 
-    const [moviesById, setMoviesById] = useState([]); 
   
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
@@ -34,7 +31,6 @@ const SearchBy = (props) => {
     const searchByClick = async () => {  
    
    
-      
       let query = document.getElementById("searchByTitle").value;
 
       let body = {
@@ -85,8 +81,6 @@ const SearchBy = (props) => {
 
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200"
-    
-    console.log(moviesSearch, "the movie search")
     
     if (moviesSearch[0]?.id) {
       return (
