@@ -46,16 +46,10 @@ const SearchBy = (props) => {
         console.log(res)
             
             let search = document.getElementById("opciones").value;
-            let data = {
-                title : query,
-                search: search
-            }
 
-            //Guardo en RDX
-            props.dispatch({type:SEARCHBYTITLE,payload:data});
 
-            //Redireccion           
-            history.push("/");
+            setMoviesSearch(res.data.results)
+            
 
         }catch (err){      
 
@@ -65,16 +59,9 @@ const SearchBy = (props) => {
         try {var res = await axios.post('http://localhost:3005/movies/id', body);
             
             let search = document.getElementById("opciones").value;
-            let data = {
-                id : query,
-                search: search
-            }
-
-            //Guardo en RDX
-            props.dispatch({type:SEARCHBYID,payload:data});
-
-            //Redireccion           
-            history.push("/");
+            let arrayMovie = [];
+            arrayMovie.push(res.data);    
+            setMoviesSearch(arrayMovie);
 
         }catch (err){      
 
@@ -85,49 +72,83 @@ const SearchBy = (props) => {
         try {var res = await axios.post('http://localhost:3005/movies/genre', body);
             
             let search = document.getElementById("opciones").value;
-            let data = {
-                genre : query,
-                search: search
-            }
-            console.log(data)
 
-            //Guardo en RDX
-            props.dispatch({type:SEARCHBYGENRE,payload:data});
+            setMoviesSearch(res.data.results)
 
-            //Redireccion           
-            history.push("/");
 
         }catch (err){      
 
             console.log(err)
         }
       }
-}
+    }
 
-return (
+    const baseImgUrl = "https://image.tmdb.org/t/p"
+    const size = "w200"
+    
+    console.log(moviesSearch, "the movie search")
+    
+    if (moviesSearch[0]?.id) {
+      return (
 
-  <div>          
+        <div>  
+        <div className = "vistaLogin">
+        <div className = "loginCard"> 
+            <div className = "cardLogin">
+                <input id= "searchByTitle" className="input" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
+            </div>
+            <div className = "cardLogin">
+                <select id = "opciones" className="input">
+                    <option value="title">Por titulo</option>
+                    <option value="id">Por id</option>
+                    <option value="genre">Por genero</option>
+                </select>
+            </div>
+            <div className = "sendButton" onClick={()=>searchByClick()}>Buscar</div>
+            
+        </div>
 
-      <div className = "vistaLogin">
-          <div className = "loginCard"> 
-              <div className = "cardLogin">
-                  <input id= "searchByTitle" className="input" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
-              </div>
-              <div className = "cardLogin">
-                  <select id = "opciones" className="input">
-                      <option value="title">Por titulo</option>
-                      <option value="id">Por id</option>
-                      <option value="genre">Por genero</option>
-                  </select>
-              </div>
-              <div className = "sendButton" onClick={()=>searchByClick()}>Buscar</div>
-              <div></div>
-          </div>
-  
-      </div>   
-       
-  </div>
+    </div>       
+
+        <div className="titleSearch"> <h1>Resultados</h1>
+            <div className="boxCardSearch">
+              {moviesSearch.map((act, index) => (
+                <div className="cardMovie" onClick={()=> searchByClick(act)} key={index}>
+                    <img src={`${baseImgUrl}/${size}${act.poster_path}`}  alt="poster" className="poster"/>
+                </div>
+                   ))}
+
+            </div>
+        </div>  
+        </div> 
+      );
+    } else {
+        
+        return (
+
+
+            <div>          
+
+                <div className = "vistaLogin">
+                    <div className = "loginCard"> 
+                        <div className = "cardLogin">
+                            <input id= "searchByTitle" className="input" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
+                        </div>
+                        <div className = "cardLogin">
+                            <select id = "opciones" className="input">
+                                <option value="title">Por titulo</option>
+                                <option value="id">Por id</option>
+                                <option value="genre">Por genero</option>
+                            </select>
+                        </div>
+                        <div className = "sendButton" onClick={()=>searchByClick()}>Buscar</div>
+                        
+                    </div>
+            
+                </div>   
+                
+            </div>
 )
-}
+}}
 
 export default connect((state) => ({}))(SearchBy);
