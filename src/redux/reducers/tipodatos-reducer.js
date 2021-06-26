@@ -4,10 +4,10 @@ const initialState =
 ;
 const tipodatosReducer = (state = initialState, action) => {
     switch(action.type){
-        case LOGIN :
+/*         case LOGIN :
             return action.payload;
         case LOGOUT:
-            return initialState;
+            return initialState; */
         case PROFILE:
             return action.payload;
         case GETTOPRATED:

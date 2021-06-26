@@ -68,3 +68,26 @@
     background-color: rgb(255, 255, 255);
     padding-right: 12px;
   }
+
+  .cardMovie {
+    height: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    margin-right: 1em;
+    background-color: #FAFF00;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.cardMovie:hover{
+    background-color: #F02D3A;
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.2) !important;
+}

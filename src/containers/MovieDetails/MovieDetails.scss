@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+
+
+.dataMovie {
+    background-color: black;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.dataMovieTitle{
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Antonio', sans-serif;
+  margin-bottom: 2em;
+  display: flex;
+
+}
+.iconDataMovie {
+  margin-right: 0.5em;
+  font-size: 1.5em;
+  
+}
+
+.infoDataMovie {
+    
+  display: flex;
+  background-color: black;
+  border-radius: 2em; 
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+}
+
+.imgPoster {
+  background-color: #FAFF00;
+  height: 25em;
+  width: 20em;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  margin-right: 1em;
+}
+  
+.posterPath {
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.posterPath:hover {
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  transition: 0.3s;
+  transform: scale(1.2) !important;
+}
+    
+  
+.infoMovie {
+  border: solid 5px #FAFF00;
+  width: 50em;
+  background-color: black;
+  text-align: center;
+  color: white;
+  padding: 0.5em;
+}
+
+.infoMovieOverview {
+  width: fit-content;
+  background-color: black;
+  text-align: center;
+  color: white;
+  padding: 0.5em;
+}
+
+.infoMovieIcon {
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+}
+
+.dataMovieBoton {
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  width: 50em;
+  margin-left: 22em;
+    }
+
+.botonIcon {
+  font-size: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+}

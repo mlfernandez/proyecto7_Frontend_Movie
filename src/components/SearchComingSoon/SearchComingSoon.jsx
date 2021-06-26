@@ -6,11 +6,13 @@ import axios from "axios";
 import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
-import { GETCOMINGSOON } from '../../redux/types';
-
-
+import { GETCOMINGSOON, MOVIE } from '../../redux/types';
+import {useHistory} from 'react-router-dom';
 
 const SearchComingSoon = (props) => {
+
+
+    let history = useHistory();
 
     //hooks
     const [moviesComingSoon, setmoviesComingSoon] = useState([]); 
@@ -25,19 +27,16 @@ const SearchComingSoon = (props) => {
     });
   
     //Guarda la movie en redux y nos lleva a la vista de película.
-    const clickMovie = async (dataMovie) => {
+    const clickMovie = async (data) => {
       try{
 
-        console.log(dataMovie, "soy movie");
-        props.dispatch({type:GETCOMINGSOON,payload: dataMovie});
+        console.log(data, "soy movie");
+        props.dispatch({type:MOVIE,payload: data});
 
 
 
-        setmoviesComingSoon(dataMovie)
-  
-/*         let res = await axios.get(`http://localhost:3005/movies/search/${title}`, title);
-        console.log(res.data) */
-  
+        history.push("/moviedetails")
+
       
 
 
@@ -51,7 +50,7 @@ const SearchComingSoon = (props) => {
     try{
       let res = await axios.get('http://localhost:3005/movies/soon');
       setmoviesComingSoon(res.data.results); 
-      console.log(res.data.results)
+      
   }catch (err){      
 
     console.log(err)
@@ -69,20 +68,7 @@ const SearchComingSoon = (props) => {
               {moviesComingSoon.map((act, index) => (
                 <div className="cardMovie" onClick={()=> clickMovie(act)} key={index}>
                     <img src={`${baseImgUrl}/${size}${act.poster_path}`}  alt="poster" className="poster"/>
-                    {/* <p className="nombre">{act.name}</p>
-                  <p className="datosCard">Comienzo: {moment(act.dateStart).format('LLL')}</p>
-                  <p className="datosCard">Fin: {moment(act.dateEnd).format('LLL')}</p>
-                  <p className="datosCard">Entrenador: {act.nameCoach}</p>
-                  <p className="datosCard">Capacidad: {act.members.length}/{act.maxMember}</p>
-                  <div clasName="botonCardJoinUser">
-                        <div className="demo">
-                            <div style={{ marginLeft: 0, clear: 'both', whiteSpace: 'nowrap' }}>
-                              <Popconfirm placement="bottom" title="¿Quieres ver esta pelicula?" onConfirm={()=>addToCartMovie(act._id)} okText="Yes" cancelText="No">
-                                <Button>Ver</Button>
-                              </Popconfirm>
-                            </div>
-                        </div>
-                    </div> */}
+
                 </div>
                    ))}
 
@@ -95,4 +81,4 @@ const SearchComingSoon = (props) => {
     }
 };
 
-export default connect((state) => ({}))(SearchComingSoon);
+export default connect((state) => ({movie : state.movie}))(SearchComingSoon);

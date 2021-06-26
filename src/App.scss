@@ -1,13 +1,21 @@
 @import 'scss/variables.scss';
+
 @import 'containers/Home/Home';
 @import 'containers/Login/Login';
 @import 'containers/Register/Register.scss';
 @import 'containers/DataContainer/DataContainer.scss';
+@import 'containers/MovieDetails/MovieDetails.scss';
+@import 'containers/Profile/Profile.scss';
+
 @import 'components/Footer/Footer';
 @import 'components/Header/Header';
 @import 'components/MenuLateral/MenuLateral';
-@import 'components/SearchTopRated/SearchTopRated';
 @import 'components/Slider/Slider';
+@import 'components/DataProfile/DataProfile.scss';
+@import 'components/HomeVideo/HomeVideo';
+@import 'components/SearchBy/SearchBy';
+@import 'components/SearchComingSoon/SearchComingSoon';
+@import 'components/SearchTopRated/SearchTopRated';
 
 
 

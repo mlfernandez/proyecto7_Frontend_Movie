@@ -6,7 +6,7 @@ import axios from "axios";
 import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
-import { GETSEARCH } from '../../redux/types';
+import { GETSEARCH, MOVIE } from '../../redux/types';
 import {useHistory} from 'react-router-dom';
 
 
@@ -26,9 +26,30 @@ const SearchBy = (props) => {
     useEffect(() => {
     });
   
+
+   //Guarda la movie en redux y nos lleva a la vista de película.
+   const clickMovie = async (data) => {
+    try{
+
+      console.log(data, "soy movie");
+      props.dispatch({type:MOVIE,payload: data});
+
+
+
+      history.push("/moviedetails")
+
+
+    
+
+
+  }catch (err){
+          
+       }      
+
+  }
+
   
-  
-    const searchByClick = async () => {  
+    const searchByFilter= async () => {  
    
    
       let query = document.getElementById("searchByTitle").value;
@@ -99,7 +120,7 @@ const SearchBy = (props) => {
                     <option value="genre">Por genero</option>
                 </select>
             </div>
-            <div className = "sendButton" onClick={()=>searchByClick()}>Buscar</div>
+            <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
             
         </div>
 
@@ -108,7 +129,7 @@ const SearchBy = (props) => {
         <div className="titleSearch"> <h1>Resultados</h1>
             <div className="boxCardSearch">
               {moviesSearch.map((act, index) => (
-                <div className="cardMovie" onClick={()=> searchByClick(act)} key={index}>
+                <div className="cardMovie" onClick={()=> clickMovie(act)} key={index}>
                     <img src={`${baseImgUrl}/${size}${act.poster_path}`}  alt="poster" className="poster"/>
                 </div>
                    ))}
@@ -136,7 +157,7 @@ const SearchBy = (props) => {
                                 <option value="genre">Por genero</option>
                             </select>
                         </div>
-                        <div className = "sendButton" onClick={()=>searchByClick()}>Buscar</div>
+                        <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
                         
                     </div>
             
@@ -146,4 +167,4 @@ const SearchBy = (props) => {
 )
 }}
 
-export default connect((state) => ({}))(SearchBy);
+export default connect((state) => ({movie : state.movie}))(SearchBy);

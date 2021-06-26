@@ -9,8 +9,10 @@ const credentialsReducer = (state = initialState, action) => {
             return action.payload;
         case LOGOUT:
             return initialState;
+/*         case UPDATE: 
+          return action.payload; */
         case UPDATE: 
-          return action.payload;
+            return {...state, user: action.payload}  
         default : 
             return state
     }

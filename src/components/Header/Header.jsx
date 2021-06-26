@@ -3,7 +3,7 @@ import Logo from '../../images/logosmall.png';
 import PhotoProfile from '../../images/profilelogo.png'
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { LOGOUT, LOGOUTROOM, LOGOUTTIPODATOS, PROFILE, DELETE} from '../../redux/types';
+import { LOGOUT, LOGOUTTIPODATOS, PROFILE, DELETE} from '../../redux/types';
 import { useHistory } from 'react-router-dom';
 import {Input, notification} from 'antd';
 
@@ -24,7 +24,6 @@ const Header = (props) => {
     notification.success({message:'Logout correcto.',description: mensaje});
 
     props.dispatch({ type: LOGOUT });
-    props.dispatch({ type: LOGOUTROOM });
     props.dispatch({ type: LOGOUTTIPODATOS });
     props.dispatch({ type: DELETE });
     setTimeout(() => {

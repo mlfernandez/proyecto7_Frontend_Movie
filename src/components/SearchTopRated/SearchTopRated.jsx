@@ -6,11 +6,14 @@ import axios from "axios";
 import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
-import { GETTOPRATED } from '../../redux/types';
+import { GETTOPRATED, MOVIE } from '../../redux/types';
+import { useHistory } from 'react-router-dom';
 
 
 
 const SearchTopRated = (props) => {
+
+    let history = useHistory()
 
     //hooks
     const [moviesTopRate, setMoviesTopRate] = useState([]); 
@@ -25,11 +28,16 @@ const SearchTopRated = (props) => {
     });
   
     //Guarda la movie en redux y nos lleva a la vista de película.
-    const clickMovie = async (movie) => {
+    const clickMovie = async (data) => {
       try{
 
-        console.log(movie);
-        props.dispatch({type:GETTOPRATED,payload: movie});
+        console.log(data);
+        props.dispatch({type:MOVIE,payload: data});
+        
+        history.push("/movieDetails");
+
+
+
 
 
     }catch (err){
@@ -42,7 +50,7 @@ const SearchTopRated = (props) => {
     try{
       let res = await axios.get('http://localhost:3005/movies/');
       setMoviesTopRate(res.data.results); 
-      console.log(res.data.result)
+      
   }catch (err){      
 
     console.log(err)
@@ -55,25 +63,12 @@ const SearchTopRated = (props) => {
 
     if (moviesTopRate[0]?.id) {
       return (
-        <div className="titleSearch"> <h1>This are the top rated movies</h1>
+        <div className="titleSearch"> <h1>Las mejores valoradas</h1>
             <div className="boxCardSearch">
               {moviesTopRate.map((act, index) => (
                 <div className="cardMovie" onClick={()=> clickMovie(act)} key={index}>
                     <img src={`${baseImgUrl}/${size}${act.poster_path}`}  alt="poster" className="poster"/>
-                    {/* <p className="nombre">{act.name}</p>
-                  <p className="datosCard">Comienzo: {moment(act.dateStart).format('LLL')}</p>
-                  <p className="datosCard">Fin: {moment(act.dateEnd).format('LLL')}</p>
-                  <p className="datosCard">Entrenador: {act.nameCoach}</p>
-                  <p className="datosCard">Capacidad: {act.members.length}/{act.maxMember}</p>
-                  <div clasName="botonCardJoinUser">
-                        <div className="demo">
-                            <div style={{ marginLeft: 0, clear: 'both', whiteSpace: 'nowrap' }}>
-                              <Popconfirm placement="bottom" title="¿Quieres ver esta pelicula?" onConfirm={()=>addToCartMovie(act._id)} okText="Yes" cancelText="No">
-                                <Button>Ver</Button>
-                              </Popconfirm>
-                            </div>
-                        </div>
-                    </div> */}
+
                 </div>
                    ))}
 
@@ -86,4 +81,4 @@ const SearchTopRated = (props) => {
     }
 };
 
-export default connect((state) => ({}))(SearchTopRated);
+export default connect((state) => ({movie : state.movie}))(SearchTopRated);
