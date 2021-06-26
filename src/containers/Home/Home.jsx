@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {useHistory} from 'react-router-dom';
+import Video from "../../components/HomeVideo/HomeVideo";
 
 
 /* import CarouselSlider from '../../components/Carousel/Carousel'; */
@@ -15,11 +16,18 @@ const Home = () => {
     return (
         <div className="HomeDiv">
 
-            <div>SPINNER SMILE</div>
+            <div>
+                
+                <Video/>
 
-        setTimeout(() => {
+
+                {        setTimeout(() => {
             history.push("/datacontainer")
-        }, 5000)
+        }, 18000)}
+
+                
+                </div>
+
 
 
 

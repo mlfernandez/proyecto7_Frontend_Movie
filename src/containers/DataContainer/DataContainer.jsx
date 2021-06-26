@@ -29,9 +29,9 @@ const DataContainer = (props) => {
 
                 return <SearchBy/>      
 
-/*             default:
+            default:
 
-                return <DataProfile /> */
+                return <SearchTopRated/>
         }
 
     }
