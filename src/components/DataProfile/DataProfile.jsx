@@ -234,7 +234,7 @@ const DataProfile = (props) => {
 
     const saveData = async (info) => {   
         try { 
-
+      
         let token = props.credentials.token;
         let idUser = props.credentials.user.id;
         let shipping_address = datosUser.shipping_address;
@@ -255,11 +255,8 @@ const DataProfile = (props) => {
             
         }
 
-        console.log(body, "estoy en body")
-
-
-        let res = await axios.post('http://localhost:3005/users/modify',body,{headers:{'authorization':'Bearer ' + token}});
-            
+        let res = await axios.post('http://localhost:3005/users/update',body,{headers:{'authorization':'Bearer ' + token}});
+        console.log(res.data)    
 
 
 
@@ -271,14 +268,14 @@ const DataProfile = (props) => {
                 console.log("Datos qeu devuelve axios : ", data);
 
                 props.dispatch({type:UPDATE,payload:data});
-                console.log(props.dispatch)
-                notification.success({message:'Atencion.',description: "Datos actualizados correctamente."});
+   
+       /*          notification.success({message:'Atencion.',description: "Datos actualizados correctamente."}); */
 
                 setProfile(info);
             
-        } catch (error) {
+            } catch (error) {
 
-        }
+            }  
 
         
     }
@@ -339,11 +336,11 @@ const DataProfile = (props) => {
                         <div className="botonEdit"><div className="sendButtonEdit"  onClick={(()=>saveData(1))}>Guardar</div></div> 
                         <p>Dirección: <input className="inputBaseUser"  type="text" name="shipping_address" onChange={updateFormulario} onBlur={()=>checkError("shipping_address")} placeholder={props.credentials.user.shipping_address} size="34" lenght='30'></input></p>
                         <div>{errors.eShipping_address}</div>
-                        <p>Ciudad:: <input className="inputBaseUser"  type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")} placeholder={props.credentials.user.city} size="34" lenght='30'></input></p>
+                        <p>Ciudad:: <input className="inputBaseUser"  readonly="readonly" type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")} placeholder={props.credentials.user.city} size="34" lenght='30'></input></p>
                         <div>{errors.eCity}</div>
-                        <p>Codigo Postal: <input className="inputBaseUser"  type="text" name="zipCode" onChange={updateFormulario} onBlur={()=>checkError("zipCode")} placeholder={props.credentials.user.zipCode} size="34" lenght='30'></input></p>
+                        <p>Codigo Postal: <input className="inputBaseUser" readonly="readonly" type="text" name="zipCode" onChange={updateFormulario} onBlur={()=>checkError("zipCode")} placeholder={props.credentials.user.zipCode} size="34" lenght='30'></input></p>
                         <div>{errors.eZipCode}</div>
-                        <p>País: <input className="inputBaseUser" type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")} placeholder={props.credentials.user.country} size="34" lenght='30'></input></p>
+                        <p>País: <input className="inputBaseUser" readonly="readonly" type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")} placeholder={props.credentials.user.country} size="34" lenght='30'></input></p>
                         <div>{errors.eCountry}</div>
                         <p>DNI: <input className="inputBaseUser" readonly="readonly" type="text" name="dni"  placeholder={props.credentials.user.dni} size="34" maxlenght='9' ></input></p>
                         <p>Teléfono: <input className="inputBaseUser"  type="text" name="phone" onChange={updateFormulario} onBlur={()=>checkError("phone")}   placeholder={props.credentials.user.phone}size="34" lenght='9'></input></p>
