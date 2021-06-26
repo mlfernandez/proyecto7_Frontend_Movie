@@ -33,6 +33,7 @@ const SearchTopRated = (props) => {
 
         console.log(data);
         props.dispatch({type:MOVIE,payload: data});
+/*         props.dispatch({type:GETTOPRATED,payload: data}); */
         
         history.push("/movieDetails");
 

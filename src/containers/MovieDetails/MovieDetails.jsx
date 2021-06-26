@@ -5,9 +5,77 @@ import { useHistory } from "react-router-dom";
 import "./MovieDetails.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft, faCartPlus, faFilm, faStar, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { MOVIE } from "../../redux/types";
+import { Popconfirm, message, Button } from 'antd';
+import moment from "moment";
 
 const MovieDetails = (props) => {
   let history = useHistory();
+
+
+  const AddToCart = async (data) => {
+
+    props.dispatch({type:MOVIE,payload:data});
+
+    if (props.credentials.token === "") {
+      history.push('/login')
+    } else {
+
+
+     /*  const newOrder = async (data) => { */
+        try{
+  
+        let token = props.credentials.token;
+        let idUser = props.credentials.user.id;
+        let rentalDate = Date.now();
+        let returnDate = moment(rentalDate, "DD-MM-YYYY").add(7, 'days');
+  
+  
+        let body = {
+          idUser : idUser,
+          idMovie : props.movie?.id,
+          titleMovie: props.movie.title,
+          posterMovie: props.movie.poster_path,
+          rentalDate : rentalDate,
+          returnDate : returnDate
+        }
+  
+        console.log(body)
+        
+        let res = await axios.post('http://localhost:3005/orders',body,{headers:{'authorization':'Bearer ' + token}});
+        message.info('Clase reservada.');
+        console.log(res)
+  
+       }catch (err){
+       
+        }      
+     /*  } */
+    }
+
+  }
+    /* try{
+
+    let token = props.credentials.token;
+    let idUser = props.credentials.idUser;
+
+
+    let body = {
+      id : roomId,
+      member : idUser,
+      email : props.credentials.email,
+      name : props.credentials.name
+    }
+    
+    let res = await axios.post('http://localhost:3005/room/join',body,{headers:{'authorization':'Bearer ' + token}});
+    message.info('Clase reservada.');
+    findAllRoomsAllActive();
+
+   }catch (err){
+    notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
+    }      
+  } */
+
+
 
 
   const baseImgUrl = "https://image.tmdb.org/t/p"
@@ -47,7 +115,7 @@ const MovieDetails = (props) => {
 
         <div className="dataMovieBoton">
           <div onClick={() => history.push('/datacontainer')} className="botonIcon">{<FontAwesomeIcon icon={faArrowCircleLeft}/>}   Atrás</div>
-          <div onClick={() => history.push('/cart')} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Alquilar</div>
+          <div onClick={()=>AddToCart(props.movie?.id)} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Alquilar</div>
         </div>
 
 

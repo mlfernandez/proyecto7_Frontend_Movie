@@ -32,6 +32,7 @@ const SearchComingSoon = (props) => {
 
         console.log(data, "soy movie");
         props.dispatch({type:MOVIE,payload: data});
+     /*    props.dispatch({type:GETCOMINGSOON,payload: data}); */
 
 
 

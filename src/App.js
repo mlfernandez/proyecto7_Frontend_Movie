@@ -8,6 +8,7 @@ import Register from './containers/Register/Register';
 import DataContainer from './containers/DataContainer/DataContainer';
 import Profile from './containers/Profile/Profile';
 import MovieDetails from './containers/MovieDetails/MovieDetails';
+import RentMovie from './containers/RentMovie/RentMovie';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route path="/datacontainer" exact component={DataContainer}/>
               <Route path="/profile" exact component={Profile}/>
               <Route path="/moviedetails" exact component={MovieDetails}/>
+              <Route path="/cart" exact component={RentMovie}/>
 
             </Switch>
 

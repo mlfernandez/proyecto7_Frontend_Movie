@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./MenuLateral.scss";
 import { connect } from "react-redux";
-import { LOGIN, LOGOUT, PROFILE, GETCOMINGSOON, ORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, GETTOPRATED, ADMINUSER} from "../../redux/types";
+import { LOGIN, LOGOUT, PROFILE, GETCOMINGSOON, ORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, GETTOPRATED, ADMINUSER, USER} from "../../redux/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCalendarWeek, faSearch, faEye, faUsers, faUserEdit, faEdit, faIdCard } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,6 +31,11 @@ const Menulateral = (props) => {
         props.dispatch({ type: GETSEARCH, payload: info });
 
         break;
+
+        case "profile":
+          props.dispatch({ type: USER, payload: info });
+  
+          break;  
 
 
 
@@ -79,7 +84,7 @@ const Menulateral = (props) => {
         <div className="botomMenuLateral"onClick={() => cambiaDatos("gettoprated") }>Mejores valoradas</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("getcomingsoon")}>Proximamente</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("getsearch")}>Buscar</div>
-        <div className="botomMenuLateral"onClick={() => cambiaDatos("getorder")}>Perfil</div>
+        <div className="botomMenuLateral"onClick={() => cambiaDatos("profile")}>Perfil</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("getorder")}>Carrito</div>
       </div>
     </div>
