@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./MenuLateral.scss";
 import { connect } from "react-redux";
-import { LOGIN, LOGOUT, PROFILE, GETCOMINGSOON, GETORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, GETTOPRATED, ADMINUSER, USER} from "../../redux/types";
+import { PROFILE, GETCOMINGSOON, GETORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, GETTOPRATED, GETALLUSERS, GETALLORDERS, UPDATEORDERS, UPDATEUSERS} from "../../redux/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCalendarWeek, faSearch, faEye, faUsers, faUserEdit, faEdit, faIdCard } from "@fortawesome/free-solid-svg-icons";
 
@@ -42,7 +42,25 @@ const Menulateral = (props) => {
     
         break;      
 
+      case "getallusers":
+        props.dispatch({ type: GETALLUSERS, payload: info });
+      
+        break;  
 
+      case "updateusers":
+        props.dispatch({ type: UPDATEUSERS, payload: info });
+        
+        break;  
+
+      case "getallorders":
+        props.dispatch({ type: GETALLORDERS, payload: info });
+          
+        break;  
+
+      case "updateorders":
+        props.dispatch({ type: UPDATEORDERS, payload: info });
+            
+        break;  
 
       default:
 
@@ -112,10 +130,11 @@ const Menulateral = (props) => {
       </div>
       <div className="MenuLateral">
         <div className="tituloVistaAdmin">Vista Administrador</div>
-        <div className="botomMenuLateral"onClick={() => cambiaDatos("gettoprated") }>Nuevo Usuario</div>
-        <div className="botomMenuLateral"onClick={() => cambiaDatos("getcomingsoon")}>Modificar Usuario</div>
-        <div className="botomMenuLateral"onClick={() => cambiaDatos("getsearch")}>Modificar Orden</div>
-        <div className="botomMenuLateral"onClick={() => cambiaDatos("getorder")}>Perfil</div>
+        <div className="botomMenuLateral"onClick={() => cambiaDatos("getallusers") }>Encontrar Usuario</div>
+        <div className="botomMenuLateral"onClick={() => cambiaDatos("updateusers")}>Modificar Usuario</div>
+        <div className="botomMenuLateral"onClick={() => cambiaDatos("getallorders")}>Ordenes</div>
+        <div className="botomMenuLateral"onClick={() => cambiaDatos("updateorders")}>Modificar Orden</div>
+        <div className="botomMenuLateral"onClick={() => cambiaDatos("profile")}>Perfil</div>
       </div>
     </div>
   </div>

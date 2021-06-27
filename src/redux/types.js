@@ -13,7 +13,10 @@ export const MOVIE = "movie"
 export const GETORDER = "getorder";
 export const DELETE = "delete";
 
-
+export const GETALLUSERS = "getallusers";
+export const UPDATEUSERS = "updateusers";
+export const GETALLORDERS = "getallorders";
+export const UPDATEORDERS = "updateorders";
 
 export const LOGOUTTIPODATOS = "logouttipodatos";
 
