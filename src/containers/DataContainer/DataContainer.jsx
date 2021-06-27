@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import SearchTopRated from '../../components/SearchTopRated/SearchTopRated';
 import SearchComingSoon from '../../components/SearchComingSoon/SearchComingSoon';
 import SearchBy from '../../components/SearchBy/SearchBy';
+import Shopping from '../../components/Shopping/Shopping';
+import DataProfile from '../../components/DataProfile/DataProfile';
 
 
 
@@ -28,6 +30,14 @@ const DataContainer = (props) => {
             case 'getsearch':
 
                 return <SearchBy/>      
+
+            case 'getorder':
+
+                return <Shopping/>       
+            
+            case 'profile':
+
+                return <DataProfile/>   
 
             default:
 

@@ -7,6 +7,7 @@ import DataProfile from '../../components/DataProfile/DataProfile';
 import SearchTopRated from '../../components/SearchTopRated/SearchTopRated';
 import SearchComingSoon from '../../components/SearchComingSoon/SearchComingSoon';
 import SearchBy from '../../components/SearchBy/SearchBy';
+import Shopping from '../../components/Shopping/Shopping';
 
 
 
@@ -31,9 +32,13 @@ const Profile = (props) => {
     
                     return <SearchBy/> 
 
-            default:
+                case 'getorder':
+    
+                    return <Shopping/>    
 
-                return <DataProfile />
+                default:
+
+                    return <DataProfile />
         }
 
     }

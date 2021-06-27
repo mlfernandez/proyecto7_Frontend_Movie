@@ -1,34 +1,40 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./MovieDetails.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft, faCartPlus, faFilm, faStar, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { MOVIE } from "../../redux/types";
-import { Popconfirm, message, Button } from 'antd';
+import { MOVIE, ORDER } from "../../redux/types";
 import moment from "moment";
+import {message} from 'antd'
+import 'antd/dist/antd.css'
 
 const MovieDetails = (props) => {
   let history = useHistory();
 
+    //hooks
+    const [moviesSearch, setMoviesSearch] = useState([]); 
+    const [userOrder, setUserOrder] = useState([]); 
+
 
   const AddToCart = async (data) => {
 
-    props.dispatch({type:MOVIE,payload:data});
+
 
     if (props.credentials.token === "") {
       history.push('/login')
+
     } else {
 
 
-     /*  const newOrder = async (data) => { */
+
         try{
   
         let token = props.credentials.token;
         let idUser = props.credentials.user.id;
         let rentalDate = Date.now();
-        let returnDate = moment(rentalDate, "DD-MM-YYYY").add(7, 'days');
+        let returnDate = moment(rentalDate).add(7, 'days').calendar();     
   
   
         let body = {
@@ -40,52 +46,33 @@ const MovieDetails = (props) => {
           returnDate : returnDate
         }
   
-        console.log(body)
+        console.log()
+      
         
         let res = await axios.post('http://localhost:3005/orders',body,{headers:{'authorization':'Bearer ' + token}});
-        message.info('Clase reservada.');
-        console.log(res)
-  
+        message.info('Agregada al carrito.');
+        console.log(res, "estoy en res")
+    
+
+        history.push('/datacontainer')
+
+        
+
        }catch (err){
        
         }      
-     /*  } */
+ 
     }
 
   }
-    /* try{
-
-    let token = props.credentials.token;
-    let idUser = props.credentials.idUser;
-
-
-    let body = {
-      id : roomId,
-      member : idUser,
-      email : props.credentials.email,
-      name : props.credentials.name
-    }
-    
-    let res = await axios.post('http://localhost:3005/room/join',body,{headers:{'authorization':'Bearer ' + token}});
-    message.info('Clase reservada.');
-    findAllRoomsAllActive();
-
-   }catch (err){
-    notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
-    }      
-  } */
-
-
-
+   
 
   const baseImgUrl = "https://image.tmdb.org/t/p"
   const size = "w200"
 
 
   if (props.movie?.id) {
-    {
-      console.log(props.movie);
-    }
+
     return (
       <div className="dataMovie">
 
@@ -104,17 +91,18 @@ const MovieDetails = (props) => {
           </div>
           <div className="infoMovie">
             <div className="infoMovieOverview">
-              <h3>{props.movie.overview}</h3>
+              <div>{props.movie.overview}</div>
             </div>
             <div className="infoMovieIcon">
               <FontAwesomeIcon className="iconDataMovie" icon={faStar}/>
-              <h4>Puntuación: {props.movie.vote_average}</h4>
+              <div>Puntuación: {props.movie.vote_average}</div>
             </div>
           </div>
         </div>
 
         <div className="dataMovieBoton">
           <div onClick={() => history.push('/datacontainer')} className="botonIcon">{<FontAwesomeIcon icon={faArrowCircleLeft}/>}   Atrás</div>
+         {/*  <div onClick={() => history.push('/rentmovie')} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Alquilar</div> */}
           <div onClick={()=>AddToCart(props.movie?.id)} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Alquilar</div>
         </div>
 
@@ -128,4 +116,5 @@ const MovieDetails = (props) => {
 export default connect((state) => ({
   credentials: state.credentials,
   movie: state.movie,
+  order: state.order,
 }))(MovieDetails);

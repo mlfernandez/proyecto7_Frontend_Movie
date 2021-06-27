@@ -3,6 +3,7 @@
 
 
 
+
 .dataMovie {
     background-color: black;
     width: auto;
@@ -17,7 +18,7 @@
 
 .dataMovieTitle{
   font-weight: bold;
-  font-size: 30px;
+  font-size: 28px;
   font-family: 'Antonio', sans-serif;
   margin-bottom: 2em;
   display: flex;
@@ -42,6 +43,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
+
 
 .imgPoster {
   background-color: #FAFF00;
@@ -100,7 +102,6 @@
   display: flex;
   width: 50em;
   margin-left: 22em;
-  cursor: pointer;
     }
 
 .botonIcon {

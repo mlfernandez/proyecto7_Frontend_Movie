@@ -32,10 +32,15 @@ const Menulateral = (props) => {
 
         break;
 
-        case "profile":
-          props.dispatch({ type: USER, payload: info });
+      case "profile":
+        props.dispatch({ type: PROFILE, payload: info });
   
-          break;  
+        break;  
+      
+      case "getorder":
+        props.dispatch({ type: ORDER, payload: info });
+    
+        break;      
 
 
 
@@ -78,6 +83,7 @@ const Menulateral = (props) => {
         <FontAwesomeIcon className="iconMenuLateral" icon={faStar}/>
         <FontAwesomeIcon className="iconMenuLateral" icon={faCalendarWeek}/>
         <FontAwesomeIcon className="iconMenuLateral" icon={faSearch}/>
+        <FontAwesomeIcon className="iconMenuLateral" icon={faStar}/>
         <FontAwesomeIcon className="iconMenuLateral" icon={faStar}/>
       </div>
       <div className="MenuLateral">

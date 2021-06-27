@@ -4,7 +4,7 @@ import axios from "axios";
 import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
-import { MOVIE } from '../../redux/types';
+import { MOVIE , ORDER} from '../../redux/types';
 import {Input, notification} from 'antd';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft, faCartPlus, faFilm, faStar, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
@@ -17,41 +17,49 @@ const RentMovie = (props) => {
 
     //hooks
     const [moviesSearch, setMoviesSearch] = useState([]); 
+    const [userOrder, setUserOrder] = useState([]); 
+
   
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
-    newOrder()   
+      
     }, []);
   
     //Equivalente a componentDidUpdate en componentes de clase
     useEffect(() => {
     });
   
-    //  
-
-    
+      
 
     const newOrder = async (data) => {
       try{
-
-      let token = props.credentials.token;
-      let idUser = props.credentials.idUser;
-      let rentalDate = Date.now();
-      let returnDate = (Date.now()+7)
-
-
-      let body = {
-        idUser : idUser,
-        idMovie : props.movie?.id,
-        rentalDate : rentalDate,
-        returnDate : returnDate
-      }
-
-      console.log(body)
+  
+        let token = props.credentials.token;
+        let idUser = props.credentials.user.id;
+        let rentalDate = Date.now();
+        let returnDate = moment(rentalDate).add(7, 'days').calendar();     
+  
+  
+        let body = {
+          idUser : idUser,
+          idMovie : props.movie?.id,
+          titleMovie: props.movie.title,
+          posterMovie: props.movie.poster_path,
+          rentalDate : rentalDate,
+          returnDate : returnDate
+        }
+  
+        console.log()
       
-      let res = await axios.post('http://localhost:3005/orders',body,{headers:{'authorization':'Bearer ' + token}});
-      message.info('Clase reservada.');
-      console.log(res)
+        
+        let res = await axios.post('http://localhost:3005/orders',body,{headers:{'authorization':'Bearer ' + token}});
+        message.info('Agregada al carrito.');
+        console.log(res, "estoy en res")
+        setUserOrder(res.data)
+
+        props.dispatch({type:ORDER,payload:data});
+
+        
 
      }catch (err){
       notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
