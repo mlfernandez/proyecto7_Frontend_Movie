@@ -1,136 +1,89 @@
-//Buscamos por titulo id gendre // no necesita login
-
+//Nos muestra las clases activas a las que está apuntado el usuario.
 import React, { useEffect, useState } from "react";
 import './Shopping.scss';
 import axios from "axios";
-import moment from "moment";
-import { Popconfirm, message, Button, notification } from 'antd';
 import { connect } from 'react-redux';
-import { GETSEARCH, MOVIE, ORDER } from '../../redux/types';
-import { useHistory } from 'react-router-dom';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleLeft, faCartPlus, faFilm, faStar, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import {notification} from 'antd';
+import {useHistory} from "react-router";
+import { MOVIE } from '../../redux/types';
 
 
 const Shopping = (props) => {
-
     let history = useHistory();
-
     //hooks
-    const [moviesSearch, setMoviesSearch] = useState([]); 
-    const [userOrder, setUserOrder] = useState([]); 
+    const [orders, setOrders] = useState([]);  
   
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
-        searchUserOrder();
-  
+      userOrder();
     }, []);
   
     //Equivalente a componentDidUpdate en componentes de clase
     useEffect(() => {
     });
   
-
-    const deleteOrder = async (roomId) => {
-        try{
-          message.info('Pelicula cancelada.');
-  
-        let token = props.credentials.token;
-        let idUser = props.credentials.user.id;;
-        let id = props.order.id  
-  
-/*         let body = {
-          id : roomId,
-          member : idUser
-        } */
-  
-        let res = await axios.delete('http://localhost:3005/orders',{headers:{'authorization':'Bearer ' + id}});
-  
-
-        searchUserOrder();
-
-        }catch (err){
-            notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
-        
-
-
-         }  
-    }
-  
-    const searchUserOrder= async (data) => {  
-
-      /*   props.dispatch({type:ORDER,payload:data}); */
-     /*    props.dispatch({type:MOVIE,payload:data}); */
-
-   
-    try {
-        let idUser = props.credentials.user.id;
-        let token = props.credentials.token;
-
-        let body = {
-            idUser : idUser
-        }
-
-        let res = await axios.post('http://localhost:3005/orders/orderuserid', body);
+    //CANCELA LA CLASE
+    const reproducir = async (movieId) => {
+      try {
+          
+          
        
-        console.log(res.data, "hola backend")    
-
-        setUserOrder(res.data)
-     
-
-        }catch (err){      
+      } catch (error) {
+        
+      }
 
 
-        }
-      
     }
 
+
+
+    const userOrder = async () => {  
+    try{      
+      let idUser = props.credentials.user.id;
+      let token = props.credentials.token;
+      console.log(idUser)
+    
+      let body = {
+        idUser: idUser        
+      }
+
+      let res = await axios.post('http://localhost:3005/orders/orderuserid',body,{headers:{'authorization':'Bearer ' + token}});
+
+    
+      setOrders(res.data);; 
+
+    }catch (err){     
+
+    }
+  
+    }
+    
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200"
 
-    
-    if (props.movie?.id) {
+   if (orders[0]?.id) {
+      return (
+        <div className="nombreDataRoom"> <h1>MIS PELICULAS</h1>
 
-        return (
-          <div className="dataMovie">
-    
-            <div className="dataMovieTitle">
-              <div className="iconDataMovie"><FontAwesomeIcon className="iconDataMovie" icon={faFilm}/></div> 
-              <div>{props.movie.title}</div>
-            </div>
-    
-            <div className="infoDataMovie">
-              <div className="imgPoster">
-                <img
-                  className="posterPath"
-                  src={`${baseImgUrl}/${size}${props.movie.poster_path}`}
-                  alt="Poster"
-                ></img>
-              </div>
-              <div className="infoMovie">
-                <div className="infoMovieOverview">
-                  <div>{props.movie.overview}</div>
+            <div className="boxCardDataRoom">
+              {orders.map((act, index) => (
+                <div className="card" key={index}>
+                    <img src={`${baseImgUrl}/${size}${act.posterMovie}`}  alt="poster" className="posterMovie" onClick={()=>reproducir(act.id)}/> 
                 </div>
-                <div className="infoMovieIcon">
-                  <FontAwesomeIcon className="iconDataMovie" icon={faStar}/>
-                  <div>Puntuación: {props.movie.vote_average}</div>
-                </div>
-              </div>
-            </div>
-    
-            <div className="dataMovieBoton">
-              <div  onClick={() => history.push('/datacontainer')} className="botonIcon">{<FontAwesomeIcon icon={faArrowCircleLeft}/>}   Atrás</div>
-              
-              <div  onClick={()=>deleteOrder(props.movie?.id)} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Cancelar</div>
+                   ))}
 
-              <div  onClick={()=>deleteOrder(props.movie?.id)} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Ver ahora</div>
             </div>
-    
-    
-          </div>
-        );
-      } else {
-      }
-    };
+        </div>  
+      );
+    } else {
+      return <div>
+                
+        </div>        
 
-export default connect((state) => ({movie : state.movie, order : state.order, credential: state.credential}))(Shopping);
+    }
+};
+
+export default connect((state) => ({
+  credentials:state.credentials, 
+  orders:state.orders
+  }))(Shopping);

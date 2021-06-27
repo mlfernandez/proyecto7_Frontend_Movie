@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import "./MovieDetails.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft, faCartPlus, faFilm, faStar, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { MOVIE, ORDER } from "../../redux/types";
+import { MOVIE, GETORDER } from "../../redux/types";
 import moment from "moment";
 import {message} from 'antd'
 import 'antd/dist/antd.css'
@@ -53,8 +53,10 @@ const MovieDetails = (props) => {
         message.info('Agregada al carrito.');
         console.log(res, "estoy en res")
     
-
-        history.push('/datacontainer')
+        setTimeout(() => {
+          history.push('/datacontainer');
+        }, 1500)
+       
 
         
 

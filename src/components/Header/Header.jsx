@@ -82,7 +82,6 @@ const Header = (props) => {
             </div>
             <div className="NavLink" activeClassName="selected">
 
-            {/* to="/profile" */}
 
               <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/profile" ><div className="fotoUser"><img id="fotoNavBar" src={PhotoProfile} onClick={() => cambiaDatos("profile")} alt="Profile photo" /></div>
               </NavLink>

@@ -10,7 +10,7 @@ export const GETSEARCH = "getsearch";
 export const MOVIE = "movie"
 
 
-export const ORDER = "getorder";
+export const GETORDER = "getorder";
 export const DELETE = "delete";
 
 

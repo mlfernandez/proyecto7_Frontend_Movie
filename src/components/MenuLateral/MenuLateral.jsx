@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./MenuLateral.scss";
 import { connect } from "react-redux";
-import { LOGIN, LOGOUT, PROFILE, GETCOMINGSOON, ORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, GETTOPRATED, ADMINUSER, USER} from "../../redux/types";
+import { LOGIN, LOGOUT, PROFILE, GETCOMINGSOON, GETORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, GETTOPRATED, ADMINUSER, USER} from "../../redux/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCalendarWeek, faSearch, faEye, faUsers, faUserEdit, faEdit, faIdCard } from "@fortawesome/free-solid-svg-icons";
 
@@ -38,7 +38,7 @@ const Menulateral = (props) => {
         break;  
       
       case "getorder":
-        props.dispatch({ type: ORDER, payload: info });
+        props.dispatch({ type: GETORDER, payload: info });
     
         break;      
 

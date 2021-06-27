@@ -2,110 +2,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
 
 
-
-
-.dataMovie {
-    background-color: black;
-    width: auto;
-    height: auto;
+.card {
+   /*  height: 30vh;
+    width: 15vw;
     display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+    background-color: #F0EC57; */
+    height: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+    background-color: #F0EC57;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.card:hover{
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 5px 5px 5px 2px grey, 8px 8px 8px 5px grey;
+}
+
+.nombre{
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Antonio', sans-serif;
+}
+
+.boxCardDataRoom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;  
+    height: auto;
+    width: auto;
+
+}
+
+.datosCard {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    /* max-width: fit-content; */
+    width: fit-content;
     
 }
 
-.dataMovieTitle{
-  font-weight: bold;
-  font-size: 28px;
-  font-family: 'Antonio', sans-serif;
-  margin-bottom: 2em;
-  display: flex;
-
-}
-.iconDataMovie {
-  margin-right: 0.5em;
-  font-size: 1.5em;
-  
+.nombreDataRoom {
+    font-family: 'Antonio', sans-serif;
+    font-size: 20px;
+    text-align: center;
 }
 
-.infoDataMovie {
-    
-  display: flex;
-  background-color: black;
-  border-radius: 2em; 
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  display: flex;
-  color: white !important;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
+.spinner {
+    height: 80vh;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
-.imgPoster {
-  background-color: #FAFF00;
-  height: 25em;
-  width: 20em;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  display: flex;
-  margin-right: 1em;
-}
-  
-.posterPath {
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-}
-
-.posterPath:hover {
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  transition: 0.3s;
-  transform: scale(1.2) !important;
-}
-    
-  
-.infoMovie {
-  border: solid 5px #FAFF00;
-  width: 50em;
-  background-color: black;
-  text-align: center;
-  color: white;
-  padding: 0.5em;
-}
-
-.infoMovieOverview {
-  width: fit-content;
-  background-color: black;
-  text-align: center;
-  color: white;
-  padding: 0.5em;
-}
-
-.infoMovieIcon {
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  display: flex;
-}
-
-.dataMovieBoton {
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  display: flex;
-  width: 50em;
-  margin-left: 22em;
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 1920px) {
+    .datosCardJoinUser {
+      font-size: 15px;
     }
-
-.botonIcon {
-  font-size: 2em;
-  padding-left: 2em;
-  padding-right: 2em;
-}
+  }
