@@ -26,7 +26,7 @@ const Shopping = (props) => {
     const reproducir = async (movieId) => {
       try {
           
-          
+        history.push('\introtrailer')
        
       } catch (error) {
         
@@ -41,7 +41,7 @@ const Shopping = (props) => {
     try{      
       let idUser = props.credentials.user.id;
       let token = props.credentials.token;
-      console.log(idUser)
+
     
       let body = {
         idUser: idUser        

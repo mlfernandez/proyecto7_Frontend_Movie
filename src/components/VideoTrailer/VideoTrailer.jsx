@@ -1,0 +1,20 @@
+import './VideoTrailer.scss';
+
+
+
+import React from 'react';
+import { Player } from 'video-react';
+import Trailer from '../../images/trailerIntro.mp4'
+ 
+export default props => {
+  return (
+      <div className="Trailer">
+
+<video width="100%" height="100%" autoPlay controls>
+  <source src={Trailer} type="video/mp4"/>
+
+</video>
+
+    </div>
+  );
+};
