@@ -31,17 +31,11 @@ const SearchBy = (props) => {
    const clickMovie = async (data) => {
     try{
 
-      console.log(data, "soy movie");
       props.dispatch({type:MOVIE,payload: data});
       props.dispatch({type:GETSEARCH,payload: data});
 
 
-
       history.push("/moviedetails")
-
-
-    
-
 
   }catch (err){
           
@@ -49,7 +43,6 @@ const SearchBy = (props) => {
 
   }
 
-  
     const searchByFilter= async () => {  
    
    
@@ -98,8 +91,18 @@ const SearchBy = (props) => {
 
             console.log(err)
         }
-      }
-    }
+/*       } else if (document.getElementById("opciones").value === "actor") {
+        try {var res = await axios.post('http://localhost:3005/movies/actor', body);
+            
+            let search = document.getElementById("opciones").value
+
+            setMoviesSearch(res.data.results)
+
+        }catch (err){      
+
+            console.log(err)
+        } */
+    }}
 
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200"
@@ -118,6 +121,7 @@ const SearchBy = (props) => {
                 <select id = "opciones" className="input">
                     <option value="title">Por titulo</option>
                     <option value="id">Por id</option>
+               {/*      <option value="actor">Por actor</option> */}
                     <option value="genre">Por genero</option>
                 </select>
             </div>
@@ -155,6 +159,7 @@ const SearchBy = (props) => {
                             <select id = "opciones" className="input">
                                 <option value="title">Por titulo</option>
                                 <option value="id">Por id</option>
+                       {/*          <option value="actor">Por actor</option> */}
                                 <option value="genre">Por genero</option>
                             </select>
                         </div>

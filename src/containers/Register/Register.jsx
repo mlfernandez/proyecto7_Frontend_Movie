@@ -16,38 +16,38 @@ const Register = () => {
             name : '',
             last_name1: '',
             last_name2: '',
-            country: '',
+            /* country: '',
             city: '',
             shipping_address: '',
-            zipCode: '',
+            zipCode: '', */
             email: '',
             password: '',
-            phone: '',
+        /*     phone: '', */
             birthday: '',
             dni: '',
-/*             creditCardNumber: '',
+            creditCardNumber: '',
             creditCardName: '',
             creditCardExpDate: '',
-            creditCardSecureCodeNumber: '', */
+            creditCardSecureCodeNumber: '',
     });
 
     const [errors, setErrors] = useState({
         eName : '',
         eLast_name1: '',
         eLast_name2: '',
-        eCountry: '',
+       /*  eCountry: '',
         eCity: '',
         eShipping_address: '',
-        eZipCode: '',
+        eZipCode: '', */
         eEmail: '',
         ePassword: '',
-        ePhone: '',
+      /*   ePhone: '', */
         eBirthday: '',
         eDni: '',
-/*         eCreditCardNumber: '',
+        eCreditCardNumber: '',
         eCreditCardName: '',
         eCreditCardExpDate: '',
-        eCreditCardSecureCodeNumber: '', */
+        eCreditCardSecureCodeNumber: '',
         
     });
 
@@ -64,6 +64,7 @@ const Register = () => {
     const checkError = (arg) => {
         switch (arg){
             case 'name':
+            
                 
                 if(datosUser.name.length < 1){
                     setErrors({...errors, eName: 'El campo nombre no puede estar vacío.'});
@@ -73,6 +74,58 @@ const Register = () => {
                     setErrors({...errors, eName: 'Introduce el formato de nombre valido'}); 
                 }else{
                     setErrors({...errors, eName: ''});
+                }
+            break;
+
+            case 'creditCardName':
+                
+                if(datosUser.creditCardName.length < 1){
+                    setErrors({...errors, eCreditCardName: 'El campo nombre no puede estar vacío.'});
+                }else if(datosUser.creditCardName.length < 2){
+                    setErrors({...errors, eCreditCardName: 'El nombre debe de tener al menos 2 caracteres'});
+                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.name) ) {
+                    setErrors({...errors, eCreditCardName: 'Introduce el formato de nombre valido'}); 
+                }else{
+                    setErrors({...errors, eCreditCardName: ''});
+                }
+            break;
+
+
+            case 'creditCardNumber':
+                
+                if(datosUser.creditCardNumber.length < 13){
+                    setErrors({...errors, eCreditCardNumber: 'No es correcto.'});
+                }else if(datosUser.creditCardNumber.length > 17 ){
+                    setErrors({...errors, eCreditCardNumber: 'No es un numero de tarjeta valido'});
+                }else if (! /^[0-9]+$/i.test(datosUser.creditCardNumber) ) {
+                    setErrors({...errors, eCreditCardNumber: 'Introduce el formato de nombre valido'}); 
+                }else{
+                    setErrors({...errors, eCreditCardNumber: ''});
+                }
+            break;
+
+            case 'creditCardExpDate':
+
+                let cce = moment(datosUser.creditCardExpDate).format('MM/YYYY')
+                
+                if (cce < Date.now()){
+                    setErrors({...errors, eCreditCardExpDate: 'La tarjeta esta vencida'});
+                }else {
+                    setErrors({...errors, eCreditCardExpDate: ''});
+                }
+
+            break;
+
+            case 'creditCardSecureCodeNumber':
+                
+                if(datosUser.creditCardSecureCodeNumber.length < 1){
+                    setErrors({...errors, eCreditCardSecureCodeNumber: 'No es correcto.'});
+                }else if(datosUser.creditCardSecureCodeNumber.length > 5){
+                    setErrors({...errors, eCreditCardSecureCodeNumber: 'No es correcto'});
+                }else if (! /^[0-9]+$/i.test(datosUser.creditCardSecureCodeNumber) ) {
+                    setErrors({...errors, eCreditCardSecureCodeNumber: 'Introduce el formato de nombre valido'}); 
+                }else{
+                    setErrors({...errors, eCreditCardSecureCodeNumber: ''});
                 }
             break;
 
@@ -127,7 +180,7 @@ const Register = () => {
             break;
 
 
-            case 'shipping_address':
+           /*  case 'shipping_address':
                 if(datosUser.shipping_address.length < 1){
                     setErrors({...errors, eShipping_address: 'El campo direccion no puede estar vacío.'});
                 }else if  (! /^[a-z 1-9,.'-]+$/i.test(datosUser.shipping_address)){
@@ -167,7 +220,7 @@ const Register = () => {
                     setErrors({...errors, eCountry: ''});
                 }
                 
-            break;
+            break; */
 
             case 'dni':
                 if(datosUser.dni.length < 1){
@@ -180,7 +233,7 @@ const Register = () => {
             
 
             break;
-            case 'phone':
+           /*  case 'phone':
                 if(datosUser.phone.length < 1){
                     setErrors({...errors, ePhone: 'El campo telefono no puede estar vacío.'});
                 }else if (datosUser.phone.length < 9){
@@ -207,14 +260,14 @@ const Register = () => {
           
 
             break;
-
+ */
             
             case 'birthday':
                 
                 let years = moment().diff(moment(datosUser.birthday).format('MM/DD/YYYY'), 'years');
                 
-                if (years < 12 || years > 100){
-                    setErrors({...errors, eBirthday: 'Debes tener al menos 12 años para registrarte.'});
+                if (years < 19 || years > 100){
+                    setErrors({...errors, eBirthday: 'Debes tener al menos 18 años para registrarte.'});
                 }else {
                     setErrors({...errors, eBirthday: ''});
                 }
@@ -233,13 +286,13 @@ const Register = () => {
             name : datosUser.name,
             last_name1: datosUser.last_name1,
             last_name2: datosUser.last_name2,
-            country: datosUser.country,
+            /* country: datosUser.country,
             city: datosUser.city,
             shipping_address: datosUser.shipping_address,
-            zipCode: datosUser.zipCode,
+            zipCode: datosUser.zipCode, */
             email: datosUser.email,
             password: datosUser.password,
-            phone: datosUser.phone,
+      /*       phone: datosUser.phone, */
             birthday: datosUser.birthday,
             dni: datosUser.dni,
             creditCardNumber: datosUser.creditCardNumber,
@@ -296,27 +349,35 @@ const Register = () => {
                 <input className="inputBase" type="text" name="name" onChange={updateFormulario} onBlur={()=>checkError("name")} placeholder="Nombre" size="34" lenght='30'></input>
                 <div>{errors.eName}</div>
                 <input className="inputBase" type="text" name="last_name1" onChange={updateFormulario} onBlur={()=>checkError("last_name1")} placeholder="Primer apellido" size="34" lenght='30' ></input>
-                <div>{errors.eLastName1}</div>
+                <div>{errors.eName}</div>
                 <input className="inputBase" type="text" name="last_name2" onChange={updateFormulario} onBlur={()=>checkError("last_name2")} placeholder="Segundo apellido" size="34" lenght='30'></input>
-                <div>{errors.eLastName2}</div>
+                <div>{errors.eName}</div>
                 <input className="inputBase" type="text" name="dni" onChange={updateFormulario} onBlur={()=>checkError("dni")} placeholder="DNI" size="34" maxlenght='9' ></input>
                 <div>{errors.eDni}</div>
-                <input className="inputBase" type="text" name="shipping_address" onChange={updateFormulario} onBlur={()=>checkError("shipping_address")} placeholder="Dirección" size="34" lenght='30'></input>
+                {/* <input className="inputBase" type="text" name="shipping_address" onChange={updateFormulario} onBlur={()=>checkError("shipping_address")} placeholder="Dirección" size="34" lenght='30'></input>
                 <div>{errors.eAddress}</div>
                 <input className="inputBase" type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")} placeholder="Pais" size="34" lenght='30'></input>
                 <div>{errors.eCountry}</div>
                 <input className="inputBase" type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")} placeholder="Ciudad" size="34" lenght='30'></input>
                 <div>{errors.eCity}</div>
                 <input className="inputBase" type="text" name="zipCode" onChange={updateFormulario} onBlur={()=>checkError("zipCode")} placeholder="Codigo Postal" size="34" lenght='30'></input>
-                <div>{errors.eZipCode}</div>
+                <div>{errors.eZipCode}</div> */}
                 <input className="inputBase" type="text" name="email" onChange={updateFormulario} onBlur={()=>checkError("email")} placeholder="Email" size="34" lenght='30'></input>
                 <div>{errors.eEmail}</div>
                 <input className="inputBase" type="password" name="password" onChange={updateFormulario} onBlur={()=>checkError("password")} placeholder="Password" size="34" lenght='8'></input>
                 <div>{errors.ePassword}</div>
-                <input className="inputBase" type="text" name="phone" onChange={updateFormulario} onBlur={()=>checkError("phone")} placeholder="Teléfono" size="34" lenght='9'></input>
-                <div>{errors.ePhone}</div>
+               {/*  <input className="inputBase" type="text" name="phone" onChange={updateFormulario} onBlur={()=>checkError("phone")} placeholder="Teléfono" size="34" lenght='9'></input>
+                <div>{errors.ePhone}</div> */}
                 <input className="inputBase" type="date" name="birthday" onChange={updateFormulario} onBlur={()=>checkError("birthday")} placeholder="Fecha de nacimiento :" onchange="this.className=(this.value!=''?'has-value':'')"></input>
                 <div>{errors.eBirthday}</div>
+                <input className="inputBase" type="text" name="creditCardNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardNumber")} placeholder="creditCardNumber" size="34" lenght='30'></input>
+                <div>{errors.eCreditCardNumber}</div>
+                <input className="inputBase" type="text" name="creditCardName" onChange={updateFormulario} onBlur={()=>checkError("creditCardName")} placeholder="creditCardName" size="34" lenght='30'></input>
+                <div>{errors.eName}</div>
+                <input className="inputBase" type="date" name="creditCardExpDate" onChange={updateFormulario} onBlur={()=>checkError("creditCardExpDate")} placeholder="creditCardExpDate" size="34" lenght='30'></input>
+                <div>{errors.eCreditCardExpDate}</div>
+                <input className="inputBase" type="password" name="creditCardSecureCodeNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardSecureCodeNumber")} placeholder="creditCardSecureCodeNumber" size="34" lenght='30'></input>
+                <div>{errors.eCreditCardSecureCodeNumber}</div>
 
 
   
