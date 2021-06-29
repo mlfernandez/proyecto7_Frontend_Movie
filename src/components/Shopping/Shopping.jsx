@@ -47,10 +47,15 @@ const Shopping = (props) => {
         idUser: idUser        
       }
 
-      let res = await axios.post('http://localhost:3005/orders/orderuserid',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('http://localhost:3005/orders/userid',body,{headers:{'authorization':'Bearer ' + token}});
 
-    
-      setOrders(res.data);; 
+      console.log(res.data)
+
+  
+
+        setOrders(res.data);
+
+      
 
     }catch (err){     
 
