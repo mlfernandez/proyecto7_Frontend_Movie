@@ -8,6 +8,7 @@ import SearchTopRated from '../../components/SearchTopRated/SearchTopRated';
 import SearchComingSoon from '../../components/SearchComingSoon/SearchComingSoon';
 import SearchBy from '../../components/SearchBy/SearchBy';
 import Shopping from '../../components/Shopping/Shopping';
+import DataAdminOrders from '../../components/DataAdminOrders/DataAdminOrders';
 
 
 
@@ -35,6 +36,10 @@ const Profile = (props) => {
                 case 'getorder':
     
                     return <Shopping/>    
+
+                case 'getorder':
+    
+                    return <DataAdminOrders/>       
 
                 default:
 

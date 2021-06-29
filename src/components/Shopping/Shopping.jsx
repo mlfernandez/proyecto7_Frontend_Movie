@@ -22,7 +22,7 @@ const Shopping = (props) => {
     useEffect(() => {
     });
   
-    //CANCELA LA CLASE
+
     const reproducir = async (movieId) => {
       try {
           
@@ -49,11 +49,11 @@ const Shopping = (props) => {
 
       let res = await axios.post('http://localhost:3005/orders/userid',body,{headers:{'authorization':'Bearer ' + token}});
 
-      console.log(res.data)
+      console.log(res.data, "que es esto")
 
-  
 
-        setOrders(res.data);
+
+      setOrders(res.data);
 
       
 

@@ -8,7 +8,7 @@ import SearchComingSoon from '../../components/SearchComingSoon/SearchComingSoon
 import SearchBy from '../../components/SearchBy/SearchBy';
 import Shopping from '../../components/Shopping/Shopping';
 import DataProfile from '../../components/DataProfile/DataProfile';
-
+import DataAdminOrders from '../../components/DataAdminOrders/DataAdminOrders';
 
 
 
@@ -38,6 +38,11 @@ const DataContainer = (props) => {
             case 'profile':
 
                 return <DataProfile/>   
+
+            case 'getallorders':
+
+                return <DataAdminOrders/>  
+                
 
             default:
 

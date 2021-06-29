@@ -34,8 +34,9 @@ const MovieDetails = (props) => {
         let token = props.credentials.token;
         let idUser = props.credentials.user.id;
         let rentalDate = Date.now();
-        let returnDate = moment(rentalDate).add(7, 'days').calendar();     
-  
+        let returnDate = moment(rentalDate).add(3, 'hours').format();     
+        
+        console.log(returnDate)
   
         let body = {
           idUser : idUser,
@@ -50,11 +51,10 @@ const MovieDetails = (props) => {
       
         
         let res = await axios.post('http://localhost:3005/orders',body,{headers:{'authorization':'Bearer ' + token}});
-        message.info('Agregada al carrito.');
-        console.log(res, "estoy en res")
+      
     
         setTimeout(() => {
-          history.push('/datacontainer');
+          history.push('/introtrailer');
         }, 1500)
        
 
@@ -72,7 +72,7 @@ const MovieDetails = (props) => {
   const baseImgUrl = "https://image.tmdb.org/t/p"
   const size = "w200"
 
-
+  console.log(props.movie)
   if (props.movie?.id) {
 
     return (
@@ -105,7 +105,7 @@ const MovieDetails = (props) => {
         <div className="dataMovieBoton">
           <div onClick={() => history.push('/datacontainer')} className="botonIcon">{<FontAwesomeIcon icon={faArrowCircleLeft}/>}   Atrás</div>
          {/*  <div onClick={() => history.push('/rentmovie')} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Alquilar</div> */}
-          <div onClick={()=>AddToCart(props.movie?.id)} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Alquilar</div>
+          <div onClick={()=>AddToCart(props.movie?.id)} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>} Ver Ahora </div>
         </div>
 
 

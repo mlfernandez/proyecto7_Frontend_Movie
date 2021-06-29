@@ -68,8 +68,7 @@ const Menulateral = (props) => {
     }
   };
 
-  //MENU DEL HOME PARA BUSCAR NOVEDADES ETC
-    //IFS PARA MOSTRAR UN MENU SEGUN EL TIPO DE USUARIO QUE ACCEDE A LA APLICACIÓN
+  
     if (props?.credentials?.token === "") 
     {
     return (
@@ -109,7 +108,7 @@ const Menulateral = (props) => {
         <div className="botomMenuLateral"onClick={() => cambiaDatos("getcomingsoon")}>Proximamente</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("getsearch")}>Buscar</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("profile")}>Perfil</div>
-        <div className="botomMenuLateral"onClick={() => cambiaDatos("getorder")}>Carrito</div>
+        <div className="botomMenuLateral"onClick={() => cambiaDatos("getorder")}>Estas viendo</div>
       </div>
     </div>
   </div>
@@ -132,7 +131,7 @@ const Menulateral = (props) => {
         <div className="tituloVistaAdmin">Vista Administrador</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("getallusers") }>Encontrar Usuario</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("updateusers")}>Modificar Usuario</div>
-        <div className="botomMenuLateral"onClick={() => cambiaDatos("getallorders")}>Ordenes</div>
+        <div className="botomMenuLateral"onClick={() => cambiaDatos("getallorders")}>Todas las ordenes</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("updateorders")}>Modificar Orden</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("profile")}>Perfil</div>
       </div>
