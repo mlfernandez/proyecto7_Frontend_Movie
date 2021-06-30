@@ -112,12 +112,12 @@ const SearchBy = (props) => {
       return (
 
         <div>  
-        <div className = "vistaLogin">
-        <div className = "loginCard"> 
+        <div className = "vistaLoginShearch">
+        <div className = "loginCardSearch"> 
             <div className = "cardLogin">
                 <input id= "searchByTitle" className="input" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
             </div>
-            <div className = "cardLogin">
+            <div className = "cardLoginSearch">
                 <select id = "opciones" className="input">
                     <option value="title">Por titulo</option>
                     <option value="id">Por id</option>

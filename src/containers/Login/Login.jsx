@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {LOGIN, LOGOUT} from '../../redux/types'
 import {notification} from 'antd';
+import { NavLink } from 'react-router-dom';
 
 /* import  Footer  from '../../components/Footer/Footer'; */
 
@@ -92,6 +93,7 @@ const Login = (props) => {
             <div className = "vistaLogin">
         
                 <div className = "loginCard"> 
+                <div className="titleLogin">Accede a tu cuenta</div>
                     <div className = "cardLogin">
                         <input className="input" type="email" name="email" placeholder="email" onChange={updateCredentials} size="40" lenght='30'></input>
                     </div>
@@ -102,6 +104,8 @@ const Login = (props) => {
                     
                     <div className = "sendButton" onClick={()=>logueame()}>Login</div>
                     <div>{msgError}</div>
+                    <div className="titleLoginBottom">¿Aun no tienes cuenta?</div>
+                    <NavLink style={{ color: '#F02D3A', textDecoration: 'inherit' }} to="/register">¡Registrate aqui!.</NavLink>
                 </div>
         
             </div>   

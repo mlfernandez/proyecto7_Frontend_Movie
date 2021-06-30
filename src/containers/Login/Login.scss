@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
 .vistaLogin {
     display: flex;
     flex-direction: column;
@@ -5,6 +9,23 @@
     justify-content: unset;
     height: auto;
     margin-top: 5em;
+  }
+
+  .titleLogin {
+
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Antonio', sans-serif;
+    margin-bottom: 1em;
+
+  }
+
+  
+  .titleLoginBottom {
+
+    font-size: 18px;
+    margin-top: 1em;
+
   }
   
   .loginCard {
@@ -19,6 +40,7 @@
   
   .cardLogin{
       margin: 0.5em;
+      
   }
   
   .sendButton {
