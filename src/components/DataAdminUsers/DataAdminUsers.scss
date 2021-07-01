@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+.cardNoActive {
+    
+    background-color: red;
+
+}
+
+
+
+.cardAdmin {
+    height: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+    background-color: black;
+    margin-bottom: 1em;
+    padding: 1em;
+    margin-top: 2em;
+}
+
+.card {
+    height: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+    background-color: #F0EC57;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.card:hover{
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 5px 5px 5px 2px grey, 8px 8px 8px 5px grey;
+}
+
+.dataCard {
+    background-color: black;
+}
+
+.nombre{
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Antonio', sans-serif;
+}
+
+.boxCardDataRoomAdmin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;  
+    height: auto;
+    width: auto;
+
+}
+
+.datosCard {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    /* max-width: fit-content; */
+    width: fit-content;
+    
+}
+
+.nombreDataRoomAdmin {
+    font-family: 'Antonio', sans-serif;
+    font-size: 28px;
+    text-align: center;
+}
+
+
+.vistaLoginShearch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+    height: auto;
+    margin-top: 5em;
+  }
+  
+  .loginCardSearch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .cardLoginSearch{
+      margin: 0.5em;
+  }
+  
+  .sendButton {
+    position: relative;
+    margin: 15px 0 5px 0;
+    background: #303036;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sendButton:hover {
+    background: #e15554;
+    transition: 0.2s;
+  }
+  
+  .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .input{
+    width: 100%;
+    height: 36px;
+    border-radius: 4px;
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
+    border: 1px solid rgb(184, 196, 194);
+    transition: border-color 150ms ease-in-out 1s;
+    z-index: 1;
+    outline: none;
+    color: rgb(33, 49, 60);
+    background-color: rgb(255, 255, 255);
+    padding-right: 12px;
+  }
+
+  .cardMovie {
+    height: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    margin-right: 1em;
+    background-color: #F0EC57;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.cardMovie:hover{
+    background-color: #F02D3A;
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.2) !important;
+}
+
+.iconoDataAdminUser {
+
+    font-size: 30px;
+
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 1920px) {
+    .datosCardJoinUser {
+      font-size: 15px;
+    }
+  }

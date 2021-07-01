@@ -12,6 +12,7 @@ const Shopping = (props) => {
     let history = useHistory();
     //hooks
     const [orders, setOrders] = useState([]);  
+    const [msgError, setMensajeError] = useState('');
   
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
@@ -29,7 +30,7 @@ const Shopping = (props) => {
         history.push('\introtrailer')
        
       } catch (error) {
-        
+   
       }
 
 
@@ -58,6 +59,7 @@ const Shopping = (props) => {
       
 
     }catch (err){     
+
 
     }
   

@@ -271,6 +271,8 @@ const Register = () => {
                 <div>{errors.ePassword}</div>
                 <input className="inputBase" type="date" name="birthday" onChange={updateFormulario} onBlur={()=>checkError("birthday")} placeholder="Fecha de nacimiento :" onchange="this.className=(this.value!=''?'has-value':'')"></input>
                 <div>{errors.eBirthday}</div>
+                <div className= "textoFormRegistro"> Procederemos a debitar de tu tarjeta </div>
+                <div className= "textoFormRegistro"> el cargo de suscripción anual.</div>
                 <input className="inputBase" type="text" name="creditCardNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardNumber")} placeholder="Número de tarjeta de credito" size="34" lenght='30'></input>
                 <div>{errors.eCreditCardNumber}</div>
                 <input className="inputBase" type="text" name="creditCardName" onChange={updateFormulario} onBlur={()=>checkError("creditCardName")} placeholder="Nombre en la tarjeta de credito" size="34" lenght='30'></input>

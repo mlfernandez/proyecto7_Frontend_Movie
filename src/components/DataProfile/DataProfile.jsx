@@ -191,7 +191,6 @@ const DataProfile = (props) => {
                 user : res.data,
                 idUser: idUser,
             }
-                console.log("Datos qeu devuelve axios : ", data);
 
                 props.dispatch({type:UPDATE,payload:data});
    

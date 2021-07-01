@@ -124,6 +124,28 @@ const SearchBy = (props) => {
                {/*      <option value="actor">Por actor</option> */}
                     <option value="genre">Por genero</option>
                 </select>
+
+                Elije el genero:<select id="opciones" onChange={()=>searchByFilter(document.getElementById("opcion").value)} className="input">
+                            <option value="Action">Acción</option>
+                            <option value="Adventure">Aventura</option>
+                            <option value="Animation">Animacion</option>
+                            <option value="Comedy">Comedia</option>
+                            <option value="Crime">Crimen</option>
+                            <option value="99">Documental</option>
+                            <option value="18">Drama</option>
+                            <option value="10751">Familiar</option>
+                            <option value="14">Fantasia</option>
+                            <option value="36">Historia</option>
+                            <option value="27">Horror</option>
+                            <option value="10402">Musical</option>
+                            <option value="9648">Misterio</option>
+                            <option value="10749">Romance</option>
+                            <option value="878">Ciencia ficción</option>
+                            <option value="10770">TV Movie</option>
+                            <option value="53">Thriller</option>
+                            <option value="10752">Guerra</option>
+                            <option value="37">Western</option>                            
+                        </select>  
             </div>
             <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
             
@@ -162,6 +184,28 @@ const SearchBy = (props) => {
                        {/*          <option value="actor">Por actor</option> */}
                                 <option value="genre">Por genero</option>
                             </select>
+
+                            Elije el genero:<select id="opciones" onChange={()=>searchByFilter(document.getElementById("opcion").value)} className="input">
+                            <option value="Action">Acción</option>
+                            <option value="Adventure">Aventura</option>
+                            <option value="Animation">Animacion</option>
+                            <option value="Comedy">Comedia</option>
+                            <option value="Crime">Crimen</option>
+                            <option value="99">Documental</option>
+                            <option value="18">Drama</option>
+                            <option value="10751">Familiar</option>
+                            <option value="14">Fantasia</option>
+                            <option value="36">Historia</option>
+                            <option value="27">Horror</option>
+                            <option value="10402">Musical</option>
+                            <option value="9648">Misterio</option>
+                            <option value="10749">Romance</option>
+                            <option value="878">Ciencia ficción</option>
+                            <option value="10770">TV Movie</option>
+                            <option value="53">Thriller</option>
+                            <option value="10752">Guerra</option>
+                            <option value="37">Western</option>                            
+                        </select>  
                         </div>
                         <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
                         

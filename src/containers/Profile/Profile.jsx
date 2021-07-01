@@ -9,6 +9,8 @@ import SearchComingSoon from '../../components/SearchComingSoon/SearchComingSoon
 import SearchBy from '../../components/SearchBy/SearchBy';
 import Shopping from '../../components/Shopping/Shopping';
 import DataAdminOrders from '../../components/DataAdminOrders/DataAdminOrders';
+import DataAdminUsers from '../../components/DataAdminUsers/DataAdminUsers';
+import Faq from '../../components/Faq/Faq';
 
 
 
@@ -17,7 +19,7 @@ const Profile = (props) => {
     const traeDatos = () => {
         switch (props.tipodatos) {
 
-                case 'profile':
+                case 'getprofile':
 
                     return <DataProfile/>
 
@@ -37,13 +39,21 @@ const Profile = (props) => {
     
                     return <Shopping/>    
 
-                case 'getorder':
+                case 'getallorders':
     
                     return <DataAdminOrders/>       
+                    
+                case 'getallusers':
+    
+                    return <DataAdminUsers/>   
+
+                case 'faq':
+    
+                    return <Faq/>  
 
                 default:
 
-                    return <DataProfile />
+                    return <SearchComingSoon/>
         }
 
     }

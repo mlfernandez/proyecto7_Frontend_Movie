@@ -1,6 +1,6 @@
-import {ADMINMOVIE, ADMINUSER, DELETE, GETCOMINGSOON, GETTOPRATED, GETSEARCH, LOGIN, LOGOUT, PROFILE, GETORDER, GETALLORDERS, GETALLUSERS, UPDATEORDERS, UPDATEUSERS} from '../types';
+import {ADMINMOVIE, ADMINUSER, DELETE, GETCOMINGSOON, GETTOPRATED, GETSEARCH, LOGIN, LOGOUT, GETPROFILE, GETORDER, GETALLORDERS, GETALLUSERS, UPDATEORDERS, UPDATEUSERS, FAQ} from '../types';
 const initialState = 
-    'profile'
+    'getprofile'
 ;
 const tipodatosReducer = (state = initialState, action) => {
     switch(action.type){
@@ -8,7 +8,7 @@ const tipodatosReducer = (state = initialState, action) => {
             return action.payload;
         case LOGOUT:
             return initialState; */
-        case PROFILE:
+        case GETPROFILE:
             return action.payload;
         case GETTOPRATED:
             return action.payload;   
@@ -26,6 +26,8 @@ const tipodatosReducer = (state = initialState, action) => {
             return action.payload;               
         case GETORDER:
             return action.payload; 
+        case FAQ:
+            return action.payload;     
         case ADMINMOVIE:
             return action.payload;    
         case ADMINUSER:

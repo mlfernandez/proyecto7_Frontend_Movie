@@ -24,10 +24,11 @@
     align-items: center;
     background-color: black;
     padding: 2em;
-
-
 }
 
+.blanck {
+  height: 3.9em;
+}
 
 .iconMenuLateral{
     height: 6.5vh;
@@ -40,6 +41,7 @@
     border-radius: 1em;
     transition: 0.3s;
     background-color: black;
+    font-size: 21px;
 }
 
 .iconMenuLateral:hover{
@@ -85,6 +87,6 @@
     border-radius: 1em;
     transition: 0.3s;
     background-color: black;
-    font-size: 20px;
+    font-size: 18px;
     padding-left: 0.3em;
 }

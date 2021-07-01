@@ -16,7 +16,7 @@ const DataAdminOrders = (props) => {
   
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
-        allOrders();
+    
     }, []);
   
     //Equivalente a componentDidUpdate en componentes de clase
@@ -25,20 +25,20 @@ const DataAdminOrders = (props) => {
 
 
     const allOrders = async () => {  
-    try{      
-      let idUser = props.credentials.user.id;
-      let token = props.credentials.token;
-
-    
+        let idUser = props.credentials.user.id;
+        let token = props.credentials.token;
 
 
-      let res = await axios.get('http://localhost:3005/orders/',{headers:{'authorization':'Bearer ' + token}});
+      if (document.getElementById("opciones").value === "active") {
 
-      console.log(res.data)
-
+      try{      
   
 
-    setOrders(res.data);
+    
+        var res = await axios.post('http://localhost:3005/orders/active',{headers:{'authorization':'Bearer ' + token}});
+
+        
+        setOrders(res.data);
 
       
 
@@ -46,14 +46,44 @@ const DataAdminOrders = (props) => {
 
     }
   
-    }
+  }else if (document.getElementById("opciones").value === "noactive") {
+
+    try{      
+
+
+      var res = await axios.post('http://localhost:3005/orders/noactive',{headers:{'authorization':'Bearer ' + token}});
+
     
+      setOrders(res.data);
+
+    }catch (err){     
+
+    }
+  
+  }
+}
+
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200"
    
 
    if (orders[0]?.id) {
       return (
+        <div>  
+        <div className = "vistaLoginShearch">
+        <div className = "loginCardSearch"> 
+            <div className = "cardLoginSearch">
+                <select id = "opciones" className="input">
+                    <option value="active">Alquileres en curso</option>
+                    <option value="noactive">Alquileres pasados</option>
+                </select>
+            </div>
+            <div className = "sendButton" onClick={()=>allOrders()}>Buscar</div>
+            
+        </div>
+        
+
+    </div>  
         <div className="nombreDataRoomAdmin"> <div>Todas las ordenes</div>
         <div className="boxCardDataRoomAdmin">
               {orders.map((act, index) => (
@@ -63,7 +93,7 @@ const DataAdminOrders = (props) => {
                     <div className= "dataCard">
                         <p className="nombre"> Titulo: {act.titleMovie}</p>
                         <p className="rentalDate">Fecha de pedido: {moment(act.rentalDate).format('DD/MM/YYYY')}</p>
-                        <p className="returnDate">Fecha de devolucion: {moment(act.retunDate).format('DD/MM/YYYY')}</p>
+                        <p className="returnDate">Fecha de devolucion: {moment(act.returnDate).format('DD/MM/YYYY')}</p>
                         <p className="orderId">Pedido # {act.id}</p>
                         <p className="orderId">Cliente # {act.idUser}</p>
                     </div>
@@ -74,15 +104,32 @@ const DataAdminOrders = (props) => {
 
             </div>
         </div>  
+        </div> 
       );
             
     } else {
-      return <div>
-                
-        </div>        
+      return (
 
-    }
-};
+
+        <div>          
+
+            <div className = "vistaLogin">
+                <div className = "loginCard"> 
+                    <div className = "cardLogin">
+                        <select id = "opciones" className="input">
+                          <option value="active">Alquileres en curso</option>
+                          <option value="noactive">Alquileres pasados</option>
+                        </select>
+                    </div>
+                    <div className = "sendButton" onClick={()=>allOrders()}>Buscar</div>
+                    
+                </div>
+        
+            </div>   
+            
+        </div>
+)
+}}
 
 export default connect((state) => ({
   credentials:state.credentials, 

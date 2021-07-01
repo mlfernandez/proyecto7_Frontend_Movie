@@ -9,7 +9,8 @@ import SearchBy from '../../components/SearchBy/SearchBy';
 import Shopping from '../../components/Shopping/Shopping';
 import DataProfile from '../../components/DataProfile/DataProfile';
 import DataAdminOrders from '../../components/DataAdminOrders/DataAdminOrders';
-
+import DataAdminUsers from '../../components/DataAdminUsers/DataAdminUsers';
+import Faq from '../../components/Faq/Faq';
 
 
 const DataContainer = (props) => {
@@ -35,18 +36,26 @@ const DataContainer = (props) => {
 
                 return <Shopping/>       
             
-            case 'profile':
+            case 'getprofile':
 
                 return <DataProfile/>   
 
             case 'getallorders':
 
                 return <DataAdminOrders/>  
-                
 
+            case 'getallusers':
+
+                return <DataAdminUsers/>     
+
+            case 'faq':
+
+                return <Faq/>        
+                
+                
             default:
 
-                return <SearchTopRated/>
+                return <Faq/>
         }
 
     }

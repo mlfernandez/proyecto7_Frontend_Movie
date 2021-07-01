@@ -1,6 +1,6 @@
 export const LOGIN = "login";
 export const LOGOUT = "logout";
-export const PROFILE = "profile";
+export const GETPROFILE = "getprofile";
 export const UPDATE = "update";
 export const USER = "user";
 
@@ -17,6 +17,7 @@ export const GETALLUSERS = "getallusers";
 export const UPDATEUSERS = "updateusers";
 export const GETALLORDERS = "getallorders";
 export const UPDATEORDERS = "updateorders";
+export const FAQ = "faq";
 
 export const LOGOUTTIPODATOS = "logouttipodatos";
 

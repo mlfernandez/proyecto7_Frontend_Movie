@@ -3,7 +3,7 @@ import Logo from '../../images/logosmall.png';
 import PhotoProfile from '../../images/profilelogo.png'
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { LOGOUT, LOGOUTTIPODATOS, PROFILE, DELETE} from '../../redux/types';
+import { LOGOUT, LOGOUTTIPODATOS, PROFILE, DELETE, FAQ} from '../../redux/types';
 import { useHistory } from 'react-router-dom';
 import {Input, notification} from 'antd';
 
@@ -35,8 +35,8 @@ const Header = (props) => {
 
   const cambiaDatos = async (info) => {
     switch (info) {
-      case "profile":
-        props.dispatch({ type: PROFILE, payload: info });
+      case "faq":
+        props.dispatch({ type: FAQ, payload: info });
 
         break;
 

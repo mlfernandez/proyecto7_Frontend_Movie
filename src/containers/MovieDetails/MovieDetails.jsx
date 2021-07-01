@@ -9,6 +9,7 @@ import { MOVIE, GETORDER } from "../../redux/types";
 import moment from "moment";
 import {message} from 'antd'
 import 'antd/dist/antd.css'
+import {notification} from 'antd';
 
 const MovieDetails = (props) => {
   let history = useHistory();
@@ -16,6 +17,7 @@ const MovieDetails = (props) => {
     //hooks
     const [moviesSearch, setMoviesSearch] = useState([]); 
     const [userOrder, setUserOrder] = useState([]); 
+    const [msgError, setMensajeError] = useState('');
 
 
   const AddToCart = async (data) => {
@@ -34,7 +36,8 @@ const MovieDetails = (props) => {
         let token = props.credentials.token;
         let idUser = props.credentials.user.id;
         let rentalDate = Date.now();
-        let returnDate = moment(rentalDate).add(3, 'hours').format();     
+        let returnDate = moment(rentalDate).add(2, 'day').format('YYYY/MM/DD'); 
+   
         
         console.log(returnDate)
   
@@ -62,6 +65,10 @@ const MovieDetails = (props) => {
 
        }catch (err){
        
+       
+        notification.warning({message:'Atencion.',description: "Ya tienes esta pelicula disponible para ver en tu carpeta."}); 
+  
+
         }      
  
     }
