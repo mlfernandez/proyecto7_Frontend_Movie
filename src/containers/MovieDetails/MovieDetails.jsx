@@ -16,20 +16,29 @@ const MovieDetails = (props) => {
 
     //hooks
     const [moviesSearch, setMoviesSearch] = useState([]); 
-    const [userOrder, setUserOrder] = useState([]); 
-    const [msgError, setMensajeError] = useState('');
+
 
 
   const AddToCart = async (data) => {
 
 
-
+      // comprobar si esta logeado
     if (props.credentials.token === "") {
       history.push('/login')
 
-    } else {
 
+      // comprobar validación de suscripcion previo a la compra
+    } else if (moment(props.credentials.user.lastSuscriptionEnd).format('DD/MM/YYYY') < moment(Date.now()).format('DD/MM/YYYY')) {
+    console.log(props.credentials.user.lastSuscriptionEnd)
 
+      notification.warning({message:'Atencion.',description: "Tienes la suscripción vencida."}); 
+      history.push('/payment')
+    
+    
+    // hacer el pedido de la pelicula
+  } else {
+
+    console.log(props.credentials.user.lastSuscriptionEnd)
 
         try{
   

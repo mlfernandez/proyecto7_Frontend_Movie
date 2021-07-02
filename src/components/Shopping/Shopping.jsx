@@ -23,7 +23,7 @@ const Shopping = (props) => {
     useEffect(() => {
     });
   
-
+// reproduce la pelicula
     const reproducir = async (movieId) => {
       try {
           
@@ -37,7 +37,7 @@ const Shopping = (props) => {
     }
 
 
-
+// muestra las ordenes del usuario
     const userOrder = async () => {  
     try{      
       let idUser = props.credentials.user.id;

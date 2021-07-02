@@ -106,6 +106,7 @@ const Register = () => {
                 console.log(year, month)
 
                 if (year < currentYear || (year == currentYear && month < currentMonth)){
+                    // eslint-disable-next-line 
                     setErrors({...errors, eCreditCardExpDate: 'La tarjeta esta vencida'});
                 }else {
                     setErrors({...errors, eCreditCardExpDate: ''});
@@ -283,6 +284,13 @@ const Register = () => {
                 <div>{errors.eBirthday}</div>
                 <div className= "textoFormRegistro"> Procederemos a debitar de tu tarjeta </div>
                 <div className= "textoFormRegistro"> el cargo de suscripción anual.</div>
+                <select id = "opciones" className="input">
+                    <option value="visa">Visa</option>
+                    <option value="amex">Amex</option>
+                    <option value="amex">Master</option>
+               {/*      <option value="actor">Por actor</option> */}
+                  
+                </select>
                 <input className="inputBase" type="text" name="creditCardNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardNumber")} placeholder="Número de tarjeta de credito" size="34" lenght='30'></input>
                 <div>{errors.eCreditCardNumber}</div>
                 <input className="inputBase" type="text" name="creditCardName" onChange={updateFormulario} onBlur={()=>checkError("creditCardName")} placeholder="Nombre en la tarjeta de credito" size="34" lenght='30'></input>
