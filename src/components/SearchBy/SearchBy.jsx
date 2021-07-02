@@ -8,6 +8,9 @@ import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
 import { GETSEARCH, MOVIE } from '../../redux/types';
 import {useHistory} from 'react-router-dom';
+import unavailable from '../../images/unavailable.jpg'
+
+
 
 
 const SearchBy = (props) => {
@@ -42,6 +45,27 @@ const SearchBy = (props) => {
        }      
 
   }
+
+
+  const searchByFilterGenre = async (opc) => {
+
+    let genre = document.getElementById("genreList").value;        
+    let body={
+        query : genre
+    }
+
+              try {
+                  console.log("Entro en genre");
+                  let res2 = await axios.post('http://localhost:3005/movies/genre',body);
+                  console.log(res2.data.results);
+                  setMoviesSearch(res2.data.results);
+              } catch (error) {
+          
+              }
+          
+    
+}
+
 
     const searchByFilter= async () => {  
    
@@ -79,18 +103,6 @@ const SearchBy = (props) => {
             console.log(err)
         }
 
-      } else if (document.getElementById("opciones").value === "genre") {
-        try {var res = await axios.post('http://localhost:3005/movies/genre', body);
-            
-            let search = document.getElementById("opciones").value;
-
-            setMoviesSearch(res.data.results)
-
-
-        }catch (err){      
-
-            console.log(err)
-        }
 /*       } else if (document.getElementById("opciones").value === "actor") {
         try {var res = await axios.post('http://localhost:3005/movies/actor', body);
             
@@ -122,15 +134,16 @@ const SearchBy = (props) => {
                     <option value="title">Por titulo</option>
                     <option value="id">Por id</option>
                {/*      <option value="actor">Por actor</option> */}
-                    <option value="genre">Por genero</option>
+                  
                 </select>
-
-                Elije el genero:<select id="opciones" onChange={()=>searchByFilter(document.getElementById("opcion").value)} className="input">
-                            <option value="Action">Acción</option>
-                            <option value="Adventure">Aventura</option>
-                            <option value="Animation">Animacion</option>
-                            <option value="Comedy">Comedia</option>
-                            <option value="Crime">Crimen</option>
+                <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
+                Busqueda por genero:
+                <select id="genreList" onChange={()=>searchByFilterGenre(document.getElementById("genreList").value)} className="input">
+                            <option value="28">Acción</option>
+                            <option value="12">Aventura</option>
+                            <option value="16">Animacion</option>
+                            <option value="35">Comedia</option>
+                            <option value="80">Crimen</option>
                             <option value="99">Documental</option>
                             <option value="18">Drama</option>
                             <option value="10751">Familiar</option>
@@ -147,7 +160,7 @@ const SearchBy = (props) => {
                             <option value="37">Western</option>                            
                         </select>  
             </div>
-            <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
+            
             
         </div>
 
@@ -157,9 +170,11 @@ const SearchBy = (props) => {
             <div className="boxCardSearch">
               {moviesSearch.map((act, index) => (
                 <div className="cardMovie" onClick={()=> clickMovie(act)} key={index}>
-                    <img src={`${baseImgUrl}/${size}${act.poster_path}`}  alt="poster" className="poster"/>
+                    <img src={`${baseImgUrl}/${size}${act.poster_path}`} alt="poster" className="poster"/>
                 </div>
                    ))}
+
+     
 
             </div>
         </div>  
@@ -175,39 +190,42 @@ const SearchBy = (props) => {
                 <div className = "vistaLogin">
                     <div className = "loginCard"> 
                         <div className = "cardLogin">
+                        <div className = "genreSearchTitle">Busqueda por título o id:</div>
                             <input id= "searchByTitle" className="input" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
                         </div>
                         <div className = "cardLogin">
+                        
                             <select id = "opciones" className="input">
                                 <option value="title">Por titulo</option>
                                 <option value="id">Por id</option>
                        {/*          <option value="actor">Por actor</option> */}
-                                <option value="genre">Por genero</option>
+                
                             </select>
-
-                            Elije el genero:<select id="opciones" onChange={()=>searchByFilter(document.getElementById("opcion").value)} className="input">
-                            <option value="Action">Acción</option>
-                            <option value="Adventure">Aventura</option>
-                            <option value="Animation">Animacion</option>
-                            <option value="Comedy">Comedia</option>
-                            <option value="Crime">Crimen</option>
-                            <option value="99">Documental</option>
-                            <option value="18">Drama</option>
-                            <option value="10751">Familiar</option>
-                            <option value="14">Fantasia</option>
-                            <option value="36">Historia</option>
-                            <option value="27">Horror</option>
-                            <option value="10402">Musical</option>
-                            <option value="9648">Misterio</option>
-                            <option value="10749">Romance</option>
-                            <option value="878">Ciencia ficción</option>
-                            <option value="10770">TV Movie</option>
-                            <option value="53">Thriller</option>
-                            <option value="10752">Guerra</option>
-                            <option value="37">Western</option>                            
-                        </select>  
+                            <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
+                            <div className = "genreSearchTitle">Busqueda por genero:</div>
+                            <select id="genreList" onChange={()=>searchByFilterGenre(document.getElementById("genreList").value)} className="input">
+                                <option value="28">Acción</option>
+                                <option value="12">Aventura</option>
+                                <option value="16">Animacion</option>
+                                <option value="35">Comedia</option>
+                                <option value="80">Crimen</option>
+                                <option value="99">Documental</option>
+                                <option value="18">Drama</option>
+                                <option value="10751">Familiar</option>
+                                <option value="14">Fantasia</option>
+                                <option value="36">Historia</option>
+                                <option value="27">Horror</option>
+                                <option value="10402">Musical</option>
+                                <option value="9648">Misterio</option>
+                                <option value="10749">Romance</option>
+                                <option value="878">Ciencia ficción</option>
+                                <option value="10770">TV Movie</option>
+                                <option value="53">Thriller</option>
+                                <option value="10752">Guerra</option>
+                                <option value="37">Western</option>                           
+                            </select>  
                         </div>
-                        <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
+                        
                         
                     </div>
             

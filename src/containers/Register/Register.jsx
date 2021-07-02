@@ -24,6 +24,8 @@ const Register = () => {
             creditCardName: '',
             creditCardExpDate: '',
             creditCardSecureCodeNumber: '',
+            lastSuscriptionBegin: Date.now(),
+            lastSuscriptionEnd: moment(Date.now()).add(1, 'year'),
     });
 
     const [errors, setErrors] = useState({
@@ -92,10 +94,18 @@ const Register = () => {
 
             case 'creditCardExpDate':
 
-                let today = moment(new Date()).format('DD/MM/YYYY');
-                let someday = moment(datosUser.creditCardExpDate).format('DD/MM/YYYY')
+/*                 let today = moment(new Date()).format('MM/YYYY');
+                let someday = moment(datosUser.creditCardExpDate).format('MM/YYYY') */
+             
+                var d = new Date();
+                var currentYear = d.getFullYear();
+                var currentMonth = d.getMonth() + 1;
+                var parts = datosUser.creditCardExpDate.split('-');
+                var month = parseInt(parts[1], 10);
+                var year = parseInt(parts[0], 10);
+                console.log(year, month)
 
-                if (someday < today){
+                if (year < currentYear || (year == currentYear && month < currentMonth)){
                     setErrors({...errors, eCreditCardExpDate: 'La tarjeta esta vencida'});
                 }else {
                     setErrors({...errors, eCreditCardExpDate: ''});
@@ -277,7 +287,7 @@ const Register = () => {
                 <div>{errors.eCreditCardNumber}</div>
                 <input className="inputBase" type="text" name="creditCardName" onChange={updateFormulario} onBlur={()=>checkError("creditCardName")} placeholder="Nombre en la tarjeta de credito" size="34" lenght='30'></input>
                 <div>{errors.eName}</div>
-                <input className="inputBase" type="date" name="creditCardExpDate" onChange={updateFormulario} onBlur={()=>checkError("creditCardExpDate")} placeholder="Fecha de expiración" size="34" lenght='30'></input>
+                <input className="inputBase" type="month" name="creditCardExpDate" onChange={updateFormulario} onBlur={()=>checkError("creditCardExpDate")} placeholder="Fecha de expiración" size="34" lenght='30'></input>
                 <div>{errors.eCreditCardExpDate}</div>
                 <input className="inputBase" type="password" name="creditCardSecureCodeNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardSecureCodeNumber")} placeholder="Código de seguridad" size="34" lenght='30'></input>
                 <div>{errors.eCreditCardSecureCodeNumber}</div>

@@ -74,7 +74,7 @@ const Shopping = (props) => {
 
             <div className="boxCardDataRoom">
               {orders.map((act, index) => (
-                <div className="card" key={index}>
+                <div className="cardShopping" key={index}>
                     <img src={`${baseImgUrl}/${size}${act.posterMovie}`}  alt="poster" className="posterMovie" onClick={()=>reproducir(act.id)}/> 
                 </div>
                    ))}
