@@ -2,7 +2,6 @@ import React from 'react';
 import './DataContainer.scss';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import { connect } from 'react-redux';
-
 import SearchTopRated from '../../components/SearchTopRated/SearchTopRated';
 import SearchComingSoon from '../../components/SearchComingSoon/SearchComingSoon';
 import SearchBy from '../../components/SearchBy/SearchBy';

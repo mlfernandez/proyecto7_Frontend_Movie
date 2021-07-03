@@ -52,12 +52,13 @@ const Login = (props) => {
         
         //Axios      
         try {var res = await axios.post('http://localhost:3005/login', body);
-                
+           
+        console.log(res.data.user)
                
                 let data = {
                     token : res.data.token,
                     user : res.data.user,
-                    idUser: res.data.user._id,
+                    idUser: res.data.user.id,
                     
                 }
 

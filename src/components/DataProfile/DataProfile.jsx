@@ -42,14 +42,14 @@ const DataProfile = (props) => {
 
 
     useEffect(() => {
-        setProfile(1);
+        setProfile("vistaLectura");
        
       }, []);
 
     let user = props.credentials.user;   
 
-    const changeState = (info) => {        
-        setProfile(info);
+    const changeState = (tipoVista) => {        
+        setProfile(tipoVista);
     }
 
 
@@ -158,7 +158,7 @@ const DataProfile = (props) => {
     }
 
 
-    const saveData = async (info) => {   
+    const saveData = async (tipoVista) => {   
         try { 
       
         let token = props.credentials.token;
@@ -196,7 +196,7 @@ const DataProfile = (props) => {
    
            
 
-                setProfile(info);
+                setProfile(tipoVista);
 
                 notification.success({message:'Atencion.',description: "Datos actualizados correctamente."}); 
             
@@ -206,7 +206,7 @@ const DataProfile = (props) => {
             }
     }
 
-    if (profile === 1) {
+    if (profile === "vistaLectura") {
         return (
             <div>
                 <div className="tituloDataProfile"><h1>Perfil del usuario</h1></div>
@@ -225,7 +225,7 @@ const DataProfile = (props) => {
 
                     <div className="infoUser2">
                     
-                        <div className="botonEdit"><div className="sendButtonEdit" onClick={(()=>changeState(2))}>Editar</div></div>
+                        <div className="botonEdit"><div className="sendButtonEdit" onClick={(()=>changeState("vistaEdicion"))}>Editar</div></div>
                         <p>Número de tarjeta: <input className="inputBaseUser"  readonly="readonly" type="text" name="creditCardNumber"  value={user.creditCardNumber} size="34" lenght='30'></input></p>
                         <p>Nombre del titular: <input className="inputBaseUser"  readonly="readonly" type="text" name="creditCardName"  value={user.creditCardName} size="34" lenght='30'></input></p>
                         <p>Fecha de expiración: <input className="inputBaseUser"  readonly="readonly" type="text" name="creditCardExpDate"  value={moment(user.creditCardExpDate).format('L')} size="34" lenght='30'></input></p>
@@ -238,7 +238,7 @@ const DataProfile = (props) => {
 
             </div>
         )
-    }else {
+    } else {
         return (
             <div>
                 <div className="tituloDataProfile"><h1>Editar datos del usuario</h1></div>
@@ -256,7 +256,7 @@ const DataProfile = (props) => {
     
 
                     <div className="infoUser2">
-                        <div className="botonEdit"><div className="sendButtonEdit"  onClick={(()=>saveData(1))}>Guardar</div></div>
+                        <div className="botonEdit"><div className="sendButtonEdit"  onClick={(()=>saveData("vistaLectura"))}>Guardar</div></div>
                         <p>Número de tarjeta:  </p>
                         <input className="inputBaseUser"   type="text" name="creditCardNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardNumber")} placeholder={user.creditCardNumber} size="34" lenght='30'></input>
                         <div>{errors.eCreditCardNumber}</div>

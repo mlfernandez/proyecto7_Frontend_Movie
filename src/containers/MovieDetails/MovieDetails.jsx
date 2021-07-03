@@ -29,7 +29,7 @@ const MovieDetails = (props) => {
 
       // comprobar validación de suscripcion previo a la compra
     } else if (moment(props.credentials.user.lastSuscriptionEnd).format('DD/MM/YYYY') < moment(Date.now()).format('DD/MM/YYYY')) {
-    console.log(props.credentials.user.lastSuscriptionEnd)
+    console.log(moment(props.credentials.user.lastSuscriptionEnd).format('DD/MM/YYYY'))
 
       notification.warning({message:'Atencion.',description: "Tienes la suscripción vencida."}); 
       history.push('/payment')
