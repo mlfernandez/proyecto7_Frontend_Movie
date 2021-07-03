@@ -61,7 +61,7 @@ const Payment = (props) => {
           setProfile(tipoVista); 
     
 
-            notification.success({message:'Atencion.',description: "Confirma la transacción."}); 
+            notification.success({message:'Atencion.',description: "Confirma el pago."}); 
 
             
 
@@ -104,13 +104,13 @@ const Payment = (props) => {
      
           setProfile(tipoVista); 
      
-            notification.success({message:'Atencion.',description: "Pago confirmado, gracias por seguir soriendo con nosotros."}); 
+            notification.success({message:'Atencion.',description: "Pago confirmado, gracias por seguir disfrutando con nosotros."}); 
 
             setTimeout(() => {
                 history.push('/datacontainer');
               }, 1500)
              
-      /*         window.location.reload(); */
+
 
 
         } catch (err) {
@@ -122,7 +122,7 @@ const Payment = (props) => {
     if (profile === "vistaNoPay") {
     return (
         <div className= "boxForm">
-            <div className= "boxFormPayment"> Pasarela de pago </div>
+            <div className= "boxFormPayment"> Confirmar la suscripción </div>
             
             <div id = "Botom"className="newUserBoton" onClick={()=>Update("vistaConfirm")}>Click aqui para renovar la suscripción</div>
 
@@ -135,7 +135,7 @@ const Payment = (props) => {
             <div className= "boxFormPayment"> Pasarela de pago </div>
             
 
-            <div id = "Botom"className="newUserBoton" onClick={()=>Pay()}>Confirmar</div>
+            <div id = "Botom"className="newUserBoton" onClick={()=>Pay()}>Confirmar Pago</div>
 
 
         </div>

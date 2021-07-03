@@ -235,7 +235,7 @@ const Register = () => {
 
         }
 
-
+        let errorMessage = checkError(datosUser);
        
          axios.post(("http://localhost:3005/users"), user)        
         .then(res => {

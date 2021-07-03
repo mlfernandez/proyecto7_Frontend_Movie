@@ -65,6 +65,37 @@
     justify-content: center;
 }
 
+.changePagesArrows {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.right {
+    cursor: pointer;
+    font-size: 2em;
+    padding: 1em;
+}
+
+.right:hover {
+    cursor: pointer;
+    color: #F02D3A;
+}
+
+.left {
+    cursor: pointer;
+    font-size: 2em;
+    padding: 1em;
+}
+
+.left:hover {
+    cursor: pointer;
+    color: #F02D3A;
+}
+
+
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 1920px) {

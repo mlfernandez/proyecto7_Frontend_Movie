@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./MenuLateral.scss";
 import { connect } from "react-redux";
-import { GETPROFILE, GETCOMINGSOON, GETORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, GETTOPRATED, GETALLUSERS, GETALLORDERS, UPDATEORDERS, UPDATEUSERS} from "../../redux/types";
+import { GETPROFILE, GETCOMINGSOON, GETORDER, ADMINMOVIE, SEARCHBY, GETSEARCH, GETTOPRATED, GETALLUSERS, GETALLORDERS, UPDATEORDERS, UPDATEUSERS, GETMOVIEBYID} from "../../redux/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCalendarWeek, faSearch, faEye, faUsers, faUserEdit, faEdit, faIdCard } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,6 +31,11 @@ const Menulateral = (props) => {
         props.dispatch({ type: GETSEARCH, payload: info });
 
         break;
+
+      case "getmoviebyid":
+        props.dispatch({ type: GETMOVIEBYID, payload: info });
+  
+        break;  
 
       case "getprofile":
         props.dispatch({ type: GETPROFILE, payload: info });
@@ -123,12 +128,14 @@ const Menulateral = (props) => {
       <div className="MenuLateralIcons">
         <FontAwesomeIcon className="iconMenuLateral" icon={faEye}/>
         <FontAwesomeIcon className="iconMenuLateral" icon={faUsers}/>
+        <FontAwesomeIcon className="iconMenuLateral" icon={faEye}/>
         <FontAwesomeIcon className="iconMenuLateral" icon={faEdit}/>
         <FontAwesomeIcon className="iconMenuLateral" icon={faIdCard}/>
       </div>
       <div className="MenuLateral">
         <div className="tituloVistaAdmin">Vista Administrador</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("getallusers") }>Encontrar Usuario</div>
+        <div className="botomMenuLateral"onClick={() => cambiaDatos("getmoviebyid") }>Películas por ID</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("getallorders")}>Todas las ordenes</div>
         <div className="botomMenuLateral"onClick={() => cambiaDatos("getprofile")}>Tu Perfil</div>
       </div>

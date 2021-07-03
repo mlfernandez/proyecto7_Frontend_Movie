@@ -1,16 +1,12 @@
-//Buscamos por titulo id gendre // no necesita login
-
 import React, { useEffect, useState } from "react";
 import './SearchBy.scss';
 import axios from "axios";
-import moment from "moment";
-import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
-import { GETSEARCH, MOVIE } from '../../redux/types';
+import { MOVIE } from '../../redux/types';
 import {useHistory} from 'react-router-dom';
-import unavailable from '../../images/unavailable.jpg'
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 
 const SearchBy = (props) => {
@@ -19,24 +15,30 @@ const SearchBy = (props) => {
 
     //hooks
     const [moviesSearch, setMoviesSearch] = useState([]); 
+        // creo el hooks para cambiar de pagina
+        const [page, setPage] = useState(1);
+        const [oldpage, setOldPage] = useState(1);
   
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
-  
+
     }, []);
   
-    //Equivalente a componentDidUpdate en componentes de clase
-    useEffect(() => {
-    });
-  
+    useEffect(()=> {
+
+        if(page !== oldpage){
+          setOldPage(page);
+          searchByFilterGenre();
+          searchByFilter();
+        }
+    
+      });
 
    //Guarda la movie en redux y nos lleva a la vista de película.
    const clickMovie = async (data) => {
     try{
 
       props.dispatch({type:MOVIE,payload: data});
-/*       props.dispatch({type:GETSEARCH,payload: data}); */
-
 
       history.push("/moviedetails")
 
@@ -46,7 +48,7 @@ const SearchBy = (props) => {
 
   }
 
-
+  // buscqueda por filtro de genero
   const searchByFilterGenre = async (opc) => {
 
     let genre = document.getElementById("genreList").value;        
@@ -56,7 +58,7 @@ const SearchBy = (props) => {
 
               try {
                   console.log("Entro en genre");
-                  let res2 = await axios.post('http://localhost:3005/movies/genre',body);
+                  let res2 = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=79a61f5dc13e3e9e4834fadbf4f326c7&language=en-US&with_genres=${genre}&page=${page}`)
                   console.log(res2.data.results);
                   setMoviesSearch(res2.data.results);
               } catch (error) {
@@ -69,20 +71,18 @@ const SearchBy = (props) => {
 
     const searchByFilter= async () => {  
    
-   
       let query = document.getElementById("searchByTitle").value;
 
       let body = {
         query : query
       }
 
-      if (document.getElementById("opciones").value === "title") {
+      
         try {var res = await axios.post('http://localhost:3005/movies/search/', body);
         console.log(res)
             
             let search = document.getElementById("opciones").value;
 
-
             setMoviesSearch(res.data.results)
             
 
@@ -90,31 +90,24 @@ const SearchBy = (props) => {
 
             console.log(err)
         }
-      }else if (document.getElementById("opciones").value === "id") {
-        try {var res = await axios.post('http://localhost:3005/movies/id', body);
-            
-            let search = document.getElementById("opciones").value;
-            let arrayMovie = [];
-            arrayMovie.push(res.data);    
-            setMoviesSearch(arrayMovie);
 
-        }catch (err){      
+    }
 
-            console.log(err)
-        }
+    
+// funcion para cambiar de pagina 
+const changePage = (operacion) => {
+    if (operacion === "+") {
+      let newPage = page + 1;
+  
+      setOldPage(page);
+      setPage(newPage);
+    } else if (operacion === "-" && page > 1) {
+      let newPage = page - 1;
+      setOldPage(page);
+      setPage(newPage);
+    }
+  };
 
-/*       } else if (document.getElementById("opciones").value === "actor") {
-        try {var res = await axios.post('http://localhost:3005/movies/actor', body);
-            
-            let search = document.getElementById("opciones").value
-
-            setMoviesSearch(res.data.results)
-
-        }catch (err){      
-
-            console.log(err)
-        } */
-    }}
 
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200"
@@ -132,9 +125,6 @@ const SearchBy = (props) => {
             <div className = "cardLoginSearch">
                 <select id = "opciones" className="input">
                     <option value="title">Por titulo</option>
-                    <option value="id">Por id</option>
-               {/*      <option value="actor">Por actor</option> */}
-                  
                 </select>
                 <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
                 Busqueda por genero:
@@ -173,10 +163,15 @@ const SearchBy = (props) => {
                     <img src={`${baseImgUrl}/${size}${act.poster_path}`} alt="poster" className="poster"/>
                 </div>
                    ))}
-
-     
-
             </div>
+            <div className="changePagesArrows">
+                <div className="left" onClick={() => changePage("-")}>
+                  <FontAwesomeIcon icon={faArrowLeft} />
+                </div>
+                <div className="right" onClick={() => changePage("+")}>
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </div>
+              </div> 
         </div>  
         </div> 
       );
@@ -197,9 +192,6 @@ const SearchBy = (props) => {
                         
                             <select id = "opciones" className="input">
                                 <option value="title">Por titulo</option>
-                                <option value="id">Por id</option>
-                       {/*          <option value="actor">Por actor</option> */}
-                
                             </select>
                             <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
                             <div className = "genreSearchTitle">Busqueda por genero:</div>

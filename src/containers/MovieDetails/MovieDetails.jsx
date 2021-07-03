@@ -92,6 +92,7 @@ const MovieDetails = (props) => {
   const size = "w200"
 
   console.log(props.movie)
+  if (!props.credentials.user.isAdmin) {
   if (props.movie?.id) {
 
     return (
@@ -123,7 +124,6 @@ const MovieDetails = (props) => {
 
         <div className="dataMovieBoton">
           <div onClick={() => history.push('/datacontainer')} className="botonIcon">{<FontAwesomeIcon icon={faArrowCircleLeft}/>}   Atrás</div>
-         {/*  <div onClick={() => history.push('/rentmovie')} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Alquilar</div> */}
           <div onClick={()=>AddToCart(props.movie?.id)} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>} Ver Ahora </div>
           <div>
 
@@ -137,6 +137,56 @@ const MovieDetails = (props) => {
     );
   } else {
   }
+
+} else {
+  if (props.movie?.id) {
+
+    return (
+      <div className="dataMovie">
+
+        <div className="dataMovieTitle">
+          <div className="iconDataMovie"><FontAwesomeIcon className="iconDataMovie" icon={faFilm}/></div> 
+          <div>{props.movie.title}</div>
+        </div>
+
+        <div className="infoDataMovie">
+          <div className="imgPoster">
+            <img
+              className="posterPath"
+              src={`${baseImgUrl}/${size}${props.movie.poster_path}`}
+              alt="Poster"
+            ></img>
+          </div>
+          <div className="infoMovie">
+            <div className="infoMovieOverview">
+              <div>{props.movie.overview}</div>
+            </div>
+            <div className="infoMovieIcon">
+              <FontAwesomeIcon className="iconDataMovie" icon={faStar}/>
+              <div>Puntuación: {props.movie.vote_average}</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="dataMovieBoton">
+          <div onClick={() => history.push('/datacontainer')} className="botonIcon">{<FontAwesomeIcon icon={faArrowCircleLeft}/>}   Atrás</div>
+
+          <div>
+
+
+            
+          </div>
+        </div>
+
+
+      </div>
+    );
+  } else {
+  }
+
+
+
+}
 };
 
 export default connect((state) => ({

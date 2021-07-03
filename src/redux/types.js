@@ -4,6 +4,7 @@ export const GETPROFILE = "getprofile";
 export const UPDATE = "update";
 export const USER = "user";
 
+export const GETMOVIEBYID = "getmoviebyid";
 export const GETTOPRATED = "gettoprated";
 export const GETCOMINGSOON = "getcomingsoon";
 export const GETSEARCH = "getsearch";
@@ -12,6 +13,7 @@ export const MOVIE = "movie"
 export const ORDER = "order";
 export const GETORDER = "getorder";
 export const DELETE = "delete";
+
 
 export const GETALLUSERS = "getallusers";
 export const UPDATEUSERS = "updateusers";

@@ -1,4 +1,4 @@
-import {ADMINMOVIE, ADMINUSER, DELETE, GETCOMINGSOON, GETTOPRATED, GETSEARCH, LOGIN, LOGOUT, GETPROFILE, GETORDER, GETALLORDERS, GETALLUSERS, UPDATEORDERS, UPDATEUSERS, FAQ} from '../types';
+import {ADMINMOVIE, ADMINUSER, DELETE, GETCOMINGSOON, GETTOPRATED, GETSEARCH, LOGIN, LOGOUT, GETPROFILE, GETORDER, GETALLORDERS, GETALLUSERS, GETMOVIEBYID, UPDATEORDERS, UPDATEUSERS, FAQ} from '../types';
 const initialState = 
     'gettoprated'
 ;
@@ -13,7 +13,9 @@ const tipodatosReducer = (state = initialState, action) => {
         case GETTOPRATED:
             return action.payload;   
         case GETCOMINGSOON:
-            return action.payload;                                   
+            return action.payload;    
+        case GETMOVIEBYID:
+            return action.payload;                                
         case GETSEARCH:
             return action.payload;     
         case GETALLUSERS:

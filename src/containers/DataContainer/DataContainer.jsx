@@ -9,6 +9,7 @@ import Shopping from '../../components/Shopping/Shopping';
 import DataProfile from '../../components/DataProfile/DataProfile';
 import DataAdminOrders from '../../components/DataAdminOrders/DataAdminOrders';
 import DataAdminUsers from '../../components/DataAdminUsers/DataAdminUsers';
+import DataAdminSearchMovie from '../../components/DataAdminSearchMovie/DataAdminSearchMovie';
 import Faq from '../../components/Faq/Faq';
 
 
@@ -46,6 +47,10 @@ const DataContainer = (props) => {
             case 'getallusers':
 
                 return <DataAdminUsers/>     
+
+            case 'getmoviebyid':
+
+                return <DataAdminSearchMovie/>        
 
             case 'faq':
 

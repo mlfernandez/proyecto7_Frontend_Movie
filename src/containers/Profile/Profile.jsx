@@ -10,6 +10,7 @@ import SearchBy from '../../components/SearchBy/SearchBy';
 import Shopping from '../../components/Shopping/Shopping';
 import DataAdminOrders from '../../components/DataAdminOrders/DataAdminOrders';
 import DataAdminUsers from '../../components/DataAdminUsers/DataAdminUsers';
+import DataAdminSearchMovie from '../../components/DataAdminSearchMovie/DataAdminSearchMovie';
 import Faq from '../../components/Faq/Faq';
 
 
@@ -46,6 +47,10 @@ const Profile = (props) => {
                 case 'getallusers':
     
                     return <DataAdminUsers/>   
+
+                case 'getmoviebyid':
+    
+                    return <DataAdminSearchMovie/>       
 
                 case 'faq':
     
