@@ -1,6 +1,6 @@
 import {ADMINMOVIE, ADMINUSER, DELETE, GETCOMINGSOON, GETTOPRATED, GETSEARCH, LOGIN, LOGOUT, GETPROFILE, GETORDER, GETALLORDERS, GETALLUSERS, UPDATEORDERS, UPDATEUSERS, FAQ} from '../types';
 const initialState = 
-    'getprofile'
+    'gettoprated'
 ;
 const tipodatosReducer = (state = initialState, action) => {
     switch(action.type){

@@ -35,7 +35,7 @@ const SearchBy = (props) => {
     try{
 
       props.dispatch({type:MOVIE,payload: data});
-      props.dispatch({type:GETSEARCH,payload: data});
+/*       props.dispatch({type:GETSEARCH,payload: data}); */
 
 
       history.push("/moviedetails")

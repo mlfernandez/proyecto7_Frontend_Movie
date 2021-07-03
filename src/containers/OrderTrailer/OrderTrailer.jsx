@@ -1,26 +1,28 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useState } from "react";
+import { useState, getState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import './IntroTrailer.scss';
+import './OrderTrailer.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft} from "@fortawesome/free-solid-svg-icons";
 
 
 
-const Trailer = (props) => {
+const OrderTrailer = (props) => {
 
   let history = useHistory();
   let token = props.credentials.token;
-  let movieId = props.movie?.id;
+  let idMovie = props.order?.idMovie
+console.log(props.order?.idMovie)
+
 
 
  
 
   const [videoTrailer, setVideoTrailer] = useState([]);
 
-  useEffect(() => {
+useEffect(() => {
     setTimeout(() => {
       video();
     }, 500);
@@ -31,7 +33,7 @@ const Trailer = (props) => {
   const video = async () => {
     try {
       let res = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US`);
+        `https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US`);
         setVideoTrailer(res.data.results);
     } catch (error) {
       console.log(error);
@@ -62,4 +64,5 @@ const Trailer = (props) => {
 export default connect((state) => ({
   credentials: state.credentials,
   movie: state.movie,
-}))(Trailer);
+  order: state.order,
+}))(OrderTrailer);

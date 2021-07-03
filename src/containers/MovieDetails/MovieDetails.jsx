@@ -55,6 +55,7 @@ const MovieDetails = (props) => {
           idMovie : props.movie?.id,
           titleMovie: props.movie.title,
           posterMovie: props.movie.poster_path,
+          trailer: props.movie.backdrop_path,
           rentalDate : rentalDate,
           returnDate : returnDate
         }
@@ -64,6 +65,8 @@ const MovieDetails = (props) => {
         
         let res = await axios.post('http://localhost:3005/orders',body,{headers:{'authorization':'Bearer ' + token}});
       
+        
+        
     
         setTimeout(() => {
           history.push('/introtrailer');
@@ -122,6 +125,11 @@ const MovieDetails = (props) => {
           <div onClick={() => history.push('/datacontainer')} className="botonIcon">{<FontAwesomeIcon icon={faArrowCircleLeft}/>}   Atrás</div>
          {/*  <div onClick={() => history.push('/rentmovie')} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>}   Alquilar</div> */}
           <div onClick={()=>AddToCart(props.movie?.id)} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>} Ver Ahora </div>
+          <div>
+
+
+            
+          </div>
         </div>
 
 

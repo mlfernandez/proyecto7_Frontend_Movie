@@ -9,7 +9,7 @@ export const GETCOMINGSOON = "getcomingsoon";
 export const GETSEARCH = "getsearch";
 export const MOVIE = "movie"
 
-
+export const ORDER = "order";
 export const GETORDER = "getorder";
 export const DELETE = "delete";
 

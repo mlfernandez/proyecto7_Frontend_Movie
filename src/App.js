@@ -10,6 +10,8 @@ import Profile from './containers/Profile/Profile';
 import MovieDetails from './containers/MovieDetails/MovieDetails';
 import IntroTrailer from './containers/IntroTrailer/IntroTrailer';
 import Payment from './containers/Payment/Payment';
+import OrderTrailer from './containers/OrderTrailer/OrderTrailer';
+
 
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
               <Route path="/moviedetails" exact component={MovieDetails}/>
               <Route path="/introtrailer" exact component={IntroTrailer}/>
               <Route path="/payment" exact component={Payment}/>
+              <Route path="/ordertrailer" exact component={OrderTrailer}/>
     
 
             </Switch>

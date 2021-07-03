@@ -3,18 +3,17 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import './IntroTrailer.scss';
+import './TrailerOrder.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft} from "@fortawesome/free-solid-svg-icons";
 
 
 
-const Trailer = (props) => {
+const TrailerOrder = (props) => {
 
   let history = useHistory();
   let token = props.credentials.token;
-  let movieId = props.movie?.id;
-
+  let movieId = props.order?.idMovie
 
  
 
@@ -62,4 +61,4 @@ const Trailer = (props) => {
 export default connect((state) => ({
   credentials: state.credentials,
   movie: state.movie,
-}))(Trailer);
+}))(TrailerOrder);
