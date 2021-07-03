@@ -1,14 +1,13 @@
-//Buscamos las peliculas top // no necesita login
-
 import React, { useEffect, useState } from "react";
-import './SearchTopRated.scss';
 import axios from "axios";
+import './SearchTopRated.scss';
 import { connect } from 'react-redux';
 import { MOVIE } from '../../redux/types';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import SpinnerGif from "../Spinner/Spinner";
 
 
 
@@ -86,11 +85,11 @@ const changePage = (operacion) => {
 
     if (moviesTopRate[0]?.id) {
       return (
-        <div className="titleSearch"> <h1>Las mejores valoradas</h1>
+        <div className="titleSearch"> <div className="titleSearchTopRated">Las mejores valoradas</div>
             <div className="boxCardSearch">
               {moviesTopRate.map((act, index) => (
                 <div className="cardMovie" onClick={()=> clickMovie(act)} key={index}>
-                    <img src={`${baseImgUrl}/${size}${act.poster_path}`}  alt="poster" className="poster"/>
+                    <img src={`${baseImgUrl}/${size}${act.poster_path}`}  alt={act.title} className="poster"/>
                 </div>
                    ))}
             </div>
@@ -106,7 +105,8 @@ const changePage = (operacion) => {
       );
     } else {
       return <div>
-          SPINNER</div>;
+        <SpinnerGif/>
+          </div>;
     }
 };
 

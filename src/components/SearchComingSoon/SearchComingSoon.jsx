@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
+import SpinnerGif from "../Spinner/Spinner";
 
 const SearchComingSoon = (props) => {
 
@@ -53,6 +53,8 @@ const SearchComingSoon = (props) => {
     const findComingSoon = async () => {  
     try{
       let res = await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=79a61f5dc13e3e9e4834fadbf4f326c7&language=en-US&page=${page}`);
+      
+
       setmoviesComingSoon(res.data.results); 
       
   }catch (err){      
@@ -85,11 +87,11 @@ const changePage = (operacion) => {
 
   if (moviesComingSoon[0]?.id) {
       return (
-        <div className="titleSearch"> <h1>Próximamente</h1>
+        <div className="titleSearch"> <div className="titleSearchSoon">Próximamente</div>
             <div className="boxCardSearch">
               {moviesComingSoon.map((act, index) => (
                 <div className="cardMovie" onClick={()=> clickMovie(act)} key={index}>
-                    <img src={`${baseImgUrl}/${size}${act.poster_path}`}  alt="poster" className="poster"/>
+                    <img src={`${baseImgUrl}/${size}${act.poster_path}`}  alt={act.title} className="poster"/>
                 </div>
                    ))}
             </div>
@@ -105,7 +107,8 @@ const changePage = (operacion) => {
       );
     } else {
       return <div>
-          SPINNER</div>;
+          <SpinnerGif/>
+          </div>;
     }
 }; 
 

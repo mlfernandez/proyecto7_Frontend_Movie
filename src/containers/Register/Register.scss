@@ -4,22 +4,65 @@
     align-items: center;
     justify-content: center;
     height: fit-content;
-    
-}
 
-
-.formulario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    border-radius: 5px;
-    color: white;
-    font-size: 14px;
-    margin-bottom: 2em;
-    height: 80vh;
-    margin-top: 1.5em;
+    .tituloFormRegistro {
+        font-weight: bold;
+        font-size: 2.5em;
+        font-family: $font2;
     
+    }
+
+    .formulario {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        border-radius: 5px;
+        color: white;
+        font-size: 14px;
+        margin-bottom: 2em;
+        height: 80vh;
+        margin-top: 1.5em;
+
+        .inputBase {
+            width: 100%;
+            height: 30px;
+            border-radius: 4px;
+            padding-left: 12px;
+            font-size: 14px;
+            font-weight: normal;
+            font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
+            border: 1px solid rgb(184, 196, 194);
+            transition: border-color 150ms ease-in-out 1s;
+            z-index: 1;
+            outline: none;
+            color: black;
+            background-color: rgb(255, 255, 255);
+            padding-right: 12px;      
+            margin:0.2em;
+        
+        }
+
+        input[type="date"]:not(.has-value):before{
+            color: grey;
+            content: attr(placeholder);
+            font-family: Arial, Helvetica, sans-serif;
+          }
+
+        .textoFormRegistro {
+
+        font-size: 1.5em;
+        font-family: $font1;
+        color: #F02D3A;
+        }  
+
+        
+    .demo{
+        font-size: 1.5em;
+        color: #e15554;
+    }
+
+    }
 }
 
 .newUserBoton {
@@ -35,56 +78,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
 
-.newUserBoton:hover {
-
-    background-color: $hovercolorY;
-    transition: 0.5s;
-    color:black;
-}  
-.inputBase {
-    width: 100%;
-    height: 30px;
-    border-radius: 4px;
-    padding-left: 12px;
-    font-size: 14px;
-    font-weight: normal;
-    font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
-    border: 1px solid rgb(184, 196, 194);
-    transition: border-color 150ms ease-in-out 1s;
-    z-index: 1;
-    outline: none;
-    color: black;
-    background-color: rgb(255, 255, 255);
-    padding-right: 12px;      
-    margin:0.2em;
-
+    &:hover {
+    
+        background-color: $hovercolorY;
+        transition: 0.5s;
+        color:black;
+    }  
 }
 
-input[type="date"]:not(.has-value):before{
-    color: grey;
-    content: attr(placeholder);
-    font-family: Arial, Helvetica, sans-serif;
-  }
 
 
 
-.demo{
-    font-size: 1.5em;
-    color: #e15554;
-}
 
-.tituloFormRegistro {
-    font-weight: bold;
-    font-size: 2.5em;
-    font-family: $font2;
 
-}
 
-.textoFormRegistro {
 
-    font-size: 1.5em;
-    font-family: $font1;
-    color: #F02D3A;
-}
+
+
+
+

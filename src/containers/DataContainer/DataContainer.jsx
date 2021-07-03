@@ -56,7 +56,6 @@ const DataContainer = (props) => {
 
                 return <Faq/>        
                 
-                
             default:
 
                 return <Faq/>

@@ -235,7 +235,7 @@ const Register = () => {
 
         }
 
-        let errorMessage = checkError(datosUser);
+        
        
          axios.post(("http://localhost:3005/users"), user)        
         .then(res => {
@@ -288,7 +288,6 @@ const Register = () => {
                     <option value="visa">Visa</option>
                     <option value="amex">Amex</option>
                     <option value="amex">Master</option>
-               {/*      <option value="actor">Por actor</option> */}
                   
                 </select>
                 <input className="inputBase" type="text" name="creditCardNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardNumber")} placeholder="Número de tarjeta de credito" size="34" lenght='30'></input>
@@ -299,8 +298,6 @@ const Register = () => {
                 <div>{errors.eCreditCardExpDate}</div>
                 <input className="inputBase" type="password" name="creditCardSecureCodeNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardSecureCodeNumber")} placeholder="Código de seguridad" size="34" lenght='30'></input>
                 <div>{errors.eCreditCardSecureCodeNumber}</div>
-
-
   
                                  
                 <div id = "newText"></div>    
@@ -308,9 +305,7 @@ const Register = () => {
 
                 <div className="flashcard">
                     <div className="demo">{newMessage} </div>
-   	            </div>    
-
-             
+   	            </div>     
 
             </div>
 

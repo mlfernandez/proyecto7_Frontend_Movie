@@ -15,9 +15,10 @@ const SearchBy = (props) => {
 
     //hooks
     const [moviesSearch, setMoviesSearch] = useState([]); 
-        // creo el hooks para cambiar de pagina
-        const [page, setPage] = useState(1);
-        const [oldpage, setOldPage] = useState(1);
+    
+    // creo el hooks para cambiar de pagina
+    const [page, setPage] = useState(1);
+    const [oldpage, setOldPage] = useState(1);
   
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
@@ -56,19 +57,18 @@ const SearchBy = (props) => {
         query : genre
     }
 
-              try {
-                  console.log("Entro en genre");
-                  let res2 = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=79a61f5dc13e3e9e4834fadbf4f326c7&language=en-US&with_genres=${genre}&page=${page}`)
-                  console.log(res2.data.results);
-                  setMoviesSearch(res2.data.results);
-              } catch (error) {
-          
-              }
-          
+        try {
+            console.log("Entro en genre");
+            let res2 = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=79a61f5dc13e3e9e4834fadbf4f326c7&language=en-US&with_genres=${genre}&page=${page}`)
+            console.log(res2.data.results);
+            setMoviesSearch(res2.data.results);
+        } catch (error) {
     
+        }
+  
 }
 
-
+//busqueda por título
     const searchByFilter= async () => {  
    
       let query = document.getElementById("searchByTitle").value;
@@ -117,18 +117,18 @@ const changePage = (operacion) => {
       return (
 
         <div>  
-        <div className = "vistaLoginShearch">
-        <div className = "loginCardSearch"> 
-            <div className = "cardLogin">
-                <input id= "searchByTitle" className="input" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
+        <div className = "vistaLoginSearchBy">
+        <div className = "loginCardSearchBy"> 
+            <div className = "cardLoginSearchBy">
+                <input id= "searchByTitle" className="inputSearchBy" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
             </div>
-            <div className = "cardLoginSearch">
-                <select id = "opciones" className="input">
+            <div className = "cardLoginSearchBy">
+                <select id = "opciones" className="inputSearchBy">
                     <option value="title">Por titulo</option>
                 </select>
-                <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
-                Busqueda por genero:
-                <select id="genreList" onChange={()=>searchByFilterGenre(document.getElementById("genreList").value)} className="input">
+                <div className = "sendButtonSearchBy" onClick={()=>searchByFilter()}>Buscar</div>
+                <div className = "titleSearchBy">Busqueda por genero:</div>
+                <select id="genreList" onChange={()=>searchByFilterGenre(document.getElementById("genreList").value)} className="inputSearchBy">
                             <option value="28">Acción</option>
                             <option value="12">Aventura</option>
                             <option value="16">Animacion</option>
@@ -156,11 +156,11 @@ const changePage = (operacion) => {
 
     </div>       
 
-        <div className="titleSearch"> <h1>Resultados</h1>
+        <div className="titleSearch"> <div className="titleSearchBy">Resultados</div>
             <div className="boxCardSearch">
               {moviesSearch.map((act, index) => (
-                <div className="cardMovie" onClick={()=> clickMovie(act)} key={index}>
-                    <img src={`${baseImgUrl}/${size}${act.poster_path}`} alt="poster" className="poster"/>
+                <div className="cardMovieSearchBy" onClick={()=> clickMovie(act)} key={index}>
+                    <img src={`${baseImgUrl}/${size}${act.poster_path}`} alt={act.title} className="poster"/>
                 </div>
                    ))}
             </div>
@@ -185,7 +185,7 @@ const changePage = (operacion) => {
                 <div className = "vistaLogin">
                     <div className = "loginCard"> 
                         <div className = "cardLogin">
-                        <div className = "genreSearchTitle">Busqueda por título o id:</div>
+                        <div className = "titleSearchBy">Busqueda por título o id:</div>
                             <input id= "searchByTitle" className="input" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
                         </div>
                         <div className = "cardLogin">
@@ -194,7 +194,7 @@ const changePage = (operacion) => {
                                 <option value="title">Por titulo</option>
                             </select>
                             <div className = "sendButton" onClick={()=>searchByFilter()}>Buscar</div>
-                            <div className = "genreSearchTitle">Busqueda por genero:</div>
+                            <div className = "titleSearchBy">Busqueda por genero:</div>
                             <select id="genreList" onChange={()=>searchByFilterGenre(document.getElementById("genreList").value)} className="input">
                                 <option value="28">Acción</option>
                                 <option value="12">Aventura</option>
