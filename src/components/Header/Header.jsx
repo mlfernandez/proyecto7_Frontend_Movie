@@ -27,8 +27,8 @@ const Header = (props) => {
     props.dispatch({ type: LOGOUTTIPODATOS });
     props.dispatch({ type: DELETE });
     setTimeout(() => {
-      history.push('/');
-    }, 500)
+      history.push('/datacontainer');
+    }, 1)
 
   }
 

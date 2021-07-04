@@ -119,6 +119,19 @@ If you want to know about the Phase I, you can see the backend repository here.
 * Alquileres en marcha.
 * Vista administrador de todos los alquileres de todos los usuarios.
 
+### Required endpoints
+
+Vista Registro de Usuario
+<br>
+<img src="src/images/videoRegistroUsuario.gif" alt="GitHub"/>
+<br>
+Vista Panel de Usuario
+<br>
+<img src="src/images/videoPanelUsuario.gif" alt="GitHub"/>
+<br>
+Vista Panel de Admin
+<br>
+<img src="src/images/videoPanelAdmin.gif" alt="GitHub"/>
 
 <a name="id6"></a>
 ***
