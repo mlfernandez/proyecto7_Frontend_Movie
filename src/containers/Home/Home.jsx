@@ -18,7 +18,7 @@ const Home = () => {
 
                 {        setTimeout(() => {
             history.push("/datacontainer")
-        }, 0)}
+        }, 30000)}
          
                 </div>
 

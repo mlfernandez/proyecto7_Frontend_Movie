@@ -2,12 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
 
 .cardNoActive {
-    
     background-color: red;
-
 }
-
-
 
 .cardAdmin {
     height: auto;
@@ -41,14 +37,15 @@
     background-color: #F0EC57;
     margin-bottom: 1em;
     padding: 1em;
+
+    &:hover{
+      background-color: grey;
+      cursor: pointer;
+      transition: 0.3s;
+  
+  }
 }
 
-.card:hover{
-    background-color: grey;
-    cursor: pointer;
-    transition: 0.3s;
-
-}
 
 .dataCard {
     background-color: black;
@@ -122,12 +119,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+      background: #e15554;
+      transition: 0.2s;
+    }
   }
   
-  .sendButton:hover {
-    background: #e15554;
-    transition: 0.2s;
-  }
   
   .nav {
     display: flex;
@@ -167,14 +165,17 @@
     background-color: #F0EC57;
     margin-bottom: 1em;
     padding: 1em;
+
+
+    &:hover{
+      background-color: #F02D3A;
+      cursor: pointer;
+      transition: 0.3s;
+      transform: scale(1.2) !important;
+  }
 }
 
-.cardMovie:hover{
-    background-color: #F02D3A;
-    cursor: pointer;
-    transition: 0.3s;
-    transform: scale(1.2) !important;
-}
+
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 1920px) {

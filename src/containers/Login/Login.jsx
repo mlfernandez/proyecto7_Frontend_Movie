@@ -7,8 +7,6 @@ import {LOGIN, LOGOUT} from '../../redux/types'
 import {notification} from 'antd';
 import { NavLink } from 'react-router-dom';
 
-/* import  Footer  from '../../components/Footer/Footer'; */
-
 
 const Login = (props) => {
 
@@ -110,7 +108,7 @@ const Login = (props) => {
                 </div>
         
             </div>   
-           {/*  <Footer/>  */}    
+      
         </div>
     )
 }

@@ -11,6 +11,7 @@ import MovieDetails from './containers/MovieDetails/MovieDetails';
 import IntroTrailer from './containers/IntroTrailer/IntroTrailer';
 import Payment from './containers/Payment/Payment';
 import OrderTrailer from './containers/OrderTrailer/OrderTrailer';
+import About from './containers/About/About';
 
 
 
@@ -31,6 +32,7 @@ function App() {
               <Route path="/introtrailer" exact component={IntroTrailer}/>
               <Route path="/payment" exact component={Payment}/>
               <Route path="/ordertrailer" exact component={OrderTrailer}/>
+              <Route path="/about" exact component={About}/>
     
 
             </Switch>

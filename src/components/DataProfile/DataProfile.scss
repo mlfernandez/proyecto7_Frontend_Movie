@@ -2,6 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
 
 
+.tituloDataProfile{
+    margin-bottom: 1em;
+    font-family: 'Antonio', sans-serif;
+    font-size: 28px;
+    text-align: center;
+}
 
 .boxDataProfileUser{
     display: flex;
@@ -10,21 +16,19 @@
     flex-direction: row;
     border: 0.2em solid grey;    
     border-radius: 1em;
-    transition: 0.3s;
-    /* box-shadow:  5px 5px 5px 2px grey; */
-    width: fit-content;
+    width: 60vw;
     font-size: 0.8em;
     background-color: black;
     margin-bottom: 8em;
     padding: 1em;
     height: fit-content;
-    align-content: flex-end;
+
 
 }
 
 .infoUser1{
     height: fit-content;
-    width: fit-content;  
+    width: 60vh;  
     display: flex;
     align-items:center;
     flex-direction: column;  
@@ -32,60 +36,13 @@
     background-color: black; 
     border-radius: 1em 0 0 1em;
     justify-content: space-evenly;
-    align-content: center;
     padding-right: 0.5em;
 }
-    p {
-        font-size: 18px;
-    }
-.fotoUserProfile{
-    height: fit-content;
-    width: fit-content;
-    align-items: center;
-    justify-content: center;
-    display: flex;
 
-} 
-
-.img {
-    align-content: center;
-    text-align: center;
-    justify-content: center;
-    padding-right: 2em;
-    width: 15vw;
-  
-}
-
-.botonEdit{
-    height: 32.29vh;
-    width: auto;
-    display: inline;
-
-    
-}
-
-#foto{
-    height: 20vh;
-    width: 20vw; 
-    border-radius: 1.5em; 
-
-}
-
-.infoUser2Titulos
-{
-    height: 50vh;
-    width: auto;  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;  
-    background-color: black; 
-  
-}
 
 .infoUser2{
     height: fit-content;
-    width: auto;    
+    width: 60vh;    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,23 +51,21 @@
     padding-left: 0.5em;
   
 }
-.infoUser3{
-    height: 50vh;
-    width: -webkit-fill-available;    
-    display: flex;
+
+.fotoUserProfile{
+    height: fit-content;
+    width: fit-content;
     align-items: center;
     justify-content: center;
-    flex-direction: column;  
-    background-color: black; 
-    border-radius: 0 1em 1em 0;
-}
+    display: flex;
+} 
 
 .inputBaseUser{
-    width: 35vh;
+    width: 50vh;
     height: 36px;
     border-radius: 4px;
     padding-left: 12px;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: normal;
     font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
     border: 1px solid rgb(184, 196, 194);
@@ -124,24 +79,42 @@
     display: flex;
 }
 
-.titulosInfoUser {
-    border-radius: 1em;
-    width: max-content;
-    height: 36px;
-    margin-bottom: 0.4em;
-    margin-left: 0.5em;
-    font-weight: bold;
-    padding-top: 0.2em;
-    font-size: 15px;
+.inputBlank {
 
+    width: 50vh;
+    height: 36px;
+    border-radius: 4px;
+    padding-left: 12px;
+    font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
+    border: 1px solid black;
+    padding-right: 12px;
+    margin-bottom: 0.4em;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
-.tituloDataProfile{
-    margin-bottom: 0;
-    font-family: 'Antonio', sans-serif;
+p {
     font-size: 20px;
+}
+
+.img {
+    align-content: center;
     text-align: center;
-    /* margin-left: 7em; */
+    justify-content: center;
+    padding-right: 2em;
+    width: 15vw;
+  
+}
+
+.botonEdit{
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    padding-right: 2em;
+    height: 20vh;
+    width: 20vw; 
+    display: flex;
 }
 
 .sendButtonEdit {
@@ -156,11 +129,27 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 2em;
+    height: fit-content;
     margin-top: 6em;
+    height: 5vh;
+    width: 10vw; 
+
+    &:hover {
+        background: #e15554;
+        transition: 0.2s;
+      }
+
   }
+
+
+#foto{
+    height: 20vh;
+    width: 20vw; 
+    border-radius: 1.5em; 
+}
+
+
+
+
+
   
-  .sendButtonEdit:hover {
-    background: #e15554;
-    transition: 0.2s;
-  }

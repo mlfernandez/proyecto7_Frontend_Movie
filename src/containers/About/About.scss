@@ -1,0 +1,17 @@
+.AboutDiv {
+    display: flex;
+    align-items: center !important;
+    width: 100% !important;
+    justify-content: center !important;
+    align-content: center !important;
+
+    .AboutBox {
+
+        display: flex;
+        align-items: center !important;
+        width: 80% !important;
+        justify-content: center !important;
+        align-content: center !important;
+
+    }
+}

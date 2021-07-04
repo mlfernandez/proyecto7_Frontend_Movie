@@ -1,12 +1,12 @@
 
-import './DataProfile.scss';
-import PhotoProfile from '../../images/profilelogo.png'
-import moment from 'moment';
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import {LOGIN, UPDATE} from '../../redux/types'
-import {Input, notification} from 'antd';
+import { UPDATE } from '../../redux/types'
+import { Input, notification } from 'antd';
+import './DataProfile.scss';
+import PhotoProfile from '../../images/profilelogo.png'
+import moment from 'moment';
 
 
 
@@ -16,12 +16,10 @@ const DataProfile = (props) => {
         const [profile, setProfile] = useState([]); 
         const [datosUser, setDatosUser] = useState(
             {
-
                 creditCardNumber: props.credentials.user.creditCardNumber,
                 creditCardName: props.credentials.user.creditCardName,
                 creditCardExpDate: props.credentials.user.creditCardExpDate,
                 creditCardSecureCodeNumber: props.credentials.user.creditCardSecureCodeNumber,
-
         });        
 
 
@@ -65,43 +63,6 @@ const DataProfile = (props) => {
 
     const checkError = (arg) => {
         switch (arg){
-            case 'name':
-
-                
-                if(datosUser.name.length < 1){
-                    setErrors({...errors, eName: 'El campo nombre no puede estar vacío.'});
-                }else if(datosUser.name.length < 2){
-                    setErrors({...errors, eName: 'El nombre debe de tener al menos 2 caracteres'});
-                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.name) ) {
-                    setErrors({...errors, eName: 'Introduce el formato de nombre valido'}); 
-                }else{
-                    setErrors({...errors, eName: ''});
-                }
-            break;
-
-            case 'last_name1':   
-                if(datosUser.last_name1.length < 1){
-                    setErrors({...errors, eLast_name1: 'El campo Apellido no puede estar vacío.'});
-                }else if (datosUser.last_name1.length < 2){
-                    setErrors({...errors, eLast_name1: 'El apellido debe de tener al menos 2 caracteres'});
-                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.last_name1) ) {
-                    setErrors({...errors, eLast_name1: 'Introduce el formato de apellido valido'});     
-                }else{
-                    setErrors({...errors, eLast_name1: ''});
-                }  
-            break;
-
-            case 'last_name2':    
-                if(datosUser.last_name2.length < 1){
-                    setErrors({...errors, eLast_name2: 'El campo Apellido no puede estar vacío.'});
-                }else if (datosUser.last_name2.length < 2){
-                    setErrors({...errors, eLast_name2: 'El apellido debe de tener al menos 2 caracteres'});
-                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.last_name2) ) {
-                    setErrors({...errors, eLast_name2: 'Introduce el formato de apellido valido'});     
-                }else{
-                    setErrors({...errors, eLast_name2: ''});
-                }   
-        break;
 
             case 'creditCardName':
                 
@@ -209,7 +170,7 @@ const DataProfile = (props) => {
     if (profile === "vistaLectura") {
         return (
             <div>
-                <div className="tituloDataProfile"><h1>Perfil del usuario</h1></div>
+                <div className="tituloDataProfile">Perfil del usuario</div>
                 <div className="boxDataProfileUser">
 
                     <div className="infoUser1">
@@ -226,6 +187,7 @@ const DataProfile = (props) => {
                     <div className="infoUser2">
                     
                         <div className="botonEdit"><div className="sendButtonEdit" onClick={(()=>changeState("vistaEdicion"))}>Editar</div></div>
+                        <div className="inputBlank"><p>Datos de pago se pueden editar.</p></div>
                         <p>Número de tarjeta: <input className="inputBaseUser"  readonly="readonly" type="text" name="creditCardNumber"  value={user.creditCardNumber} size="34" lenght='30'></input></p>
                         <p>Nombre del titular: <input className="inputBaseUser"  readonly="readonly" type="text" name="creditCardName"  value={user.creditCardName} size="34" lenght='30'></input></p>
                         <p>Fecha de expiración: <input className="inputBaseUser"  readonly="readonly" type="text" name="creditCardExpDate"  value={moment(user.creditCardExpDate).format('L')} size="34" lenght='30'></input></p>
@@ -257,6 +219,7 @@ const DataProfile = (props) => {
 
                     <div className="infoUser2">
                         <div className="botonEdit"><div className="sendButtonEdit"  onClick={(()=>saveData("vistaLectura"))}>Guardar</div></div>
+                        <div className="inputBlank"><p>Datos de pago se pueden editar.</p></div>
                         <p>Número de tarjeta:  </p>
                         <input className="inputBaseUser"   type="text" name="creditCardNumber" onChange={updateFormulario} onBlur={()=>checkError("creditCardNumber")} placeholder={user.creditCardNumber} size="34" lenght='30'></input>
                         <div>{errors.eCreditCardNumber}</div>

@@ -78,12 +78,12 @@ const DataAdminSearchMovie = (props) => {
       return (
 
         <div>  
-        <div className = "vistaLoginShearch">
-        <div className = "loginCardSearch"> 
-            <div className = "cardLogin">
+        <div className = "vistaLoginSearchMovieAdmin">
+        <div className = "loginCardSearchMovieAdmin"> 
+            <div className = "cardLoginMovieAdmin">
                 <input id= "searchByTitle" className="input" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
             </div>
-            <div className = "cardLoginSearch">
+            <div className = "cardLoginMovieAdmin">
                 <select id = "opciones" className="input">
                     <option value="id">Por id</option>
                 </select>
@@ -96,7 +96,7 @@ const DataAdminSearchMovie = (props) => {
 
     </div>       
 
-        <div className="titleSearch"> <h1>Resultados</h1>
+        <div className="titleSearch"> <div className = "nombreDataRoomAdmin">Resultados</div>
             <div className="boxCardSearch">
               {moviesSearch.map((act, index) => (
                 <div className="cardMovie" onClick={()=> clickMovie(act)} key={index}>
@@ -116,12 +116,12 @@ const DataAdminSearchMovie = (props) => {
             <div>          
 
                 <div className = "vistaLogin">
-                    <div className = "loginCard"> 
-                        <div className = "cardLogin">
-                        <div className = "genreSearchTitle">Busqueda por id:</div>
+                    <div className = "loginCardSearchMovieAdmin"> 
+                        <div className = "cardLoginMovieAdmin">
+                        <div className = "nombreDataRoomAdmin">Busqueda por id:</div>
                             <input id= "searchByTitle" className="input" type="text" name="text" placeholder="Buscar" size="40" lenght='30'></input>     
                         </div>
-                        <div className = "cardLogin">
+                        <div className = "cardLoginMovieAdmin">
                         
                             <select id = "opciones" className="input">
                                 <option value="id">Por id</option>

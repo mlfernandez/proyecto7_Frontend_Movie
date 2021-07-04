@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import './Shopping.scss';
 import axios from "axios";
 import { connect } from 'react-redux';
-import {notification} from 'antd';
-import {useHistory} from "react-router";
+import { notification }  from 'antd';
+import { useHistory } from "react-router";
 import { MOVIE, ORDER } from '../../redux/types';
+import SpinnerGif from "../Spinner/Spinner";
 
 
 const Shopping = (props) => {
@@ -29,7 +30,6 @@ const Shopping = (props) => {
         
         let idOrder = data
         let token = props.credentials.token;
-        console.log(data, "esto es el id de orden")
 
         
       let body = {
@@ -38,13 +38,9 @@ const Shopping = (props) => {
 
       let res = await axios.post('http://localhost:3005/orders/id',body,{headers:{'authorization':'Bearer ' + token}});
 
-    console.log(res.data, "tengo los datos de la orden")
-    console.log(res.data.trailer, "tengo los datos de la orden")
     
     let trailer = res.data.trailer;
     let idMovie = res.data.idMovie
-    console.log(trailer, "que tengo aca")
-    console.log(idMovie, "que tengo aca")
 
  
 
@@ -91,7 +87,7 @@ const Shopping = (props) => {
 
    if (orders[0]?.id) {
       return (
-        <div className="nombreDataRoom"> <h1>MIS PELICULAS</h1>
+        <div className="nombreDataRoom"> <div className="titleShopping">Mis películas</div>
 
             <div className="boxCardDataRoom">
               {orders.map((act, index) => (
@@ -105,8 +101,8 @@ const Shopping = (props) => {
       );
     } else {
       return <div>
-                
-        </div>        
+      <SpinnerGif/>
+      </div>;    
 
     }
 };

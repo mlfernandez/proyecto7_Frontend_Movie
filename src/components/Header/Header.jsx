@@ -58,6 +58,9 @@ const Header = (props) => {
         <div className="blank"></div>
 
         <div className="NavMenu" >
+        <div className="NavLink">
+            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/about">About</NavLink>
+          </div>
           <div className="NavLink">
             <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/register">Registrarse</NavLink>
           </div>
@@ -77,9 +80,15 @@ const Header = (props) => {
         <div className="blank"></div>
         <div className="NavMenu">
           <div className="NavLink">
+            
+            <div className="NavLink">
+              <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/about">About</NavLink>
+            </div>
+            
             <div className="NavLink">
               <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} onClick={()=>logOut()} to="/">Logout</NavLink>
             </div>
+
             <div className="NavLink" activeClassName="selected">
 
 

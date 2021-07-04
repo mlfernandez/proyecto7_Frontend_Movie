@@ -2,14 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import "./MovieDetails.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft, faCartPlus, faFilm, faStar, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { MOVIE, GETORDER } from "../../redux/types";
 import moment from "moment";
-import {message} from 'antd'
 import 'antd/dist/antd.css'
-import {notification} from 'antd';
+import { notification}  from 'antd';
+import "./MovieDetails.scss";
 
 const MovieDetails = (props) => {
   let history = useHistory();
@@ -47,8 +45,6 @@ const MovieDetails = (props) => {
         let rentalDate = Date.now();
         let returnDate = moment(rentalDate).add(2, 'day').format('YYYY/MM/DD'); 
    
-        
-        console.log(returnDate)
   
         let body = {
           idUser : idUser,
@@ -60,8 +56,7 @@ const MovieDetails = (props) => {
           returnDate : returnDate
         }
   
-        console.log()
-      
+    
         
         let res = await axios.post('http://localhost:3005/orders',body,{headers:{'authorization':'Bearer ' + token}});
       
@@ -125,10 +120,7 @@ const MovieDetails = (props) => {
         <div className="dataMovieBoton">
           <div onClick={() => history.push('/datacontainer')} className="botonIcon">{<FontAwesomeIcon icon={faArrowCircleLeft}/>}   Atrás</div>
           <div onClick={()=>AddToCart(props.movie?.id)} className="botonIcon">{<FontAwesomeIcon icon={faCartPlus}/>} Ver Ahora </div>
-          <div>
-
-
-            
+          <div> 
           </div>
         </div>
 

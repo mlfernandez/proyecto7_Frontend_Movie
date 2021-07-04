@@ -75,7 +75,7 @@ const DataAdminUsers = (props) => {
     
 
    if (users?.id != undefined) {
-     console.log("hola")
+  
       return (
         <div>  
           <div className = "vistaLoginShearch">

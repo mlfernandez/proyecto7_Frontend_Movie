@@ -94,8 +94,6 @@ const Register = () => {
 
             case 'creditCardExpDate':
 
-/*                 let today = moment(new Date()).format('MM/YYYY');
-                let someday = moment(datosUser.creditCardExpDate).format('MM/YYYY') */
              
                 var d = new Date();
                 var currentYear = d.getFullYear();
