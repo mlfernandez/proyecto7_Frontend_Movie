@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+
+
+
+.newUserBoton {
+    position: relative;
+    margin: 15px 0 5px 0;
+    background: #F02D3A;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.newUserBoton:hover {
+
+    background-color: #F0EC57;
+    transition: 0.5s;
+    color:black;
+}  
+
+
+.boxFormPayment {
+
+    margin-top: 10em;
+    font-weight: bold;
+    font-size: 21px;
+    font-family: 'Antonio', sans-serif;
+    margin-top: 2em;
+    margin-bottom: 1em;
+
+}

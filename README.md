@@ -1,70 +1,155 @@
-# Getting Started with Create React App
+<a name="top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<h1 align="center" >Front Rental Movie</h1>
 
-In the project directory, you can run:
+<p align="center">
+  <img src="src/images/logosmall.png" alt="Smile" width="350"/>
+</p>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+<br/>
+<br/>
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+:speech_balloon: [About](#id1)   
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+:hammer: [Tools](#id2)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+:clipboard: [Instructions](#id3)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+:eye_speech_bubble: [Phase I - Creating the Backend](#id4)
 
-### `npm run eject`
+:eye_speech_bubble: [Phase II - Creating the Frontend](#id5)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+:collision: [Coming Soon](#id7)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+:smile: [Thanks](#id8)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<a name="id1"></a>
+## **About**
 
-## Learn More
+This is the frontend for a future movie rental application.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Currently, the search for movies and series is being carried out by connecting to the free API the Movie Database.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is part of the [GeeksHubs Academy](https://bootcamp.geekshubsacademy.com/) Full Stack Developer Bootcamp. 
 
-### Code Splitting
+---
+**Phase I**
+Backend - If you want to see the repository visit:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Phase II**
+**Start date:** 21 / Jun /2021
+**Deadline:** 07 / Jul / 2021
 
-### Analyzing the Bundle Size
+**Contributors:**
+* [Mariana Fernández Sacristán](https://github.com/mlfernandez)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+<a name="id2"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## **Tools**
 
-### Advanced Configuration
+To create this project we worked with these tools and technologies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+| <img src="src/images/logovisual.png" alt="Visual" width="30"/> | Visual Studio Code |
 
-### Deployment
+| <img src="src/images/javascript2.png" alt="JavaScript" width="30"/> | JavaScript | 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+| <img src="src/images/nodejs.png" alt="HTML5" width="30"/> | NODE JS & EXPRESS |
 
-### `npm run build` fails to minify
+| <img src="src/images/axios.png" alt="CSS3" width="30"/> | AXIOS | 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| <img src="src/images/git.png" alt="Git" width="30"/> | Git |
+
+| <img src="src/images/github2.png" alt="GitHub" width="30"/> | GitHub | 
+
+| <img src="src/images/tmd.jpg" alt="GitHub" width="30"/> | The Movie Database API | 
+
+| <img src="src/images/react.png" alt="GitHub" width="30"/> | React | 
+
+| <img src="src/images/redux.jpg" alt="GitHub" width="30"/> | Redux | 
+
+| <img src="src/images/sequelize.png" alt="GitHub" width="30"/> | Sequelize | 
+
+| <img src="src/images/sass.png" alt="GitHub" width="30"/> | Sass | 
+
+
+
+<a name="id3"></a>
+***
+## **Instructions**
+
+
+<h3> Starting the project </h3>
+   
+We need to install:
+
+```javascript
+npx create-react-app "name"
+npm i react-router-dom
+npm i --save redux
+npm install --save react-redux
+npm i --save redux-localstorage-simple
+npm i axios
+```
+
+
+<a name="id4"></a>
+## Phase I Creating the Backend
+
+If you want to know about the Phase I, you can see the backend repository here.
+
+
+<a name="id5"></a>
+## Phase II - Creating the Frontend
+### Required endpoints
+
+* Usuario login/logout.
+* Vista área cliente.
+* Alquier película.
+* Busqueda pelicula por título y genero.
+* Alquileres en marcha.
+* Vista administrador de todos los alquileres de todos los usuarios.
+
+### Required endpoints
+
+##### Vista Registro de Usuario
+<br>
+<br>
+<img src="src/images/videoRegistroUsuario.gif" alt="GitHub"/>
+<br>
+<br>
+##### Vista Panel de Usuario
+<br>
+<img src="src/images/videoPanelUsuario.gif" alt="GitHub"/>
+<br>
+<br>
+##### Vista Panel de Admin
+<br>
+<img src="src/images/videoPanelAdmin.gif" alt="GitHub"/>
+
+<a name="id6"></a>
+***
+## **Coming Soon**
+
+* Deploy with Heroku.
+
+
+<a name="id7"></a>
+***
+## **Thanks**
+
+I would like to thank all my partners, always ready to solve doubts. 
+
+<br>
+<br>
+
+[UP](#top)
