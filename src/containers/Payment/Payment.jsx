@@ -17,10 +17,8 @@ const Payment = (props) => {
     const [profile, setProfile] = useState([]); 
     const [datosUser, setDatosUser] = useState(
         {
-
             lastSuscriptionBegin: props.credentials.user.lastSuscriptionBegin,
             lastSuscriptionEnd: props.credentials.user.lastSuscriptionEnd,
-
 
     });      
 
@@ -57,6 +55,9 @@ const Payment = (props) => {
        
              props.dispatch({type:UPDATE,payload:data});
             
+
+
+             
      
           setProfile(tipoVista); 
     
