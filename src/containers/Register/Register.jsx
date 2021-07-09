@@ -233,7 +233,9 @@ const Register = () => {
 
         }
        
-         axios.post(("http://localhost:3005/users"), user)        
+/* axios.post(("http://localhost:3005/users"), user)   */
+     
+         axios.post(("http://https://movieapp-mlf.herokuapp.com/users"), user)        
         .then(res => {
             notification.success({message:'Usuario registrado.',description: "Te hemos enviado un email para activar la cuenta." });
 
