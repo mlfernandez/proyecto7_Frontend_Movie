@@ -43,7 +43,7 @@ const DataAdminUsers = (props) => {
         try{ 
 
 
-            var res = await axios.get(`http://localhost:3005/users/email/${email}`,{headers:{'authorization':'Bearer ' + email}});
+            var res = await axios.get(`https://movieapp-mlf.herokuapp.com/users/email/${email}`,{headers:{'authorization':'Bearer ' + email}});
 
             console.log(res.data)
 
@@ -58,7 +58,7 @@ const DataAdminUsers = (props) => {
 
         try{ 
     
-            var res = await axios.get(`http://localhost:3005/users/dni/${dni}`,{headers:{'authorization':'Bearer ' + dni}});
+            var res = await axios.get(`https://movieapp-mlf.herokuapp.com/users/dni/${dni}`,{headers:{'authorization':'Bearer ' + dni}});
 
             console.log(res.data)
 

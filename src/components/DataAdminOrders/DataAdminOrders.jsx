@@ -35,7 +35,7 @@ const DataAdminOrders = (props) => {
   
 
     
-        var res = await axios.post('http://localhost:3005/orders/active',{headers:{'authorization':'Bearer ' + token}});
+        var res = await axios.post('https://movieapp-mlf.herokuapp.com/orders/active',{headers:{'authorization':'Bearer ' + token}});
 
         
         setOrders(res.data);
@@ -51,7 +51,7 @@ const DataAdminOrders = (props) => {
     try{      
 
 
-      var res = await axios.post('http://localhost:3005/orders/noactive',{headers:{'authorization':'Bearer ' + token}});
+      var res = await axios.post('https://movieapp-mlf.herokuapp.com/orders/noactive',{headers:{'authorization':'Bearer ' + token}});
 
     
       setOrders(res.data);

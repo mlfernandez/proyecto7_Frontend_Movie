@@ -36,7 +36,7 @@ const Shopping = (props) => {
         idOrder: idOrder        
       }
 
-      let res = await axios.post('http://localhost:3005/orders/id',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('https://movieapp-mlf.herokuapp.com/orders/id',body,{headers:{'authorization':'Bearer ' + token}});
 
     
     let trailer = res.data.trailer;
@@ -67,7 +67,7 @@ const Shopping = (props) => {
         idUser: idUser        
       }
 
-      let res = await axios.post('http://localhost:3005/orders/userid',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('https://movieapp-mlf.herokuapp.com/orders/userid',body,{headers:{'authorization':'Bearer ' + token}});
 
 
       setOrders(res.data);

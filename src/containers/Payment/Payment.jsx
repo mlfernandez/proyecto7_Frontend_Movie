@@ -44,7 +44,7 @@ const Payment = (props) => {
                 lastSuscriptionEnd :lastSuscriptionEnd
             }
 
-            let res = await axios.post('http://localhost:3005/users/suscription',body,{headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.post('https://movieapp-mlf.herokuapp.com/users/suscription',body,{headers:{'authorization':'Bearer ' + token}});
 
             let data = {
                 token: token,
@@ -90,7 +90,7 @@ const Payment = (props) => {
                 lastSuscriptionEnd :lastSuscriptionEnd
             }
 
-            let res = await axios.post('http://localhost:3005/users/suscription',body,{headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.post('https://movieapp-mlf.herokuapp.com/users/suscription',body,{headers:{'authorization':'Bearer ' + token}});
 
             let data = {
                 token: token,

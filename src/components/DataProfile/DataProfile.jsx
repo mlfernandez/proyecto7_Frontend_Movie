@@ -142,7 +142,7 @@ const DataProfile = (props) => {
             
         }
 
-        let res = await axios.post('http://localhost:3005/users/update',body,{headers:{'authorization':'Bearer ' + token}});
+        let res = await axios.post('https://movieapp-mlf.herokuapp.com/users/update',body,{headers:{'authorization':'Bearer ' + token}});
         console.log(res.data)    
 
 

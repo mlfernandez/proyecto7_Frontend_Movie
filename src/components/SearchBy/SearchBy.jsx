@@ -78,7 +78,7 @@ const SearchBy = (props) => {
       }
 
       
-        try {var res = await axios.post('http://localhost:3005/movies/search/', body);
+        try {var res = await axios.post('https://movieapp-mlf.herokuapp.com/movies/search/', body);
         console.log(res)
             
             let search = document.getElementById("opciones").value;

@@ -51,7 +51,7 @@ const DataAdminSearchMovie = (props) => {
       }
 
       
-      try {var res = await axios.post('http://localhost:3005/movies/id', body);
+      try {var res = await axios.post('https://movieapp-mlf.herokuapp.com/movies/id', body);
         console.log(res)
             
         let search = document.getElementById("opciones").value;

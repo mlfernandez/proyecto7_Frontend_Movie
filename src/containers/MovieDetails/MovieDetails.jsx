@@ -58,7 +58,7 @@ const MovieDetails = (props) => {
   
     
         
-        let res = await axios.post('http://localhost:3005/orders',body,{headers:{'authorization':'Bearer ' + token}});
+        let res = await axios.post('https://movieapp-mlf.herokuapp.com/orders',body,{headers:{'authorization':'Bearer ' + token}});
       
         
         
