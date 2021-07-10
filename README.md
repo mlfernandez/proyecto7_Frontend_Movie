@@ -25,7 +25,7 @@
 
 :eye_speech_bubble: [Phase II - Creating the Frontend](#id5)
 
-:collision: [Coming Soon](#id7)
+:collision: [Deploy](#id7)
 
 :smile: [Thanks](#id8)
 
@@ -140,9 +140,17 @@ If you want to know about the Phase I, you can see the backend repository here.
 
 <a name="id6"></a>
 ***
-## **Coming Soon**
+## **Deploy**
 
-* Deploy with Heroku.
+Frontend deployed AWS: https://develop.dm173yk4p8h0x.amplifyapp.com/
+
+Admin Login: 
+email: mariana@gmail.com
+password: 123456
+
+User Login:
+email: pedro@gmail.com
+password: 123456
 
 
 <a name="id7"></a>
