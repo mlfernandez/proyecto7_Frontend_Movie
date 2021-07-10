@@ -14,7 +14,7 @@ const Home = () => {
 
             <div>     
     
-            <iframe src="https://player.vimeo.com/video/569479357?autoplay=1&amp;badge=0&amp;player_id=0&amp;app_id=58479" width="854" height="480" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Todos moriran trailer"></iframe>
+            <iframe src="https://player.vimeo.com/video/569479357?autoplay=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="854" height="480" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Todos moriran trailer"></iframe>
             
             { setTimeout(() => {
                 history.push("/datacontainer")
