@@ -13,12 +13,16 @@ const Home = () => {
     return (
         <div className="HomeDiv">
 
-            <div>        
-                <Video/>
+            <div>     
+            <iframe src="https://player.vimeo.com/video/569479357?autoplay=1" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    
+        
+            
+               {/*  <Video/> */}
 
-                {        setTimeout(() => {
-            history.push("/datacontainer")
-        }, 30000)}
+            { setTimeout(() => {
+                history.push("/datacontainer")
+                }, 30000)}
          
                 </div>
 
