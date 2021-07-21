@@ -15,7 +15,6 @@ const Payment = (props) => {
 
     //Hooks
     const [profile, setProfile] = useState([]); 
-    const [test, setTest] = useState([]); 
     const [datosUser, setDatosUser] = useState(
         {
             lastSuscriptionBegin: props.credentials.user.lastSuscriptionBegin,
@@ -27,12 +26,8 @@ const Payment = (props) => {
      useEffect(() => {
        setProfile("vistaNoPay");
       }, []); 
-
-      useEffect(() => {
-        console.log(test, "test")
-       }); 
     
-      /* const Update = async (tipoVista) => {
+      const Update = async (tipoVista) => {
     
         try {
 
@@ -51,14 +46,14 @@ const Payment = (props) => {
 
             let res = await axios.post('https://movieapp-mlf.herokuapp.com/users/suscription',body,{headers:{'authorization':'Bearer ' + token}});
 
-            let data2 = {
+            let data = {
                 token: token,
                 user : res.data,
                 idUser: idUser,
             }
 
        
-             props.dispatch({type:UPDATE,payload:data2});
+             props.dispatch({type:UPDATE,payload:data});
             
 
 
@@ -76,7 +71,7 @@ const Payment = (props) => {
             notification.warning({message:'Atencion.',description: "Contacte con soporte."}); 
         }
    
-    }    */
+    }   
 
     const Pay = async (tipoVista) => {
     
@@ -103,9 +98,8 @@ const Payment = (props) => {
                 idUser: idUser,
             }
 
-            setTest(data);
        
-            // props.dispatch({type:UPDATE,payload:data});
+             props.dispatch({type:UPDATE,payload:data});
             
              
      
@@ -142,7 +136,7 @@ const Payment = (props) => {
             <div className= "boxFormPayment"> Pasarela de pago </div>
             
 
-            <div id = "Botom"className="newUserBoton" onClick={()=>Pay("")}>Confirmar Pago</div>
+            <div id = "Botom"className="newUserBoton" onClick={()=>Pay()}>Confirmar Pago</div>
 
 
         </div>
