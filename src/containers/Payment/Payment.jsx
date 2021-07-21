@@ -5,7 +5,7 @@ import moment from 'moment';
 import {connect} from 'react-redux';
 import {notification} from 'antd';
 import React, { useEffect, useState, getState } from "react";
-import {LOGIN, UPDATE} from '../../redux/types'
+import {UPDATE} from '../../redux/types'
 
 
 
